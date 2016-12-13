@@ -8,10 +8,83 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') | Mailing Controller</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: "Open Sans", Helvetica, Arial, sans-serif;
+        }
+        .list-group-item
+        .panel > .list-group
+        {
+            margin-bottom: 0;
+        }
+        .panel > .list-group .list-group-item
+        {
+            border-width: 1px 0;
+        }
+        .panel > .list-group .list-group-item:first-child
+        {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+        }
+        .panel > .list-group .list-group-item:last-child
+        {
+            border-bottom: 0;
+        }
+        .panel-heading + .list-group .list-group-item:first-child
+        {
+            border-top-width: 0;
+        }
+        .panel-default .list-group-item.active
+        {
+            color: #000;
+            background-color: #DDD;
+            border-color: #DDD;
+        }
+        .panel-primary .list-group-item.active
+        {
+            color: #FFF;
+            background-color: #428BCA;
+            border-color: #428BCA;
+        }
+        .panel-success .list-group-item.active
+        {
+            color: #3C763D;
+            background-color: #DFF0D8;
+            border-color: #D6E9C6;
+        }
+        .panel-info .list-group-item.active
+        {
+            color: #31708F;
+            background-color: #D9EDF7;
+            border-color: #BCE8F1;
+        }
+        .panel-warning .list-group-item.active
+        {
+            color: #8A6D3B;
+            background-color: #FCF8E3;
+            border-color: #FAEBCC;
+        }
+        .panel-danger .list-group-item.active
+        {
+            color: #A94442;
+            background-color: #F2DEDE;
+            border-color: #EBCCD1;
+        }
+        .panel a.list-group-item.active:hover, a.list-group-item.active:focus
+        {
+            color: #000;
+            background-color: #DDD;
+            border-color: #DDD;
+        }
+
+    </style>
+
+    <script src="https://use.fontawesome.com/16eefa3c87.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -36,14 +109,17 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Mailing Controller
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="@if(request()->is('subscriptions*')) active @endif"><a href="{{ route('subscriptions.index') }}">Subscriptions</a></li>
+                        <li class="@if(request()->is('lists*')) active @endif"><a href="{{ route('lists.index') }}">Lists</a></li>
+                        <li class="@if(request()->is('campaigns*')) active @endif"><a href="{{ route('campaigns.index') }}">Campaigns</a></li>
+                        <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.index') }}">Settings</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
