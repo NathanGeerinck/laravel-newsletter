@@ -14,22 +14,33 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="col-xs-12 col-md-6 col-md-offset-3">
-                    {!! Form::model(request()->all(), ['route' => 'lists.filter', 'method' => 'get']) !!}
+                {!! Form::model(request()->all(), ['route' => 'subscriptions.filter', 'method' => 'get']) !!}
+
+                <div class="col-xs-6">
                     <div class="input-group">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Filter']) !!}
+                        {!! Form::select('mailing_list', $lists, null, ['class' => 'chosen-select', 'placeholder' => '']) !!}
+
                         <div class="input-group-btn">
-                            {!! Form::submit('Filter', ['class' => 'btn btn-default']) !!}
+                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>
-                    {!! Form::close() !!}
                 </div>
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        {!! Form::text('filter', null, ['class' => 'form-control', 'placeholder' => 'Search by email or name']) !!}
+
+                        <div class="input-group-btn">
+                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
                 <br><br>
                 <table class="table" id="exceptions">
                     <thead>
                     <tr>
                         <th class="text-center" style="">ID</th>
-                        <th style="">E-mail</th>
+                        <th style="">Email</th>
                         <th style="">Name</th>
                         <th class="text-center">List</th>
                         <th></th>
@@ -60,4 +71,12 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(".chosen-select").chosen({
+            allow_single_deselect: true
+        });
+    </script>
 @endsection

@@ -17,7 +17,7 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th style="width:20%">E-mail</th>
+                        <th style="width:20%">Email</th>
                         <td>{{ $subscription->email }}</td>
                     </tr>
                     <tr>

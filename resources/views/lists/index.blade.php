@@ -18,9 +18,9 @@
                     <div class="col-xs-12 col-md-6 col-md-offset-3">
                     {!! Form::model(request()->all(), ['route' => 'lists.filter', 'method' => 'get']) !!}
                         <div class="input-group">
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Filter']) !!}
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
                             <div class="input-group-btn">
-                                {!! Form::submit('Filter', ['class' => 'btn btn-default']) !!}
+                                {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
                             </div>
                         </div>
                     {!! Form::close() !!}

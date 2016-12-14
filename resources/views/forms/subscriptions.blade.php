@@ -1,5 +1,5 @@
 <div class="form-group">
-    {!! Form::label('email', 'E-mail *') !!}
+    {!! Form::label('email', 'Email *') !!}
     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 

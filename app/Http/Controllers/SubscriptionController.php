@@ -10,13 +10,15 @@ use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $subscriptions = Subscriptions::latest()
+        $subscriptions = Subscriptions::filter($request->all())
             ->with('mailingList')
             ->paginate(15, ['id', 'email', 'name', 'country', 'language', 'mailing_list_id']);
 
-        return view('subscriptions.index', compact('subscriptions'));
+        $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
+
+        return view('subscriptions.index', compact('subscriptions', 'lists'));
     }
 
     public function show(Subscriptions $subscription)
