@@ -40,7 +40,8 @@
                             <th></th>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ route('lists.edit', $list->id) }}" type="button" class="btn btn-default">Edit</a>
+                                    <a href="{{ route('lists.edit', $list) }}" type="button" class="btn btn-default">Edit</a>
+                                    <a href="{{ route('lists.clone', $list) }}" type="button" class="btn btn-default">Clone</a>
                                     <a href="" type="button" class="btn btn-default">Delete</a>
                                 </div>
                             </td>

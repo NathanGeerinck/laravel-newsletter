@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/chosen.css" rel="stylesheet">
 
     <style>
         body{
@@ -154,11 +155,15 @@
                 </div>
             </div>
         </nav>
-
+        @include('errors.validation_errors')
         @yield('content')
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/chosen.jquery.js"></script>
+
+    @yield('javascript')
 </body>
 </html>

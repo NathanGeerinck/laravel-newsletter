@@ -23,14 +23,20 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('lists', 'ListController@index')->name('lists.index');
     Route::get('lists/show/{list}', 'ListController@show')->name('lists.show');
     Route::get('lists/edit/{list}', 'ListController@edit')->name('lists.edit');
+    Route::get('lists/clone/{list}', 'ListController@new')->name('lists.clone');
     Route::get('lists/new', 'ListController@new')->name('lists.new');
     Route::post('lists', 'ListController@index')->name('lists.filter');
     Route::post('lists/new', 'ListController@create')->name('lists.create');
     Route::post('lists/edit/{list}', 'ListController@update')->name('lists.update');
 
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
-    Route::get('subscriptions/show', 'SubscriptionController@show')->name('subscriptions.show');
+    Route::get('subscriptions/show/{subscription}', 'SubscriptionController@show')->name('subscriptions.show');
+    Route::get('subscriptions/edit/{subscription}', 'SubscriptionController@edit')->name('subscriptions.edit');
+    Route::get('subscriptions/clone/{subscription}', 'SubscriptionController@new')->name('subscriptions.clone');
     Route::get('subscriptions/new', 'SubscriptionController@new')->name('subscriptions.new');
+    Route::post('subscriptions', 'SubscriptionController@index')->name('subscriptions.filter');
+    Route::post('subscriptions/new', 'SubscriptionController@create')->name('subscriptions.create');
+    Route::post('subscriptions/edit/{subscription}', 'SubscriptionController@update')->name('subscriptions.update');
 
     Route::get('templates', 'TemplateController@index')->name('templates.index');
     Route::get('templates/show', 'TemplateController@show')->name('templates.show');

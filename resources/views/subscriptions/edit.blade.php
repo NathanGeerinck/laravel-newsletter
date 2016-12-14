@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'New list')
+@section('title', 'New subscription')
 
 @section('content')
     <div class="container">
@@ -9,17 +9,25 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('lists.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="{{ route('subscriptions.index') }}" type="button" class="btn btn-default">Back to overview</a>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model((request()->is('lists/clone*')) ? $list : 'null', ['route' => ['lists.create']]) !!}
+                {!! Form::model($subscription, ['route' => ['subscriptions.update', $subscription]]) !!}
 
-                @include('forms.lists')
+                @include('forms.subscriptions')
 
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(".chosen-select").chosen({
+            allow_single_deselect: true
+        });
+    </script>
 @endsection

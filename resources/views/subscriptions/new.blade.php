@@ -14,7 +14,20 @@
                 </div>
             </div>
             <div class="panel-body">
+                {!! Form::model((request()->is('subscriptions/clone*')) ? $subscription : 'null', ['route' => ['subscriptions.create']]) !!}
+
+                @include('forms.subscriptions')
+
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(".chosen-select").chosen({
+            allow_single_deselect: true
+        });
+    </script>
 @endsection

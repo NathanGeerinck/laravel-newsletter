@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "^5.3.0",
-        "tucker-eric/eloquentfilter": "^1.0"
+        "tucker-eric/eloquentfilter": "^1.0",
+        "barryvdh/laravel-debugbar": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -20,6 +21,9 @@
     "autoload": {
         "classmap": [
             "database"
+        ],
+        "files": [
+            "app/Utilities/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/"

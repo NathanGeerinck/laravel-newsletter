@@ -11,11 +11,12 @@ class MailingList extends Model
 
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'user_id'
     ];
 
     public function subscriptions()
     {
-        return $this->hasMany(Subscriptions::class, 'mailing_lists_id', 'id');
+        return $this->hasMany(Subscriptions::class);
     }
 }

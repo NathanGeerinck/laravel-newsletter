@@ -43,8 +43,9 @@
                                 <td class="text-center"><span class="label label-info">{{ $list->subscriptions()->count() }}</span></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                        <a href="{{ route('lists.show', $list->id) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('lists.edit', $list->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ route('lists.show', $list) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('lists.edit', $list) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ route('lists.clone', $list) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
                                         <a class="btn btn-default"><i class="fa fa-times text-danger"></i></a>
                                     </div>
                                 </td>

@@ -28,14 +28,14 @@ class ListController extends Controller
         return view('lists.edit', compact('list'));
     }
 
-    public function new()
+    public function new(MailingList $list)
     {
-        return view('lists.new');
+        return view('lists.new', compact('list'));
     }
 
     public function create(MailingListCreateRequest $request)
     {
-        $list = MailingList::create($request->all());
+        $list = auth()->user()->mailingList()->create($request->all());
 
         return redirect()->route('lists.show', $list);
     }
