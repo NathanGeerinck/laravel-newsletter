@@ -109,7 +109,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Mailing Controller
+                        <i class="fa fa-envelope-o fa-1x"></i> Mailing
                     </a>
                 </div>
 
@@ -119,6 +119,7 @@
                         <li class="@if(request()->is('subscriptions*')) active @endif"><a href="{{ route('subscriptions.index') }}">Subscriptions</a></li>
                         <li class="@if(request()->is('lists*')) active @endif"><a href="{{ route('lists.index') }}">Lists</a></li>
                         <li class="@if(request()->is('campaigns*')) active @endif"><a href="{{ route('campaigns.index') }}">Campaigns</a></li>
+                        <li class="@if(request()->is('Templates*')) active @endif"><a href="{{ route('templates.index') }}">Templates</a></li>
                         <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.index') }}">Settings</a></li>
                     </ul>
 
