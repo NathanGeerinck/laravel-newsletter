@@ -15,11 +15,17 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('mailing_lists_id')->unsigned()->nullable();
+            $table->foreign('mailing_lists_id')->references('id')->on('mailing_lists');
+
             $table->string('email');
-            $table->string('contactperson');
-            $table->string('club');
+            $table->string('name')->nullable();
             $table->string('country');
             $table->string('language');
+
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

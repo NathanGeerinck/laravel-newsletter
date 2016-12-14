@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MailingListCreateRequest;
 use App\Http\Requests\MailingListUpdateRequest;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
 
 class ListController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $lists = MailingList::orderBy('id', 'desc')
-            ->paginate(15, ['id', 'name']);
+        $lists = MailingList::filter($request->all())
+            ->latest()
+            ->paginateFilter(15, ['id', 'name']);
 
         return view('lists.index', compact('lists'));
     }
@@ -31,10 +33,17 @@ class ListController extends Controller
         return view('lists.new');
     }
 
+    public function create(MailingListCreateRequest $request)
+    {
+        $list = MailingList::create($request->all());
+
+        return redirect()->route('lists.show', $list);
+    }
+
     public function update(MailingListUpdateRequest $request, MailingList $list)
     {
         $list->update($request->all());
 
-        return redirect()->route('lists.show', $list->id);
+        return redirect()->route('lists.show', $list);
     }
 }

@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('lists/show/{list}', 'ListController@show')->name('lists.show');
     Route::get('lists/edit/{list}', 'ListController@edit')->name('lists.edit');
     Route::get('lists/new', 'ListController@new')->name('lists.new');
+    Route::post('lists', 'ListController@index')->name('lists.filter');
+    Route::post('lists/new', 'ListController@create')->name('lists.create');
     Route::post('lists/edit/{list}', 'ListController@update')->name('lists.update');
 
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
@@ -35,5 +37,4 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('templates/new', 'TemplateController@new')->name('templates.new');
 
     Route::get('settings', 'SettingController@index')->name('settings.index');
-    Route::post('settings/driver/update', 'SettingController@diver')->name('settings.driver');
 });

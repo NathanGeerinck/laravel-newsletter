@@ -14,6 +14,19 @@
                 </div>
             </div>
             <div class="panel-body">
+                {!! Form::open(['route' => ['lists.create']]) !!}
+                <div class="form-group ">
+                    {!! Form::label('name', 'Name *') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group ">
+                    {!! Form::label('description', 'Description') !!}
+                    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                </div>
+
+                {!! Form::submit('Save', ['class' => 'btn btn-default']) !!}
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
