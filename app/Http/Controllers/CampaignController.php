@@ -2,22 +2,71 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CampaignCreateRequest;
+use App\Http\Requests\CampaignUpdateRequest;
+use App\Models\Campaign;
+use App\Models\MailingList;
+use App\Models\Template;
 use Illuminate\Http\Request;
 
 class CampaignController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('campaigns.index');
+        $campaigns = Campaign::filter($request->all())
+            ->with('mailingLists')
+            ->paginateFilter(15, ['id', 'name', 'send']);
+
+        return view('campaigns.index', compact('campaigns'));
     }
 
-    public function show()
+    public function show(Campaign $campaign)
     {
-        return view('campaigns.show');
+        $campaign->load('template', 'mailingLists');
+
+        return view('campaigns.show', compact('campaign'));
     }
 
-    public function new()
+    public function new(Campaign $campaign)
     {
-        return view('campaigns.new');
+        ($campaign->send == 1) ? abort(404) : null;
+
+        $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
+        $templates = Template::get(['name', 'id'])->pluck('name', 'id');
+
+        return view('campaigns.new', compact('campaign', 'lists', 'templates'));
     }
+
+    public function edit(Campaign $campaign)
+    {
+        ($campaign->send == 1) ? abort(404) : null;
+
+        $campaign->load('mailingLists');
+
+        $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
+        $templates = Template::get(['name', 'id'])->pluck('name', 'id');
+
+        return view('campaigns.edit', compact('campaign', 'lists', 'templates', 'mailingLists'));
+    }
+
+    public function create(CampaignCreateRequest $request)
+    {
+        $campaign = auth()->user()->campaigns()->create($request->all());
+
+        if($request->get('mailing_lists')){
+            $campaign->mailingLists()->sync($request->input('mailing_lists'));
+        }
+
+        return redirect()->route('campaigns.show', $campaign);
+    }
+
+    public function update(CampaignUpdateRequest $request, Campaign $campaign)
+    {
+        ($campaign->send == 1) ? abort(404) : null;
+
+        $campaign->update($request->all());
+
+        return redirect()->route('campaigns.show', $campaign);
+    }
+
 }

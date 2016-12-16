@@ -31,11 +31,21 @@ class User extends Authenticatable
 
     public function subscription()
     {
-        return $this->hasMany(Subscriptions::class);
+        return $this->hasMany(Subscription::class);
     }
 
     public function mailingList()
     {
-        return$this->hasMany(MailingList::class);
+        return $this->hasMany(MailingList::class);
+    }
+
+    public function template()
+    {
+        return $this->hasMany(Template::class);
+    }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
     }
 }

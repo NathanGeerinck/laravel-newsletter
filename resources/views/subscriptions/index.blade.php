@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Subscriptions (' . $subscriptions->count() . ')')
+@section('title', 'Subscriptions (' . $subscriptions->total() . ')')
 
 @section('content')
     <div class="container">
@@ -21,7 +21,7 @@
                         {!! Form::select('mailing_list', $lists, null, ['class' => 'chosen-select', 'placeholder' => '']) !!}
 
                         <div class="input-group-btn">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
+                            {!! Form::submit('Search', ['class' => 'btn btn-default', 'disabled']) !!}
                         </div>
                     </div>
                 </div>
@@ -68,6 +68,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="text-center">{{ $subscriptions->links() }}</div>
             </div>
         </div>
     </div>

@@ -5,35 +5,35 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubscriptionsCreateRequest;
 use App\Http\Requests\SubscriptionsUpdateRequest;
 use App\Models\MailingList;
-use App\Models\Subscriptions;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
 {
     public function index(Request $request)
     {
-        $subscriptions = Subscriptions::filter($request->all())
+        $subscriptions = Subscription::filter($request->all())
             ->with('mailingList')
-            ->paginate(15, ['id', 'email', 'name', 'country', 'language', 'mailing_list_id']);
+            ->paginateFilter(15, ['id', 'email', 'name', 'country', 'language', 'mailing_list_id']);
 
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
 
         return view('subscriptions.index', compact('subscriptions', 'lists'));
     }
 
-    public function show(Subscriptions $subscription)
+    public function show(Subscription $subscription)
     {
         return view('subscriptions.show', compact('subscription'));
     }
 
-    public function new(Subscriptions $subscription)
+    public function new(Subscription $subscription)
     {
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
 
         return view('subscriptions.new', compact('subscription', 'lists'));
     }
 
-    public function edit(Subscriptions $subscription)
+    public function edit(Subscription $subscription)
     {
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
 
@@ -47,7 +47,7 @@ class SubscriptionController extends Controller
         return redirect()->route('subscriptions.index');
     }
 
-    public function update(SubscriptionsUpdateRequest $request, Subscriptions $subscription)
+    public function update(SubscriptionsUpdateRequest $request, Subscription $subscription)
     {
         $subscription->update($request->all());
 

@@ -3,7 +3,7 @@
 function countries($key = null)
 {
     $arr = [
-        "" => null,
+        "" => "",
         "af" => "Afghanistan",
         "al" => "Albania",
         "dz" => "Algeria",
@@ -271,7 +271,7 @@ function countries($key = null)
     ];
 
     if($key){
-        return $arr[strtoupper($key)];
+        return $arr[$key];
     }
 
     return $arr;

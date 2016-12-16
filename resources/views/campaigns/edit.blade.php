@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'New campaign')
+@section('title', 'Edit campaign: ' . $campaign->name)
 
 @section('content')
     <div class="container">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model((request()->is('campaigns/clone*')) ? $campaign : 'null', ['route' => ['campaigns.create']]) !!}
+                {!! Form::model($campaign, ['route' => ['campaigns.edit', $campaign]]) !!}
 
                 @include('forms.campaigns')
 

@@ -1,8 +1,9 @@
-<?php namespace App\Filters;
+<?php
+namespace App\Filters;
 
 use EloquentFilter\ModelFilter;
 
-class SubscriptionsFilter extends ModelFilter
+class SubscriptionFilter extends ModelFilter
 {
     /**
     * Related Models that have ModelFilters as well as the method on the ModelFilter
