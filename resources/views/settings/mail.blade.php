@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Settings')
+@section('title', 'Settings: Mail')
 
 @section('content')
     <div class="container">
@@ -11,7 +11,12 @@
             <div class="panel-heading">@yield('title')</div>
 
             <div class="panel-body">
-                You are logged in!
+                {!! Form::model(null, ['route' => ['settings.mail.update']]) !!}
+
+                @include('forms.settings.mail')
+
+                {!! Form::close() !!}
+
             </div>
         </div>
     </div>

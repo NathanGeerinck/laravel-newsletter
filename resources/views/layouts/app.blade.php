@@ -121,7 +121,7 @@
                         <li class="@if(request()->is('lists*')) active @endif"><a href="{{ route('lists.index') }}">Lists</a></li>
                         <li class="@if(request()->is('campaigns*')) active @endif"><a href="{{ route('campaigns.index') }}">Campaigns</a></li>
                         <li class="@if(request()->is('templates*')) active @endif"><a href="{{ route('templates.index') }}">Templates</a></li>
-                        <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.index') }}">Settings</a></li>
+                        <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.application') }}">Settings</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -129,7 +129,9 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            @if(env('APP_REGISTER') == true)
+                                <li><a href="{{ url('/register') }}">Register</a></li>
+                            @endif
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

@@ -53,8 +53,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('templates/new', 'TemplateController@create')->name('templates.create');
     Route::post('templates/edit/{subscription}', 'TemplateController@update')->name('templates.update');
 
-    Route::get('settings', 'Settings\SettingController@index')->name('settings.index');
+    Route::get('settings', 'Settings\ApplicationController@index')->name('settings.application');
+    Route::get('settings/mail', 'Settings\MailController@index')->name('settings.mail');
     Route::get('settings/users', 'Settings\UserController@index')->name('settings.users');
+    Route::post('settings', 'Settings\ApplicationController@update')->name('settings.application.update');
+    Route::post('settings/mail', 'Settings\MailController@update')->name('settings.mail.update');
 });
 
 Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');

@@ -181,6 +181,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         EloquentFilter\ServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
     ],
 
     /*
@@ -232,6 +233,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
     ],
 
 ];

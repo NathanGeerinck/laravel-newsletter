@@ -11,7 +11,8 @@
         "tucker-eric/eloquentfilter": "^1.0",
         "barryvdh/laravel-debugbar": "^2.3",
         "spatie/laravel-permission": "^1.5",
-        "larabug/larabug": "^1.0"
+        "larabug/larabug": "^1.0",
+        "brotzka/laravel-dotenv-editor": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
