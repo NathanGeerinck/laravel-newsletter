@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'New subscription')
+@section('title', 'Edit subscription: ' . $subscription->email)
 
 @section('content')
     <div class="container">
@@ -14,11 +14,11 @@
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model($subscription, ['route' => ['subscriptions.update', $subscription]]) !!}
+            {!! Form::model($subscription, ['route' => ['subscriptions.update', $subscription]]) !!}
 
-                @include('forms.subscriptions')
+            @include('forms.subscriptions')
 
-                {!! Form::close() !!}
+            {!! Form::close() !!}
             </div>
         </div>
     </div>

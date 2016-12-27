@@ -10,7 +10,7 @@
 
 <div class="form-group">
     {!! Form::label('mailing_lists', 'Mailing list *') !!}
-    {!! Form::select('mailing_lists[]', $lists, (request()->is('campaigns/edit*')) ? $campaign->mailingLists : 'null', ['class' => '', 'multiple']) !!}
+    {!! Form::select('mailing_lists[]', $lists, (request()->is('campaigns/edit*')) ? $campaign->mailingLists : 'null', ['class' => 'chosen-select', 'multiple']) !!}
 </div>
 
 <div class="form-group">

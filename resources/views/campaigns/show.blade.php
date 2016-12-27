@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <th>Subject</th>
-                        <td>{{ $campaign->subject }}</td>
+                        <td>{!! $campaign->subject !!}</td>
                     </tr>
                     <tr>
                         <th>List(s)</th>

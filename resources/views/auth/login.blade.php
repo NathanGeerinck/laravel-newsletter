@@ -1,11 +1,22 @@
 @extends('layouts.app')
 
+@section('title', 'Login')
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">
+                    @yield('title')
+                    <div class="pull-right">
+                        <div class="btn-group btn-group-xs">
+                            @if(env('APP_REGISTER') == true)
+                                <a href="{{ url('/register') }}" type="button" class="btn btn-default">Register</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

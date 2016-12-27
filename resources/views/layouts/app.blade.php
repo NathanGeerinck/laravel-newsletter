@@ -11,8 +11,10 @@
     <title>@yield('title') | Mailing Controller</title>
 
     <!-- Styles -->
+
     <link href="/css/app.css" rel="stylesheet">
     <link href="/css/chosen.css" rel="stylesheet">
+    <link href="/css/sweetalert.css" rel="stylesheet">
 
     <style>
         body{
@@ -110,7 +112,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fa fa-envelope-o fa-1x"></i> Mailing
+                        <i class="fa fa-envelope-o fa-1x"></i> Newsletter
                     </a>
                 </div>
 
@@ -157,7 +159,10 @@
                 </div>
             </div>
         </nav>
-        @include('errors.validation_errors')
+        <div class="container">
+            @include('errors.validation_errors')
+            @include('parts.success')
+        </div>
         @yield('content')
     </div>
 
@@ -165,6 +170,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/chosen.jquery.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    <script src="/js/custom.js"></script>
 
     @yield('javascript')
 </body>

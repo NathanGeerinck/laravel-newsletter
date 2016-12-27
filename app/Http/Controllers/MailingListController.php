@@ -14,7 +14,7 @@ class MailingListController extends Controller
         $lists = MailingList::filter($request->all())
             ->with('subscriptions')
             ->latest()
-            ->paginateFilter(15, ['id', 'name']);
+            ->paginateFilter(15, ['id', 'name', 'public']);
 
         return view('lists.index', compact('lists'));
     }
@@ -40,13 +40,20 @@ class MailingListController extends Controller
     {
         $list = auth()->user()->mailingList()->create($request->all());
 
-        return redirect()->route('lists.show', $list);
+        return redirect()->route('lists.show', $list)->withSuccess('List: ' . $list->name . ' successfully created!');
     }
 
     public function update(MailingListUpdateRequest $request, MailingList $list)
     {
         $list->update($request->all());
 
-        return redirect()->route('lists.show', $list);
+        return redirect()->route('lists.show', $list)->withSuccess('List: <i>' . $list->name . '</i> successfully updated!');
+    }
+
+    public function delete(MailingList $list)
+    {
+        $list->delete();
+
+        return redirect()->route('lists.index')->withSuccess('List: <i>' . $list->name . '</i> successfully deleted!');
     }
 }

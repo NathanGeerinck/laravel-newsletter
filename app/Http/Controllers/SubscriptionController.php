@@ -40,17 +40,34 @@ class SubscriptionController extends Controller
         return view('subscriptions.edit', compact('subscription', 'lists'));
     }
 
+    public function subscribe(MailingList $list)
+    {
+        return view('subscriptions.subscribe', compact('list'));
+    }
+
+    public function unsubscribe(MailingList $list)
+    {
+        return view('subscriptions.unsubscribe', compact('list'));
+    }
+
     public function create(SubscriptionsCreateRequest $request)
     {
-        $request->user()->subscription()->create($request->all());
+        $subscription = $request->user()->subscription()->create($request->all());
 
-        return redirect()->route('subscriptions.index');
+        return redirect()->route('subscriptions.index')->withSuccess('Subscription: <i>' . $subscription->email . '</i> successfully created!');
     }
 
     public function update(SubscriptionsUpdateRequest $request, Subscription $subscription)
     {
         $subscription->update($request->all());
 
-        return redirect('subscription.show', compact($subscription));
+        return redirect()->route('subscriptions.show', $subscription)->withSuccess('Subscription: <i>' . $subscription->email . '</i> successfully updated!');
+    }
+
+    public function delete(Subscription $subscription)
+    {
+        $subscription->delete();
+
+        return redirect()->route('subscriptions.index')->withSuccess('Subscription: <i>' . $subscription->name . '</i> successfully deleted!');
     }
 }

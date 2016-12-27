@@ -18,7 +18,7 @@ class ApplicationController extends Controller
         $env = new DotenvEditor();
         $env->changeEnv($request->all());
 
-        return redirect()->route('settings.application');
+        return redirect()->route('settings.application')->withSuccess('Saved the Application settings successfully!');
     }
 
 }

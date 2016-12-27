@@ -41,13 +41,13 @@ class TemplateController extends Controller
     {
         $template = auth()->user()->template()->create($request->all());
 
-        return redirect()->route('templates.show', $template);
+        return redirect()->route('templates.show', $template)->withSuccess('Template: <i>' . $template->name . '</i> successfully created!');
     }
 
     public function update(TemplateUpdateRequest $request, Template $template)
     {
         $template->update($request->all());
 
-        return redirect()->route('templates.show', $template);
+        return redirect()->route('templates.show', $template)->withSuccess('Template: <i>' . $template->name . '</i> successfully updated!');
     }
 }

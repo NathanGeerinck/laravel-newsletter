@@ -13,7 +13,7 @@ class CampaignCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class CampaignCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'subject' => 'required',
+            'mailing_lists' => 'required',
+            'template_id' => 'required'
         ];
     }
 }

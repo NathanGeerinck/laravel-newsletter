@@ -37,6 +37,10 @@
                             <td><code>{{ $list->updated_at }}</code></td>
                         </tr>
                         <tr>
+                            <th>Public link</th>
+                            <td><input class="form-control" placeholder="{{ route('subscribe.new', $list) }}"></td>
+                        </tr>
+                        <tr>
                             <th></th>
                             <td>
                                 <div class="btn-group">

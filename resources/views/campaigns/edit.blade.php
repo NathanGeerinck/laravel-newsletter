@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model($campaign, ['route' => ['campaigns.edit', $campaign]]) !!}
+                {!! Form::model($campaign, ['route' => ['campaigns.update', $campaign]]) !!}
 
                 @include('forms.campaigns')
 

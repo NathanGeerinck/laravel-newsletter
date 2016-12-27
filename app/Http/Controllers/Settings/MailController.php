@@ -18,6 +18,6 @@ class MailController extends Controller
         $env = new DotenvEditor();
         $env->changeEnv($request->all());
 
-        return redirect()->route('settings.mail');
+        return redirect()->route('settings.mail')->withSuccess('Saved the Mail settings successfully!');
     }
 }

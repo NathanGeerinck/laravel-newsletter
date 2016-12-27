@@ -15,20 +15,9 @@
             </div>
             <div class="panel-body">
                 {!! Form::model(request()->all(), ['route' => 'subscriptions.filter', 'method' => 'get']) !!}
-
-                <div class="col-xs-6">
+                <div class="col-xs-12 col-md-6 col-md-offset-3">
                     <div class="input-group">
-                        {!! Form::select('mailing_list', $lists, null, ['class' => 'chosen-select', 'placeholder' => '']) !!}
-
-                        <div class="input-group-btn">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default', 'disabled']) !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        {!! Form::text('filter', null, ['class' => 'form-control', 'placeholder' => 'Search by email or name']) !!}
-
+                        {!! Form::text('filter', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
                         <div class="input-group-btn">
                             {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
                         </div>
@@ -57,12 +46,14 @@
                             <td>{{ $subscription->name }}</td>
                             <td class="text-center"><span class="label label-info">{{ $subscription->mailingList->name }}</span></td>
                             <td class="text-center">
+                                {!! Form::open(['route' => ['subscriptions.delete', $subscription], 'method' => 'DELETE']) !!}
                                 <div class="btn-group btn-group-sm" role="group" aria-label="">
                                     <a href="{{ route('subscriptions.show', $subscription) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('subscriptions.edit', $subscription) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ route('subscriptions.clone', $subscription) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
-                                    <a class="btn btn-default"><i class="fa fa-times text-danger"></i></a>
+                                    <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($subscription->email) }}')" data-toggle="tooltip" title="Delete {{ addslashes($subscription->email) }}"><i class="fa fa-times text-danger"></i></a>
                                 </div>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

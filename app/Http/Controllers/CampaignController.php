@@ -22,6 +22,8 @@ class CampaignController extends Controller
 
     public function show(Campaign $campaign)
     {
+//        ($campaign->send == 1) ? abort(404) : null;
+
         $campaign->load('template', 'mailingLists');
 
         return view('campaigns.show', compact('campaign'));
@@ -29,8 +31,6 @@ class CampaignController extends Controller
 
     public function new(Campaign $campaign)
     {
-        ($campaign->send == 1) ? abort(404) : null;
-
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
         $templates = Template::get(['name', 'id'])->pluck('name', 'id');
 
@@ -39,7 +39,7 @@ class CampaignController extends Controller
 
     public function edit(Campaign $campaign)
     {
-        ($campaign->send == 1) ? abort(404) : null;
+//        ($campaign->send == 1) ? abort(404) : null;
 
         $campaign->load('mailingLists');
 
@@ -57,16 +57,17 @@ class CampaignController extends Controller
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
-        return redirect()->route('campaigns.show', $campaign);
+        return redirect()->route('campaigns.show', $campaign)->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully created!');
     }
 
-    public function update(CampaignUpdateRequest $request, Campaign $campaign)
+    public function update(Request $request, Campaign $campaign)
     {
-        ($campaign->send == 1) ? abort(404) : null;
-
         $campaign->update($request->all());
 
-        return redirect()->route('campaigns.show', $campaign);
-    }
+        if($request->get('mailing_lists')){
+            $campaign->mailingLists()->sync($request->input('mailing_lists'));
+        }
 
+        return redirect()->route('campaigns.index');
+    }
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "526cd82c56e93891df07a59792da0a65",
-    "content-hash": "5bca076f50cab0f580568a91cd071977",
+    "hash": "37d0bb0677dcd0276fa75121de711dee",
+    "content-hash": "69aa892ff08767bebc4fdf28eaf8c1d6",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2450,6 +2450,58 @@
                 "search"
             ],
             "time": "2016-12-06 18:06:17"
+        },
+        {
+            "name": "unicodeveloper/laravel-emoji",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unicodeveloper/laravel-emoji.git",
+                "reference": "df5ce0b221521cf5a3850382c9487f3b80328105"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unicodeveloper/laravel-emoji/zipball/df5ce0b221521cf5a3850382c9487f3b80328105",
+                "reference": "df5ce0b221521cf5a3850382c9487f3b80328105",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "satooshi/php-coveralls": "^0.7.0",
+                "scrutinizer/ocular": "~1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unicodeveloper\\Emoji\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "unicodeveloper",
+                    "email": "prosperotemuyiwa@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel 5 Package for Using & Working With Emojis",
+            "keywords": [
+                "emoji",
+                "github",
+                "laravel",
+                "laravel 5",
+                "open source",
+                "php",
+                "unicode"
+            ],
+            "time": "2016-02-08 06:28:24"
         },
         {
             "name": "vlucas/phpdotenv",

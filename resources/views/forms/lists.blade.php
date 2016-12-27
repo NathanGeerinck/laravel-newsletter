@@ -3,9 +3,15 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
-<div class="form-group ">
+<div class="form-group">
     {!! Form::label('description', 'Description') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="checkbox">
+    <label>
+        {!! Form::checkbox('public', '1') !!} Public
+    </label>
 </div>
 
 {!! Form::submit('Save', ['class' => 'btn btn-default']) !!}

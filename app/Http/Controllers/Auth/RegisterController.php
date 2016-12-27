@@ -68,4 +68,16 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    /**
+     * Just a custom override to prevent register when option is disabled
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function showRegistrationForm()
+    {
+        (env('APP_REGISTER') == false) ? abort(404) : null;
+
+        return view('auth.register');
+    }
 }

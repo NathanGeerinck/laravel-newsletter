@@ -13,6 +13,11 @@
 
 Auth::routes();
 
+Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');
+
+Route::get('subscribe/{list}', 'SubscriptionController@subscribe')->name('subscriptions.subscribe');
+Route::get('unsubscribe/{list}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
+
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'HomeController@index');
 
@@ -25,6 +30,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('campaigns/new', 'CampaignController@create')->name('campaigns.create');
     Route::post('campaigns/edit/{list}', 'CampaignController@update')->name('campaigns.update');
     Route::post('campaigns/send/{list}', 'CampaignController@send')->name('campaigns.send');
+    Route::delete('campaigns/delete/{list}', 'CampaignController@delete')->name('campaigns.delete');
 
     Route::get('lists', 'MailingListController@index')->name('lists.index');
     Route::get('lists/show/{list}', 'MailingListController@show')->name('lists.show');
@@ -34,6 +40,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('lists', 'MailingListController@index')->name('lists.filter');
     Route::post('lists/new', 'MailingListController@create')->name('lists.create');
     Route::post('lists/edit/{list}', 'MailingListController@update')->name('lists.update');
+    Route::delete('lists/delete/{list}', 'MailingListController@delete')->name('lists.delete');
 
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
     Route::get('subscriptions/show/{subscription}', 'SubscriptionController@show')->name('subscriptions.show');
@@ -43,6 +50,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('subscriptions', 'SubscriptionController@index')->name('subscriptions.filter');
     Route::post('subscriptions/new', 'SubscriptionController@create')->name('subscriptions.create');
     Route::post('subscriptions/edit/{subscription}', 'SubscriptionController@update')->name('subscriptions.update');
+    Route::delete('subscriptions/delete/{subscription}', 'SubscriptionController@delete')->name('subscriptions.delete');
 
     Route::get('templates', 'TemplateController@index')->name('templates.index');
     Route::get('templates/show/{template}', 'TemplateController@show')->name('templates.show');
@@ -51,7 +59,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('templates/new', 'TemplateController@new')->name('templates.new');
     Route::post('templates', 'TemplateController@index')->name('templates.filter');
     Route::post('templates/new', 'TemplateController@create')->name('templates.create');
-    Route::post('templates/edit/{subscription}', 'TemplateController@update')->name('templates.update');
+    Route::post('templates/edit/{template}', 'TemplateController@update')->name('templates.update');
+    Route::delete('templates/delete/{template}', 'TemplateController@delete')->name('templates.delete');
 
     Route::get('settings', 'Settings\ApplicationController@index')->name('settings.application');
     Route::get('settings/mail', 'Settings\MailController@index')->name('settings.mail');
@@ -59,5 +68,3 @@ Route::group(['middleware' => ['auth']], function(){
     Route::post('settings', 'Settings\ApplicationController@update')->name('settings.application.update');
     Route::post('settings/mail', 'Settings\MailController@update')->name('settings.mail.update');
 });
-
-Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');

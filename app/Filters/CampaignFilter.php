@@ -11,4 +11,9 @@ class CampaignFilter extends ModelFilter
     * @var array
     */
     public $relations = [];
+
+    public function name($name)
+    {
+        return $this->where('name', 'LIKE', '%'. $name . '%');
+    }
 }

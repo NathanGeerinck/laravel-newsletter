@@ -16,7 +16,7 @@
             <div class="panel-body">
             {!! Form::model($list, ['route' => ['lists.update', $list]]) !!}
 
-                @include('forms.lists')
+            @include('forms.lists')
 
             {!! Form::close() !!}
             </div>

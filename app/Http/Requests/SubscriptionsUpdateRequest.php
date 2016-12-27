@@ -24,7 +24,7 @@ class SubscriptionsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'unique:subscriptions|email|required'
+            'email' => 'email|required'
         ];
     }
 }
