@@ -24,7 +24,8 @@ class SubscriptionsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'email|required'
+            'email' => 'email|required',
+            'mailing_list_id' => 'required'
         ];
     }
 }

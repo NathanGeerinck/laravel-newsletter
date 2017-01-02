@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'New campaign')
+@section('title', 'Campaign: ' . $campaign->name)
 
 @section('content')
     <div class="container">
@@ -14,10 +14,9 @@
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model((request()->is('campaigns/clone*')) ? $campaign : 'null', ['route' => ['campaigns.create']]) !!}
-
-                @include('forms.campaigns')
-
+                <div class="alert alert-info" role="alert">You're sending this campaign to <b>{{ collect($subscriptions)->sum() }}</b> recipients</div>
+                {{ Form::open() }}
+                    {!! Form::submit('Send campaign', ['class' => 'btn btn-default btn-lg btn-']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

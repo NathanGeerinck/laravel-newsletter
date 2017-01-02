@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('campaigns/show/{campaign}', 'CampaignController@show')->name('campaigns.show');
     Route::get('campaigns/edit/{campaign}', 'CampaignController@edit')->name('campaigns.edit');
     Route::get('campaigns/clone/{campaign}', 'CampaignController@new')->name('campaigns.clone');
+    Route::get('campaigns/send/{campaign}', 'CampaignController@preSend')->name('campaigns.presend');
     Route::get('campaigns/new', 'CampaignController@new')->name('campaigns.new');
     Route::post('campaigns', 'CampaignController@index')->name('campaigns.filter');
     Route::post('campaigns/new', 'CampaignController@create')->name('campaigns.create');

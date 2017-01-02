@@ -14,7 +14,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('mailing_list_id', 'List') !!}
+    {!! Form::label('mailing_list_id', 'List *') !!}
     {!! Form::select('mailing_list_id', $lists, null, ['class' => 'chosen-select']) !!}
 </div>
 

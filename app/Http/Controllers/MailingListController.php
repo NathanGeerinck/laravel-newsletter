@@ -13,7 +13,6 @@ class MailingListController extends Controller
     {
         $lists = MailingList::filter($request->all())
             ->with('subscriptions')
-            ->latest()
             ->paginateFilter(15, ['id', 'name', 'public']);
 
         return view('lists.index', compact('lists'));

@@ -24,7 +24,10 @@ class CampaignUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'subject' => 'required',
+            'template_id' => 'required',
+            'mailing_lists' => 'required'
         ];
     }
 }

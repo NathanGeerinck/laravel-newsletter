@@ -42,7 +42,7 @@
                                 <td class="text-center"><span class="label label-info"></span></td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="">
-                                        <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.send', $campaign) }}" class="btn btn-default"><i class="fa fa-paper-plane-o"></i></a>
+                                        <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.presend', $campaign) }}" class="btn btn-default"><i class="fa fa-paper-plane-o"></i></a>
                                         <a href="{{ route('campaigns.show', $campaign) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                         <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.edit', $campaign) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('campaigns.clone', $campaign) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>

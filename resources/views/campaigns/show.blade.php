@@ -35,7 +35,7 @@
                     <tr>
                         <th>Recipients</th>
                         <td>
-{{--                            {{ dd($campaign->mailingLists) }}--}}
+                            {{ collect($subscriptions)->sum() }}
                         </td>
                     </tr>
                     <tr>

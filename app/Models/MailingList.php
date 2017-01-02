@@ -5,6 +5,9 @@ namespace App\Models;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed public
+ */
 class MailingList extends Model
 {
     use Filterable;

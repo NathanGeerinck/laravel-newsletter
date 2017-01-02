@@ -14,18 +14,12 @@
                 </div>
             </div>
             <div class="panel-body">
-                {!! Form::model($campaign, ['route' => ['campaigns.update', $campaign]]) !!}
+            {!! Form::model($campaign, ['route' => ['campaigns.update', $campaign]]) !!}
 
-                @include('forms.campaigns')
+            @include('forms.campaigns')
 
-                {!! Form::close() !!}
+            {!! Form::close() !!}
             </div>
         </div>
     </div>
-@endsection
-
-@section('javascript')
-    <script>
-        $(".chosen-select").chosen();
-    </script>
 @endsection

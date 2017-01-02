@@ -17,13 +17,7 @@ class CreateCampaignsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('subject');
-            $table->tinyInteger('send');
-
-            $table->integer('mailing_list_id')->unsigned()->nullable();
-            $table->foreign('mailing_list_id')->references('id')->on('mailing_lists');
-
-            $table->integer('template_id')->unsigned()->nullable();
-            $table->foreign('template_id')->references('id')->on('templates');
+            $table->tinyInteger('send')->default('0');
 
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');

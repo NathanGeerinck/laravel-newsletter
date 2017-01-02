@@ -42,11 +42,15 @@ class SubscriptionController extends Controller
 
     public function subscribe(MailingList $list)
     {
+        abort_unless($list->public, 404);
+
         return view('subscriptions.subscribe', compact('list'));
     }
 
     public function unsubscribe(MailingList $list)
     {
+        abort_unless($list->public, 404);
+
         return view('subscriptions.unsubscribe', compact('list'));
     }
 

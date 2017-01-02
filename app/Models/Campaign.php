@@ -5,6 +5,11 @@ namespace App\Models;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed send
+ * @property mixed name
+ * @property mixed mailingLists
+ */
 class Campaign extends Model
 {
     use Filterable;

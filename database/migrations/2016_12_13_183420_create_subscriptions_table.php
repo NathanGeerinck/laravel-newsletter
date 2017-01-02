@@ -16,9 +16,6 @@ class CreateSubscriptionsTable extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('mailing_list_id')->unsigned()->nullable();
-            $table->foreign('mailing_list_id')->references('id')->on('mailing_lists');
-
             $table->string('email')->unique();
             $table->string('name')->nullable();
             $table->string('country')->nullable();
