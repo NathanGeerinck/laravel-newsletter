@@ -10,7 +10,7 @@ Laravel Newsletter is an application that can be used for sending newsletters to
 5. Create an account at /register
 6. Login at /login
 7. Fill out the settings at /settings
-8. Send spam to evryone! :)
+8. Send spam to everyone! :)
 
 ## Wiki
 You can find a [Wiki](https://github.com/NathanGeerinck/Laravel-Newsletter/wiki) over here!
