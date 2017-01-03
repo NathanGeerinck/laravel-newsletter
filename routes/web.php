@@ -16,7 +16,7 @@ Auth::routes();
 Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');
 
 Route::get('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@preUnsubscribe')->name('subscriptions.preunsubscribe');
-Route::delete('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
+Route::delete('unsubscribe/{subscription}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'HomeController@index')->name('index');

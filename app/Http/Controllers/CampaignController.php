@@ -100,9 +100,6 @@ class CampaignController extends Controller
 
         $this->dispatch(new SendCampaign($subscriptions, $campaign, $campaign->template));
 
-        $campaign->send = 1;
-        $campaign->save();
-
         return redirect()->route('campaigns.index')->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully send to ' . $subscriptions->count() . ' recipients!');
     }
 

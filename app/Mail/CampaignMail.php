@@ -39,7 +39,7 @@ class CampaignMail extends Mailable
                 '%email%' => $this->subscription->email,
                 '%name%' => $this->subscription->name,
                 '%country%' => countries($this->subscription->country),
-                '%unsubscribe_link%' => route('subscriptions.unsubscribe', [$this->subscription->email, $this->subscription->unsubscribe])
+                '%unsubscribe_link%' => route('subscriptions.preunsubscribe', [$this->subscription->email, $this->subscription->unsubscribe])
             ], $this->template->content)
         ]);
     }

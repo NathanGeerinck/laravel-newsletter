@@ -51,7 +51,7 @@ class Subscription extends Model
         parent::boot();
 
         static::creating(function ($subscription) {
-            $subscription->unsubscribe = str_random(10);
+            $subscription->unsubscribe = str_random(25);
         });
     }
 

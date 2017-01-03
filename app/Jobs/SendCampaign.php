@@ -42,5 +42,8 @@ class SendCampaign implements ShouldQueue
         foreach($this->subscriptions as $subscription){
             Mail::to($subscription)->send(new CampaignMail($subscription, $this->campaign, $this->template));
         }
+
+        $this->campaign->send = 1;
+        $this->campaign->save();
     }
 }
