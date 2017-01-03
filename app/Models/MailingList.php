@@ -6,6 +6,8 @@ use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * @property mixed subscriptions
+ * @property mixed campaigns
  * @property mixed public
  */
 class MailingList extends Model
@@ -26,6 +28,6 @@ class MailingList extends Model
 
     public function campaigns()
     {
-        return $this->belongsToMany(Campaign::class);
+        return $this->belongsToMany(Campaign::class)->withPivot('campaign_id', 'mailing_list_id');
     }
 }

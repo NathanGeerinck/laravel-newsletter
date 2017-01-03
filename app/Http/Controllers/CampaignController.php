@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
+use App\Jobs\SendCampaign;
+use App\Mail\CampaignMail;
 use App\Models\Campaign;
 use App\Models\MailingList;
-use App\Models\Subscription;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CampaignController extends Controller
 {
@@ -23,15 +25,9 @@ class CampaignController extends Controller
 
     public function show(Campaign $campaign)
     {
-        abort_if($campaign->send, 404);
+        $campaign->load('template', 'mailingLists.subscriptions');
 
-        $campaign->load('template', 'mailingLists');
-
-        $subscriptions = array();
-
-        foreach($campaign->mailingLists as $mailingList){
-            $subscriptions[] = Subscription::where('mailing_list_id', $mailingList->id)->count();
-        }
+        $subscriptions = $campaign->getSubscriptions();
 
         return view('campaigns.show', compact('campaign', 'mailingLists', 'subscriptions'));
     }
@@ -41,18 +37,13 @@ class CampaignController extends Controller
         if(request()->is('campaigns/clone*')){
             $campaign->load('mailingLists');
 
-            $mailingLists_arr = array();
-
-            foreach ($campaign->mailingLists as $mailingList) {
-                $mailingLists_arr[] = $mailingList['id'];
-            }
-        } else {
-            $mailingLists_arr = null;
+            $mailingLists = $campaign->getMailingList()->pluck('id')->toArray();
         }
+
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
         $templates = Template::get(['name', 'id'])->pluck('name', 'id');
 
-        return view('campaigns.new', compact('campaign', 'lists', 'templates', 'mailingLists_arr'));
+        return view('campaigns.new', compact('campaign', 'lists', 'templates', 'mailingLists'));
     }
 
     public function edit(Campaign $campaign)
@@ -64,26 +55,18 @@ class CampaignController extends Controller
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
         $templates = Template::get(['name', 'id'])->pluck('name', 'id');
 
-        $mailingLists_arr = array();
+        $mailingLists = $campaign->getMailingList()->pluck('id')->toArray();
 
-        foreach ($campaign->mailingLists as $mailingList) {
-            $mailingLists_arr[] = $mailingList['id'];
-        }
-
-        return view('campaigns.edit', compact('campaign', 'lists', 'templates', 'mailingLists_arr'));
+        return view('campaigns.edit', compact('campaign', 'lists', 'templates', 'mailingLists'));
     }
 
     public function preSend(Campaign $campaign)
     {
         abort_if($campaign->send, 404);
 
-        $campaign->load('template', 'mailingLists');
+        $campaign->load('template', 'mailingLists.subscriptions');
 
-        $subscriptions = array();
-
-        foreach($campaign->mailingLists as $mailingList){
-            $subscriptions[] = Subscription::where('mailing_list_id', $mailingList->id)->count();
-        }
+        $subscriptions = $campaign->getSubscriptions();
 
         return view('campaigns.send', compact('campaign', 'mailingLists', 'subscriptions'));
     }
@@ -101,19 +84,32 @@ class CampaignController extends Controller
 
     public function update(CampaignUpdateRequest $request, Campaign $campaign)
     {
-        dd($campaign);
+        $campaign->update($request->except('mailing_lists'));
 
-        dd($campaign->update($request->except('mailing_lists')));
-
-//        if($request->get('mailing_lists')){
-//            $campaign->mailingLists()->sync($request->input('mailing_lists'));
-//        }
+        if($request->get('mailing_lists')){
+            $campaign->mailingLists()->sync($request->input('mailing_lists'));
+        }
 
         return redirect()->route('campaigns.show', $campaign)->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully updated!');
     }
 
-    public function send(Request $request, Campaign $campaign)
+    public function send(Campaign $campaign)
     {
+        $campaign->load('template', 'mailingLists.subscriptions');
+        $subscriptions = $campaign->getSubscriptions();
 
+        $this->dispatch(new SendCampaign($subscriptions, $campaign, $campaign->template));
+
+        $campaign->send = 1;
+        $campaign->save();
+
+        return redirect()->route('campaigns.index')->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully send to ' . $subscriptions->count() . ' recipients!');
+    }
+
+    public function delete(Campaign $campaign)
+    {
+        $campaign->delete();
+
+        return redirect()->route('campaigns.index')->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully deleted!');
     }
 }

@@ -14,8 +14,8 @@
                 </div>
             </div>
             <div class="panel-body">
-                <div class="alert alert-info" role="alert">You're sending this campaign to <b>{{ collect($subscriptions)->sum() }}</b> recipients</div>
-                {{ Form::open() }}
+                <div class="alert alert-info" role="alert">You're sending this campaign to <b>{{ $subscriptions->count() }}</b> recipients</div>
+                {{ Form::open(['route' => ['campaigns.send', $campaign]]) }}
                     {!! Form::submit('Send campaign', ['class' => 'btn btn-default btn-lg btn-']) !!}
                 {!! Form::close() !!}
             </div>

@@ -31,12 +31,14 @@
                         <tr>
                             <th></th>
                             <td>
+                                {!! Form::open(['route' => ['templates.delete', $template], 'method' => 'DELETE']) !!}
                                 <div class="btn-group">
                                     <a href="{{ route('templates.preview', $template) }}" target="_blank" type="button" class="btn btn-default">Preview</a>
                                     <a href="{{ route('templates.edit', $template) }}" type="button" class="btn btn-default">Edit</a>
                                     <a href="{{ route('templates.clone', $template) }}" type="button" class="btn btn-default">Clone</a>
-                                    <a href="" type="button" class="btn btn-default">Delete</a>
+                                    <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
                                 </div>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     </tbody>

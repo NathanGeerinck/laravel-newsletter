@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@example.com',
-        'name' => 'Example',
+        'address' => env('APP_EMAIL', 'info@example.com'),
+        'name' => env('APP_FROM', 'LaraNewsletter'),
     ],
 
     /*

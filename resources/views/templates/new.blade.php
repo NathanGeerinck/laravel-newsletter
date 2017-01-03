@@ -10,6 +10,7 @@
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
                         <a href="{{ route('templates.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="https://github.com/NathanGeerinck/Laravel-Newsletter/wiki/Templates" target="_blank" type="button" class="btn btn-default"><i class="fa fa-info-circle"></i> </a>
                     </div>
                 </div>
             </div>
@@ -22,4 +23,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover(
+                'html', true
+            )
+        })
+    </script>
 @endsection

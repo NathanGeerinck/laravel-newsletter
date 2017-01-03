@@ -76,7 +76,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        (env('APP_REGISTER') == false) ? abort(404) : null;
+        abort_unless(env('APP_REGISTER'), 404);
 
         return view('auth.register');
     }

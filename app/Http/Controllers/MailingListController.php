@@ -20,7 +20,7 @@ class MailingListController extends Controller
 
     public function show(MailingList $list)
     {
-        $list->load('subscriptions');
+        $list->load('subscriptions', 'campaigns');
 
         return view('lists.show', compact('list'));
     }

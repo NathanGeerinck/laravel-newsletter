@@ -40,13 +40,15 @@
                                 <td class="text-center">{{ $template->id }}</td>
                                 <td>{{ $template->name }}</td>
                                 <td class="text-center">
+                                    {!! Form::open(['route' => ['templates.delete', $template], 'method' => 'DELETE']) !!}
                                     <div class="btn-group btn-group-sm" role="group" aria-label="">
                                         <a href="{{ route('templates.preview', $template) }}" class="btn btn-default" target="_blank"><i class="fa fa-eye-slash"></i></a>
                                         <a href="{{ route('templates.show', $template) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('templates.edit', $template) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('templates.clone', $template) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
-                                        <a class="btn btn-default"><i class="fa fa-times text-danger"></i></a>
+                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
                                     </div>
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endforeach

@@ -26,7 +26,15 @@
                         </tr>
                         <tr>
                             <th>Subscriptions</th>
-                            <td><code>{{ $list->subscriptions->count() }}</code></td>
+                            <td>{{ $list->subscriptions->count() }}</td>
+                        </tr>
+                        <tr>
+                            <th>Campaigns</th>
+                            <td>
+                                @foreach($list->campaigns as $campaign)
+                                    <span class="label label-info">{{ $campaign->name }}</span>
+                                @endforeach
+                            </td>
                         </tr>
                         <tr>
                             <th>Created at</th>
@@ -45,11 +53,13 @@
                         <tr>
                             <th></th>
                             <td>
+                                {!! Form::open(['route' => ['lists.delete', $list], 'method' => 'DELETE']) !!}
                                 <div class="btn-group">
                                     <a href="{{ route('lists.edit', $list) }}" type="button" class="btn btn-default">Edit</a>
                                     <a href="{{ route('lists.clone', $list) }}" type="button" class="btn btn-default">Clone</a>
-                                    <a href="" type="button" class="btn btn-default">Delete</a>
+                                    <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($list->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($list->name) }}"><i class="fa fa-times text-danger"></i></a>
                                 </div>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     </tbody>

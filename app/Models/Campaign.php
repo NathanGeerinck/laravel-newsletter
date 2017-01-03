@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed send
  * @property mixed name
  * @property mixed mailingLists
+ * @property mixed subscriptions
+ * @property mixed subject
+ * @property mixed template
  */
 class Campaign extends Model
 {
@@ -21,9 +24,13 @@ class Campaign extends Model
         'template_id'
     ];
 
+    protected $casts = [
+        'send' => 'boolean'
+    ];
+
     public function mailingLists()
     {
-        return $this->belongsToMany(MailingList::class);
+        return $this->belongsToMany(MailingList::class)->withPivot('campaign_id', 'mailing_list_id');
     }
 
     public function template()
@@ -31,13 +38,23 @@ class Campaign extends Model
         return $this->belongsTo(Template::class);
     }
 
-    public function subscriptions()
-    {
-        return $this->belongsToMany(Subscription::class)->withPivot('campaign_mailing_list');
-    }
-
     public function scopeNotSent($query)
     {
-        return $query->where('send', 0);
+        return $query->whereSend(false);
+    }
+
+    public function getSubscriptions()
+    {
+        return $this->mailingLists->pluck('subscriptions')->flatten();
+    }
+
+    public function getRecipients()
+    {
+        return $this->mailingLists->pluck('subscriptions');
+    }
+
+    public function getMailingList()
+    {
+        return $this->mailingLists->flatten();
     }
 }

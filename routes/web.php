@@ -15,11 +15,11 @@ Auth::routes();
 
 Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');
 
-Route::get('subscribe/{list}', 'SubscriptionController@subscribe')->name('subscriptions.subscribe');
-Route::get('unsubscribe/{list}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
+Route::get('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@preUnsubscribe')->name('subscriptions.preunsubscribe');
+Route::delete('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'HomeController@index')->name('index');
 
     Route::get('campaigns', 'CampaignController@index')->name('campaigns.index');
     Route::get('campaigns/show/{campaign}', 'CampaignController@show')->name('campaigns.show');
@@ -29,9 +29,9 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('campaigns/new', 'CampaignController@new')->name('campaigns.new');
     Route::post('campaigns', 'CampaignController@index')->name('campaigns.filter');
     Route::post('campaigns/new', 'CampaignController@create')->name('campaigns.create');
-    Route::post('campaigns/edit/{list}', 'CampaignController@update')->name('campaigns.update');
-    Route::post('campaigns/send/{list}', 'CampaignController@send')->name('campaigns.send');
-    Route::delete('campaigns/delete/{list}', 'CampaignController@delete')->name('campaigns.delete');
+    Route::post('campaigns/edit/{campaign}', 'CampaignController@update')->name('campaigns.update');
+    Route::post('campaigns/send/{campaign}', 'CampaignController@send')->name('campaigns.send');
+    Route::delete('campaigns/delete/{campaign}', 'CampaignController@delete')->name('campaigns.delete');
 
     Route::get('lists', 'MailingListController@index')->name('lists.index');
     Route::get('lists/show/{list}', 'MailingListController@show')->name('lists.show');

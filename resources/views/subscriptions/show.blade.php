@@ -43,11 +43,13 @@
                     <tr>
                         <th></th>
                         <td>
+                            {!! Form::open(['route' => ['subscriptions.delete', $subscription], 'method' => 'DELETE']) !!}
                             <div class="btn-group">
                                 <a href="{{ route('subscriptions.edit', $subscription) }}" type="button" class="btn btn-default">Edit</a>
                                 <a href="{{ route('subscriptions.clone', $subscription) }}" type="button" class="btn btn-default">Clone</a>
-                                <a href="" type="button" class="btn btn-default">Delete</a>
+                                <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($subscription->email) }}')" data-toggle="tooltip" title="Delete {{ addslashes($subscription->email) }}"><i class="fa fa-times text-danger"></i></a>
                             </div>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                     </tbody>

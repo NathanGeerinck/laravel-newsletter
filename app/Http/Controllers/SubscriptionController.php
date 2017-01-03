@@ -23,6 +23,8 @@ class SubscriptionController extends Controller
 
     public function show(Subscription $subscription)
     {
+        $subscription->load('mailingList');
+
         return view('subscriptions.show', compact('subscription'));
     }
 
@@ -40,18 +42,13 @@ class SubscriptionController extends Controller
         return view('subscriptions.edit', compact('subscription', 'lists'));
     }
 
-    public function subscribe(MailingList $list)
+    public function preUnsubscribe($email, $unsubscribe)
     {
-        abort_unless($list->public, 404);
+        $subscription = Subscription::whereEmail($email)->whereUnsubscribe($unsubscribe)->first();
 
-        return view('subscriptions.subscribe', compact('list'));
-    }
+        abort_unless($subscription, 404);
 
-    public function unsubscribe(MailingList $list)
-    {
-        abort_unless($list->public, 404);
-
-        return view('subscriptions.unsubscribe', compact('list'));
+        return view('subscriptions.unsubscribe', compact('subscription'));
     }
 
     public function create(SubscriptionsCreateRequest $request)
@@ -73,5 +70,12 @@ class SubscriptionController extends Controller
         $subscription->delete();
 
         return redirect()->route('subscriptions.index')->withSuccess('Subscription: <i>' . $subscription->name . '</i> successfully deleted!');
+    }
+
+    public function unsubscribe(Subscription $subscription)
+    {
+        $subscription->delete();
+
+        return redirect()->route('index')->withSuccess('You\'re successfully unsubscribed!');
     }
 }

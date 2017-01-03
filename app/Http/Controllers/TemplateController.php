@@ -50,4 +50,11 @@ class TemplateController extends Controller
 
         return redirect()->route('templates.show', $template)->withSuccess('Template: <i>' . $template->name . '</i> successfully updated!');
     }
+
+    public function delete(Template $template)
+    {
+        $template->delete();
+
+        return redirect()->route('templates.index')->withSuccess('Template: <i>' . $template->name . '</i> successfully deleted!');
+    }
 }
