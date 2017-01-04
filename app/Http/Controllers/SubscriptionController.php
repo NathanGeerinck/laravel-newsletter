@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SubscriptionsCreateRequest;
-use App\Http\Requests\SubscriptionsUpdateRequest;
 use App\Models\MailingList;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubscriptionsUpdateRequest;
+use App\Http\Requests\SubscriptionsCreateRequest;
 
 class SubscriptionController extends Controller
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Http\Requests\MailSettingsUpdateRequest;
-use Brotzka\DotenvEditor\DotenvEditor;
 use App\Http\Controllers\Controller;
+use Brotzka\DotenvEditor\DotenvEditor;
+use App\Http\Requests\MailSettingsUpdateRequest;
 
 class MailController extends Controller
 {
@@ -15,7 +15,7 @@ class MailController extends Controller
 
     public function update(MailSettingsUpdateRequest $request)
     {
-        $env = new DotenvEditor();
+        $env = new DotenvEditor;
         $env->changeEnv($request->all());
 
         return redirect()->route('settings.mail')->withSuccess('Saved the Mail settings successfully!');
