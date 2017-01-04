@@ -3,8 +3,8 @@
 namespace App\Mail;
 
 use App\Models\Campaign;
-use App\Models\Subscription;
 use App\Models\Template;
+use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,10 +12,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * @property Subscription subscription
- * @property Campaign campaign
- * @property Template template
+ * @property Campaign     campaign
+ * @property Template     template
  */
-class CampaignMail extends Mailable
+class CampaignMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -44,7 +44,8 @@ class CampaignMail extends Mailable
         ]);
     }
 
-    public function str_replace_dynamic(array $replace, $string) {
+    public function str_replace_dynamic(array $replace, $string)
+    {
         return str_replace(array_keys($replace), array_values($replace), $string);
     }
 }

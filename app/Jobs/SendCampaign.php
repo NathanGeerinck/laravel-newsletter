@@ -13,8 +13,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
 /**
- * @property Campaign campaign
- * @property Template template
+ * @property Campaign   campaign
+ * @property Template   template
  * @property Collection subscriptions
  */
 class SendCampaign implements ShouldQueue
@@ -39,7 +39,7 @@ class SendCampaign implements ShouldQueue
      */
     public function handle()
     {
-        foreach($this->subscriptions as $subscription){
+        foreach ($this->subscriptions as $subscription) {
             Mail::to($subscription)->send(new CampaignMail($subscription, $this->campaign, $this->template));
         }
 
