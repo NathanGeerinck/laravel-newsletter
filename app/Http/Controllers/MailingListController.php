@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MailingListCreateRequest;
-use App\Http\Requests\MailingListUpdateRequest;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
+use App\Http\Requests\MailingListUpdateRequest;
+use App\Http\Requests\MailingListCreateRequest;
 
 class MailingListController extends Controller
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TemplateCreateRequest;
-use App\Http\Requests\TemplateUpdateRequest;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use App\Http\Requests\TemplateCreateRequest;
+use App\Http\Requests\TemplateUpdateRequest;
 
 class TemplateController extends Controller
 {

@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
+use App\Models\Template;
+use App\Jobs\SendCampaign;
+use App\Models\MailingList;
+use Illuminate\Http\Request;
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
-use App\Jobs\SendCampaign;
-use App\Mail\CampaignMail;
-use App\Models\Campaign;
-use App\Models\MailingList;
-use App\Models\Template;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class CampaignController extends Controller
 {
