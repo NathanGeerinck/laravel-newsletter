@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -182,6 +183,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         EloquentFilter\ServiceProvider::class,
         Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Codecourse\Notify\NotifyServiceProvider::class,
     ],
 
     /*
@@ -234,6 +236,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'Notify' => Codecourse\Notify\Facades\Notify::class,
     ],
 
 ];

@@ -14,7 +14,7 @@ class EditCampaignsTable extends Migration
     public function up()
     {
         Schema::table('campaigns', function ($table) {
-            $table->integer('template_id')->unsigned()->nullable();
+            $table->integer('template_id')->unsigned();
             $table->foreign('template_id')->references('id')->on('templates');
         });
     }
@@ -27,7 +27,7 @@ class EditCampaignsTable extends Migration
     public function down()
     {
         Schema::table('campaigns', function ($table) {
-            $table->dropColumn(['template_id']);
+            $table->dropColumn('template_id');
         });
     }
 }
