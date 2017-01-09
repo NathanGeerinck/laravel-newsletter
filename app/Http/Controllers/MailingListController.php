@@ -39,20 +39,35 @@ class MailingListController extends Controller
     {
         $list = auth()->user()->mailingList()->create($request->all());
 
-        return redirect()->route('lists.show', $list)->withSuccess('List: ' . $list->name . ' successfully created!');
+        notify()->flash($list->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully created!',
+        ]);
+
+        return redirect()->route('lists.show', $list);
     }
 
     public function update(MailingListUpdateRequest $request, MailingList $list)
     {
         $list->update($request->all());
 
-        return redirect()->route('lists.show', $list)->withSuccess('List: <i>' . $list->name . '</i> successfully updated!');
+        notify()->flash($list->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully updated!',
+        ]);
+
+        return redirect()->route('lists.show', $list);
     }
 
     public function delete(MailingList $list)
     {
         $list->delete();
 
-        return redirect()->route('lists.index')->withSuccess('List: <i>' . $list->name . '</i> successfully deleted!');
+        notify()->flash($list->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully deleted!',
+        ]);
+
+        return redirect()->route('lists.index');
     }
 }

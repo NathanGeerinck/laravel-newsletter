@@ -77,7 +77,12 @@ class CampaignController extends Controller
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
-        return redirect()->route('campaigns.show', $campaign)->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully created!');
+        notify()->flash($campaign->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully created!',
+        ]);
+
+        return redirect()->route('campaigns.show', $campaign);
     }
 
     public function update(CampaignUpdateRequest $request, Campaign $campaign)
@@ -88,7 +93,12 @@ class CampaignController extends Controller
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
-        return redirect()->route('campaigns.show', $campaign)->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully updated!');
+        notify()->flash($campaign->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully updated!',
+        ]);
+
+        return redirect()->route('campaigns.show', $campaign);
     }
 
     public function send(Campaign $campaign)
@@ -98,13 +108,23 @@ class CampaignController extends Controller
 
         $this->dispatch(new SendCampaign($subscriptions, $campaign, $campaign->template));
 
-        return redirect()->route('campaigns.index')->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully send to ' . $subscriptions->count() . ' recipients!');
+        notify()->flash('Woohooo!', 'success', [
+            'timer' => 3500,
+            'text' => 'Successfully send ' . $campaign->name . ' to ' . $subscriptions->count() . ' recipients!',
+        ]);
+
+        return redirect()->route('campaigns.index');
     }
 
     public function delete(Campaign $campaign)
     {
         $campaign->delete();
 
-        return redirect()->route('campaigns.index')->withSuccess('Campaign: <i>' . $campaign->name . '</i> successfully deleted!');
+        notify()->flash($campaign->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully deleted!',
+        ]);
+
+        return redirect()->route('campaigns.index');
     }
 }

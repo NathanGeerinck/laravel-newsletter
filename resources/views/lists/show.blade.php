@@ -44,12 +44,12 @@
                             <th>Updated at</th>
                             <td><code>{{ $list->updated_at }}</code></td>
                         </tr>
-                        @if($list->public == true)
-                        <tr>
-                            <th>Public link</th>
-                            <td><input class="form-control" value="{{ route('subscriptions.subscribe', $list) }}"></td>
-                        </tr>
-                        @endif
+                        {{--@if($list->public == true)--}}
+                        {{--<tr>--}}
+                            {{--<th>Public link</th>--}}
+                            {{--<td><input class="form-control" value="{{ route('subscriptions.subscribe', $list) }}"></td>--}}
+                        {{--</tr>--}}
+                        {{--@endif--}}
                         <tr>
                             <th></th>
                             <td>

@@ -18,8 +18,8 @@ class CreateTemplatesTable extends Migration
             $table->string('name');
             $table->longText('content');
 
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
