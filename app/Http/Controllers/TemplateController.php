@@ -41,20 +41,35 @@ class TemplateController extends Controller
     {
         $template = auth()->user()->template()->create($request->all());
 
-        return redirect()->route('templates.show', $template)->withSuccess('Template: <i>' . $template->name . '</i> successfully created!');
+        notify()->flash($template->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Template successfully created!',
+        ]);
+
+        return redirect()->route('templates.show', $template);
     }
 
     public function update(TemplateUpdateRequest $request, Template $template)
     {
         $template->update($request->all());
 
-        return redirect()->route('templates.show', $template)->withSuccess('Template: <i>' . $template->name . '</i> successfully updated!');
+        notify()->flash($template->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Template successfully updated!',
+        ]);
+
+        return redirect()->route('templates.show', $template);
     }
 
     public function delete(Template $template)
     {
         $template->delete();
 
-        return redirect()->route('templates.index')->withSuccess('Template: <i>' . $template->name . '</i> successfully deleted!');
+        notify()->flash($template->name, 'success', [
+            'timer' => 2000,
+            'text' => 'Template successfully deleted!',
+        ]);
+
+        return redirect()->route('templates.index');
     }
 }
