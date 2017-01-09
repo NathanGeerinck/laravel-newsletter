@@ -15,7 +15,7 @@ class EditSubscriptionsTable extends Migration
     {
         Schema::table('subscriptions', function ($table) {
             $table->integer('mailing_list_id')->unsigned()->nullable();
-            $table->foreign('mailing_list_id')->references('id')->on('mailing_lists');
+            $table->foreign('mailing_list_id')->references('id')->on('mailing_lists')->onDelete('cascade');
         });
     }
 

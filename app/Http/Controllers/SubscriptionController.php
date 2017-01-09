@@ -55,27 +55,47 @@ class SubscriptionController extends Controller
     {
         $subscription = $request->user()->subscription()->create($request->all());
 
-        return redirect()->route('subscriptions.index')->withSuccess('Subscription: <i>' . $subscription->email . '</i> successfully created!');
+        notify()->flash($subscription->email, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully created!',
+        ]);
+
+        return redirect()->route('subscriptions.index');
     }
 
     public function update(SubscriptionsUpdateRequest $request, Subscription $subscription)
     {
         $subscription->update($request->all());
 
-        return redirect()->route('subscriptions.show', $subscription)->withSuccess('Subscription: <i>' . $subscription->email . '</i> successfully updated!');
+        notify()->flash($subscription->email, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully updated!',
+        ]);
+
+        return redirect()->route('subscriptions.show', $subscription);
     }
 
     public function delete(Subscription $subscription)
     {
         $subscription->delete();
 
-        return redirect()->route('subscriptions.index')->withSuccess('Subscription: <i>' . $subscription->name . '</i> successfully deleted!');
+        notify()->flash($subscription->email, 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully deleted!',
+        ]);
+
+        return redirect()->route('subscriptions.index');
     }
 
     public function unsubscribe(Subscription $subscription)
     {
         $subscription->delete();
 
-        return redirect()->route('index')->withSuccess('You\'re successfully unsubscribed!');
+        notify()->flash('Woehoe!', 'success', [
+            'timer' => 3500,
+            'text' => 'You\'re successfully unsubscribed!',
+        ]);
+
+        return redirect()->route('index');
     }
 }
