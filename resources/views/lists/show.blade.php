@@ -57,6 +57,7 @@
                                 <div class="btn-group">
                                     <a href="{{ route('lists.edit', $list) }}" type="button" class="btn btn-default">Edit</a>
                                     <a href="{{ route('lists.clone', $list) }}" type="button" class="btn btn-default">Clone</a>
+                                    <a href="{{ route('lists.export', $list) }}" type="button" class="btn btn-default">Export</a>
                                     <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($list->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($list->name) }}"><i class="fa fa-times text-danger"></i></a>
                                 </div>
                                 {!! Form::close() !!}

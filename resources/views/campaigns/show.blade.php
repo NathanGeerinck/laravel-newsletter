@@ -59,6 +59,7 @@
                                 <a @if($campaign->send == 1) disabled @endif href="{{ route('templates.preview', $campaign) }}" type="button" class="btn btn-default">Preview</a>
                                 <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.edit', $campaign) }}" type="button" class="btn btn-default">Edit</a>
                                 <a href="{{ route('campaigns.clone', $campaign) }}" type="button" class="btn btn-default">Clone</a>
+                                <a href="{{ route('campaigns.export', $campaign) }}" type="button" class="btn btn-default">Export</a>
                                 <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($campaign->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($campaign->name) }}"><i class="fa fa-times text-danger"></i></a>
                             </div>
                             {!! Form::close() !!}

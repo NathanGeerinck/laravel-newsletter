@@ -6,6 +6,7 @@ use App\Models\MailingList;
 use Illuminate\Http\Request;
 use App\Http\Requests\MailingListUpdateRequest;
 use App\Http\Requests\MailingListCreateRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MailingListController extends Controller
 {
@@ -69,5 +70,16 @@ class MailingListController extends Controller
         ]);
 
         return redirect()->route('lists.index');
+    }
+
+    public function export(MailingList $list)
+    {
+        $subscriptions = $list->subscriptions;
+
+        Excel::create('Subscriptions-' . $list->name, function ($excel) use ($subscriptions) {
+            $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
+                $sheet->fromArray($subscriptions);
+            });
+        })->export('csv');
     }
 }

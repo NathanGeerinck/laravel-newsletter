@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('campaigns/clone/{campaign}', 'CampaignController@new')->name('campaigns.clone');
     Route::get('campaigns/send/{campaign}', 'CampaignController@preSend')->name('campaigns.presend');
     Route::get('campaigns/new', 'CampaignController@new')->name('campaigns.new');
+    Route::get('campaigns/export/{campaign}', 'CampaignController@export')->name('campaigns.export');
     Route::post('campaigns', 'CampaignController@index')->name('campaigns.filter');
     Route::post('campaigns/new', 'CampaignController@create')->name('campaigns.create');
     Route::post('campaigns/edit/{campaign}', 'CampaignController@update')->name('campaigns.update');
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('lists/edit/{list}', 'MailingListController@edit')->name('lists.edit');
     Route::get('lists/clone/{list}', 'MailingListController@new')->name('lists.clone');
     Route::get('lists/new', 'MailingListController@new')->name('lists.new');
+    Route::get('list/export/{list}', 'MailingListController@export')->name('lists.export');
     Route::post('lists', 'MailingListController@index')->name('lists.filter');
     Route::post('lists/new', 'MailingListController@create')->name('lists.create');
     Route::post('lists/edit/{list}', 'MailingListController@update')->name('lists.update');
@@ -48,6 +50,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('subscriptions/edit/{subscription}', 'SubscriptionController@edit')->name('subscriptions.edit');
     Route::get('subscriptions/clone/{subscription}', 'SubscriptionController@new')->name('subscriptions.clone');
     Route::get('subscriptions/new', 'SubscriptionController@new')->name('subscriptions.new');
+    Route::get('subscriptions/export', 'SubscriptionController@export')->name('subscriptions.export');
     Route::post('subscriptions', 'SubscriptionController@index')->name('subscriptions.filter');
     Route::post('subscriptions/new', 'SubscriptionController@create')->name('subscriptions.create');
     Route::post('subscriptions/edit/{subscription}', 'SubscriptionController@update')->name('subscriptions.update');

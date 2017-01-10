@@ -9,6 +9,7 @@ use App\Models\MailingList;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CampaignController extends Controller
 {
@@ -126,5 +127,16 @@ class CampaignController extends Controller
         ]);
 
         return redirect()->route('campaigns.index');
+    }
+
+    public function export(Campaign $campaign)
+    {
+        $subscriptions = $campaign->getSubscriptions();
+
+        Excel::create('Subscriptions-' . $campaign->name, function ($excel) use ($subscriptions) {
+            $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
+                $sheet->fromArray($subscriptions);
+            });
+        })->export('csv');
     }
 }

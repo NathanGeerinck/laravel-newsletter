@@ -7,6 +7,7 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Requests\SubscriptionsUpdateRequest;
 use App\Http\Requests\SubscriptionsCreateRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SubscriptionController extends Controller
 {
@@ -97,5 +98,16 @@ class SubscriptionController extends Controller
         ]);
 
         return redirect()->route('index');
+    }
+
+    public function export()
+    {
+        $subscriptions = Subscription::all();
+
+        Excel::create('Newsletter Subscriptions', function ($excel) use ($subscriptions) {
+            $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
+                $sheet->fromArray($subscriptions);
+            });
+        })->export('csv');
     }
 }

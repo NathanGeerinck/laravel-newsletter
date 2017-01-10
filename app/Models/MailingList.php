@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed subscriptions
  * @property mixed campaigns
  * @property mixed public
+ * @property mixed name
  */
 class MailingList extends Model
 {
