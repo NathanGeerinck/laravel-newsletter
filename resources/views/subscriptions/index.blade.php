@@ -10,7 +10,8 @@
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
                         <a href="{{ route('subscriptions.new') }}" type="button" class="btn btn-default">Add subscription</a>
-                        <a href="{{ route('subscriptions.export') }}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Export all subscriptions to CSV"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+                        <a href="{{ route('subscriptions.export', 'csv') }}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Export all subscriptions to CSV"><i class="fa fa-table" aria-hidden="true"></i></a>
+                        <a href="{{ route('subscriptions.export', 'xlsx') }}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Export all subscriptions to XLSX"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

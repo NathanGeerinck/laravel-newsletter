@@ -100,7 +100,7 @@ class SubscriptionController extends Controller
         return redirect()->route('index');
     }
 
-    public function export()
+    public function export($method)
     {
         $subscriptions = Subscription::all();
 
@@ -108,6 +108,6 @@ class SubscriptionController extends Controller
             $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
                 $sheet->fromArray($subscriptions);
             });
-        })->export('csv');
+        })->download($method);
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ImportSubscriptions;
 use App\Models\MailingList;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Requests\MailingListUpdateRequest;
 use App\Http\Requests\MailingListCreateRequest;
@@ -34,6 +36,11 @@ class MailingListController extends Controller
     public function new(MailingList $list)
     {
         return view('lists.new', compact('list'));
+    }
+
+    public function preImport(MailingList $list)
+    {
+        return view('lists.import', compact('list'));
     }
 
     public function create(MailingListCreateRequest $request)
@@ -81,5 +88,23 @@ class MailingListController extends Controller
                 $sheet->fromArray($subscriptions);
             });
         })->export('csv');
+    }
+
+    public function import(Request $request, MailingList $list)
+    {
+        if ($request->file('file')->isValid()) {
+            $file = $request->file('file')->getRealPath();
+
+            $results = Excel::load($file)->toArray();
+
+            $this->dispatch(new ImportSubscriptions($list, $results));
+
+            notify()->flash('Wohoo!', 'success', [
+                'timer' => 2000,
+                'text' => 'Import successfully!',
+            ]);
+
+            return redirect()->route('lists.show', $list);
+        }
     }
 }

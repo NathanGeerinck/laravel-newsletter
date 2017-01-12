@@ -40,9 +40,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('lists/clone/{list}', 'MailingListController@new')->name('lists.clone');
     Route::get('lists/new', 'MailingListController@new')->name('lists.new');
     Route::get('list/export/{list}', 'MailingListController@export')->name('lists.export');
+    Route::get('list/import/{list}', 'MailingListController@preImport')->name('lists.preimport');
     Route::post('lists', 'MailingListController@index')->name('lists.filter');
     Route::post('lists/new', 'MailingListController@create')->name('lists.create');
     Route::post('lists/edit/{list}', 'MailingListController@update')->name('lists.update');
+    Route::post('lists/import/{list}', 'MailingListController@import')->name('lists.import');
     Route::delete('lists/delete/{list}', 'MailingListController@delete')->name('lists.delete');
 
     Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
@@ -50,7 +52,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('subscriptions/edit/{subscription}', 'SubscriptionController@edit')->name('subscriptions.edit');
     Route::get('subscriptions/clone/{subscription}', 'SubscriptionController@new')->name('subscriptions.clone');
     Route::get('subscriptions/new', 'SubscriptionController@new')->name('subscriptions.new');
-    Route::get('subscriptions/export', 'SubscriptionController@export')->name('subscriptions.export');
+    Route::get('subscriptions/export/{method}', 'SubscriptionController@export')->name('subscriptions.export');
     Route::post('subscriptions', 'SubscriptionController@index')->name('subscriptions.filter');
     Route::post('subscriptions/new', 'SubscriptionController@create')->name('subscriptions.create');
     Route::post('subscriptions/edit/{subscription}', 'SubscriptionController@update')->name('subscriptions.update');
