@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'firstname' => $faker->firstName,
                 'lastname' => $faker->lastName,
                 'email' => $faker->email,
-                'password' => $faker->password,
+                'password' => Hash::make($faker->password),
             ]);
         }
         foreach (range(1,5) as $index) {
