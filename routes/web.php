@@ -11,6 +11,9 @@
 |
 */
 
+
+Route::get('/', 'HomeController@index')->name('index');
+
 Auth::routes();
 
 Route::get('templates/preview/{template}', 'TemplateController@preview')->name('templates.preview');
@@ -19,7 +22,7 @@ Route::get('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@preUnsub
 Route::delete('unsubscribe/{subscription}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('campaigns', 'CampaignController@index')->name('campaigns.index');
     Route::get('campaigns/show/{campaign}', 'CampaignController@show')->name('campaigns.show');
