@@ -16,6 +16,8 @@
     <link href="/css/chosen.css" rel="stylesheet">
     <link href="/css/sweetalert.css" rel="stylesheet">
 
+    @yield('css')
+
     <style>
         body{
             font-family: "Open Sans", Helvetica, Arial, sans-serif;

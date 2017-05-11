@@ -39,7 +39,10 @@ class TemplateController extends Controller
 
     public function create(TemplateCreateRequest $request)
     {
-        $template = auth()->user()->template()->create($request->all());
+        $template = auth()->user()->template()->create([
+            'name' => $request->input('name'),
+            'content' => $request->input('editor'),
+        ]);
 
         notify()->flash($template->name, 'success', [
             'timer' => 2000,
@@ -51,7 +54,10 @@ class TemplateController extends Controller
 
     public function update(TemplateUpdateRequest $request, Template $template)
     {
-        $template->update($request->all());
+        $template->update([
+            'name' => $request->input('name'),
+            'content' => $request->input('editor'),
+        ]);
 
         notify()->flash($template->name, 'success', [
             'timer' => 2000,

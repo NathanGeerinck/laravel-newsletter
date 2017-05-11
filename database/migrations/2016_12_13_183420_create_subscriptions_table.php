@@ -20,6 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('name')->nullable();
             $table->string('country')->nullable();
             $table->string('language')->nullable();
+            $table->string('unsubscribe');
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

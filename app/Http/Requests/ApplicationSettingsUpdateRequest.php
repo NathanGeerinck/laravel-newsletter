@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TemplateUpdateRequest extends FormRequest
+class ApplicationSettingsUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class TemplateUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +24,7 @@ class TemplateUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'editor' => 'required'
+
         ];
     }
 }

@@ -27,7 +27,9 @@ class EditSubscriptionsTable extends Migration
     public function down()
     {
         Schema::table('subscriptions', function ($table) {
-            $table->dropColumn(['mailing_list_id']);
+            $table->dropColumn('mailing_list_id');
         });
+
+
     }
 }

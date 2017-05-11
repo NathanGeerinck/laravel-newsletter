@@ -53,6 +53,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if($campaigns->count() == 0)
+                            <tr>
+                                <td class="text-center" colspan="4"><i>You haven't created a campaign yet</i></td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

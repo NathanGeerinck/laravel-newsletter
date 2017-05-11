@@ -52,6 +52,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                        @if($templates->count() == 0)
+                            <tr>
+                                <td class="text-center" colspan="3"><i>You haven't created a template yet</i></td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>

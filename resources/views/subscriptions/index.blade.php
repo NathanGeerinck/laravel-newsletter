@@ -59,6 +59,11 @@
                             </td>
                         </tr>
                     @endforeach
+                    @if($subscriptions->count() == 0)
+                        <tr>
+                            <td class="text-center" colspan="5"><i>You haven't added a subscription yet</i></td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
                 <div class="text-center">{{ $subscriptions->links() }}</div>

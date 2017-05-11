@@ -17,7 +17,7 @@ class CreateMailingListsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->tinyInteger('public')->default('0');
+            $table->tinyInteger('public')->default(false);
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

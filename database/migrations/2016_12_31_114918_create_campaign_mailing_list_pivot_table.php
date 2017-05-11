@@ -30,6 +30,11 @@ class CreateCampaignMailingListPivotTable extends Migration
      */
     public function down()
     {
+        Schema::table('subscriptions', function ($table) {
+            $table->dropIndex('mailing_list_id');
+            $table->dropIndex('campaign_id');
+        });
+
         Schema::drop('campaign_mailing_list');
     }
 }
