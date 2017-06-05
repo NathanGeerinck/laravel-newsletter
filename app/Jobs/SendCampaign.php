@@ -49,5 +49,5 @@ class SendCampaign implements ShouldQueue
 
         $this->campaign->send = 1;
         $this->campaign->save();
-}
+    }
 }

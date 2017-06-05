@@ -18,10 +18,10 @@ Route::get('templates/preview/{template}', 'TemplateController@preview')->name('
 Route::get('unsubscribe/{email}/{unsubscribe}', 'SubscriptionController@preUnsubscribe')->name('subscriptions.preunsubscribe');
 Route::delete('unsubscribe/{subscription}', 'SubscriptionController@unsubscribe')->name('subscriptions.unsubscribe');
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('index');
 
-    Route::group(['prefix' => 'campaigns', 'as' => 'campaigns.'], function(){
+    Route::group(['prefix' => 'campaigns', 'as' => 'campaigns.'], function () {
         Route::get('/', 'CampaignController@index')->name('index');
         Route::get('show/{campaign}', 'CampaignController@show')->name('show');
         Route::get('edit/{campaign}', 'CampaignController@edit')->name('edit');
@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete('delete/{campaign}', 'CampaignController@delete')->name('delete');
     });
 
-    Route::group(['prefix' => 'lists', 'as' => 'lists.'], function() {
+    Route::group(['prefix' => 'lists', 'as' => 'lists.'], function () {
         Route::get('/', 'MailingListController@index')->name('index');
         Route::get('show/{list}', 'MailingListController@show')->name('show');
         Route::get('edit/{list}', 'MailingListController@edit')->name('edit');
@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete('delete/{list}', 'MailingListController@delete')->name('delete');
     });
 
-    Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function() {
+    Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
         Route::get('/', 'SubscriptionController@index')->name('index');
         Route::get('show/{subscription}', 'SubscriptionController@show')->name('show');
         Route::get('edit/{subscription}', 'SubscriptionController@edit')->name('edit');
@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete('delete/{subscription}', 'SubscriptionController@delete')->name('delete');
     });
     
-    Route::group(['prefix' => 'templates', 'as' => 'templates.'], function() {
+    Route::group(['prefix' => 'templates', 'as' => 'templates.'], function () {
         Route::get('', 'TemplateController@index')->name('index');
         Route::get('show/{template}', 'TemplateController@show')->name('show');
         Route::get('edit/{template}', 'TemplateController@edit')->name('edit');
@@ -76,7 +76,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::delete('delete/{template}', 'TemplateController@delete')->name('delete');
     });
 
-    Route::group(['prefix' => 'settings', 'as' => 'settings.', 'namespace' => 'Settings'], function() {
+    Route::group(['prefix' => 'settings', 'as' => 'settings.', 'namespace' => 'Settings'], function () {
         Route::get('/', 'ApplicationController@index')->name('application');
         Route::get('mail', 'MailController@index')->name('mail');
         Route::get('users', 'UserController@index')->name('users');
@@ -84,7 +84,6 @@ Route::group(['middleware' => ['auth']], function(){
         Route::post('mail', 'MailController@update')->name('mail.update');
     });
 
-    Route::group(['prefix' => 'account', 'as ' => 'account.'], function(){
-
+    Route::group(['prefix' => 'account', 'as ' => 'account.'], function () {
     });
 });

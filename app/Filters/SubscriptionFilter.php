@@ -24,7 +24,5 @@ class SubscriptionFilter extends ModelFilter
     public function mailing_list($id)
     {
         return $this->where('mailing_list_id', $id);
-
     }
-
 }

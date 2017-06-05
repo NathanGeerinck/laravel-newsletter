@@ -71,5 +71,4 @@ class Subscription extends Model
             $subscription->unsubscribe = str_random(25);
         });
     }
-
 }

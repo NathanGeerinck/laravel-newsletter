@@ -49,7 +49,7 @@ class CampaignController extends Controller
      */
     public function new(Campaign $campaign)
     {
-        if(request()->is('campaigns/clone*')){
+        if (request()->is('campaigns/clone*')) {
             $campaign->load('mailingLists');
 
             $mailingLists = $campaign->getMailingList()->pluck('id')->toArray();
@@ -102,7 +102,7 @@ class CampaignController extends Controller
     {
         $campaign = auth()->user()->campaigns()->create($request->all());
 
-        if($request->get('mailing_lists')){
+        if ($request->get('mailing_lists')) {
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
@@ -123,7 +123,7 @@ class CampaignController extends Controller
     {
         $campaign->update($request->except('mailing_lists'));
 
-        if($request->get('mailing_lists')){
+        if ($request->get('mailing_lists')) {
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 

@@ -270,7 +270,7 @@ function countries($key = null)
         "ax" => "Åland Islands",
     ];
 
-    if($key){
+    if ($key) {
         return $arr[$key];
     }
 
