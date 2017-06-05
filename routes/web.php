@@ -21,56 +21,70 @@ Route::delete('unsubscribe/{subscription}', 'SubscriptionController@unsubscribe'
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'HomeController@index')->name('index');
 
-    Route::get('campaigns', 'CampaignController@index')->name('campaigns.index');
-    Route::get('campaigns/show/{campaign}', 'CampaignController@show')->name('campaigns.show');
-    Route::get('campaigns/edit/{campaign}', 'CampaignController@edit')->name('campaigns.edit');
-    Route::get('campaigns/clone/{campaign}', 'CampaignController@new')->name('campaigns.clone');
-    Route::get('campaigns/send/{campaign}', 'CampaignController@preSend')->name('campaigns.presend');
-    Route::get('campaigns/new', 'CampaignController@new')->name('campaigns.new');
-    Route::get('campaigns/export/{campaign}', 'CampaignController@export')->name('campaigns.export');
-    Route::post('campaigns', 'CampaignController@index')->name('campaigns.filter');
-    Route::post('campaigns/new', 'CampaignController@create')->name('campaigns.create');
-    Route::post('campaigns/edit/{campaign}', 'CampaignController@update')->name('campaigns.update');
-    Route::post('campaigns/send/{campaign}', 'CampaignController@send')->name('campaigns.send');
-    Route::delete('campaigns/delete/{campaign}', 'CampaignController@delete')->name('campaigns.delete');
+    Route::group(['prefix' => 'campaigns', 'as' => 'campaigns.'], function(){
+        Route::get('/', 'CampaignController@index')->name('index');
+        Route::get('show/{campaign}', 'CampaignController@show')->name('show');
+        Route::get('edit/{campaign}', 'CampaignController@edit')->name('edit');
+        Route::get('clone/{campaign}', 'CampaignController@new')->name('clone');
+        Route::get('send/{campaign}', 'CampaignController@preSend')->name('presend');
+        Route::get('new', 'CampaignController@new')->name('new');
+        Route::get('export/{campaign}', 'CampaignController@export')->name('export');
+        Route::post('campaigns', 'CampaignController@index')->name('filter');
+        Route::post('new', 'CampaignController@create')->name('create');
+        Route::post('edit/{campaign}', 'CampaignController@update')->name('update');
+        Route::post('send/{campaign}', 'CampaignController@send')->name('send');
+        Route::delete('delete/{campaign}', 'CampaignController@delete')->name('delete');
+    });
 
-    Route::get('lists', 'MailingListController@index')->name('lists.index');
-    Route::get('lists/show/{list}', 'MailingListController@show')->name('lists.show');
-    Route::get('lists/edit/{list}', 'MailingListController@edit')->name('lists.edit');
-    Route::get('lists/clone/{list}', 'MailingListController@new')->name('lists.clone');
-    Route::get('lists/new', 'MailingListController@new')->name('lists.new');
-    Route::get('list/export/{list}', 'MailingListController@export')->name('lists.export');
-    Route::get('list/import/{list}', 'MailingListController@preImport')->name('lists.preimport');
-    Route::post('lists', 'MailingListController@index')->name('lists.filter');
-    Route::post('lists/new', 'MailingListController@create')->name('lists.create');
-    Route::post('lists/edit/{list}', 'MailingListController@update')->name('lists.update');
-    Route::post('lists/import/{list}', 'MailingListController@import')->name('lists.import');
-    Route::delete('lists/delete/{list}', 'MailingListController@delete')->name('lists.delete');
+    Route::group(['prefix' => 'lists', 'as' => 'lists.'], function() {
+        Route::get('/', 'MailingListController@index')->name('index');
+        Route::get('show/{list}', 'MailingListController@show')->name('show');
+        Route::get('edit/{list}', 'MailingListController@edit')->name('edit');
+        Route::get('clone/{list}', 'MailingListController@new')->name('clone');
+        Route::get('new', 'MailingListController@new')->name('new');
+        Route::get('list/export/{list}', 'MailingListController@export')->name('export');
+        Route::get('list/import/{list}', 'MailingListController@preImport')->name('preimport');
+        Route::post('lists', 'MailingListController@index')->name('filter');
+        Route::post('new', 'MailingListController@create')->name('create');
+        Route::post('edit/{list}', 'MailingListController@update')->name('update');
+        Route::post('import/{list}', 'MailingListController@import')->name('import');
+        Route::delete('delete/{list}', 'MailingListController@delete')->name('delete');
+    });
 
-    Route::get('subscriptions', 'SubscriptionController@index')->name('subscriptions.index');
-    Route::get('subscriptions/show/{subscription}', 'SubscriptionController@show')->name('subscriptions.show');
-    Route::get('subscriptions/edit/{subscription}', 'SubscriptionController@edit')->name('subscriptions.edit');
-    Route::get('subscriptions/clone/{subscription}', 'SubscriptionController@new')->name('subscriptions.clone');
-    Route::get('subscriptions/new', 'SubscriptionController@new')->name('subscriptions.new');
-    Route::get('subscriptions/export/{method}', 'SubscriptionController@export')->name('subscriptions.export');
-    Route::post('subscriptions', 'SubscriptionController@index')->name('subscriptions.filter');
-    Route::post('subscriptions/new', 'SubscriptionController@create')->name('subscriptions.create');
-    Route::post('subscriptions/edit/{subscription}', 'SubscriptionController@update')->name('subscriptions.update');
-    Route::delete('subscriptions/delete/{subscription}', 'SubscriptionController@delete')->name('subscriptions.delete');
+    Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function() {
+        Route::get('/', 'SubscriptionController@index')->name('index');
+        Route::get('show/{subscription}', 'SubscriptionController@show')->name('show');
+        Route::get('edit/{subscription}', 'SubscriptionController@edit')->name('edit');
+        Route::get('clone/{subscription}', 'SubscriptionController@new')->name('clone');
+        Route::get('new', 'SubscriptionController@new')->name('new');
+        Route::get('export/{method}', 'SubscriptionController@export')->name('export');
+        Route::post('subscriptions', 'SubscriptionController@index')->name('filter');
+        Route::post('new', 'SubscriptionController@create')->name('create');
+        Route::post('edit/{subscription}', 'SubscriptionController@update')->name('update');
+        Route::delete('delete/{subscription}', 'SubscriptionController@delete')->name('delete');
+    });
+    
+    Route::group(['prefix' => 'templates', 'as' => 'templates.'], function() {
+        Route::get('', 'TemplateController@index')->name('index');
+        Route::get('show/{template}', 'TemplateController@show')->name('show');
+        Route::get('edit/{template}', 'TemplateController@edit')->name('edit');
+        Route::get('clone/{template}', 'TemplateController@new')->name('clone');
+        Route::get('new', 'TemplateController@new')->name('new');
+        Route::post('templates', 'TemplateController@index')->name('filter');
+        Route::post('new', 'TemplateController@create')->name('create');
+        Route::post('edit/{template}', 'TemplateController@update')->name('update');
+        Route::delete('delete/{template}', 'TemplateController@delete')->name('delete');
+    });
 
-    Route::get('templates', 'TemplateController@index')->name('templates.index');
-    Route::get('templates/show/{template}', 'TemplateController@show')->name('templates.show');
-    Route::get('templates/edit/{template}', 'TemplateController@edit')->name('templates.edit');
-    Route::get('templates/clone/{template}', 'TemplateController@new')->name('templates.clone');
-    Route::get('templates/new', 'TemplateController@new')->name('templates.new');
-    Route::post('templates', 'TemplateController@index')->name('templates.filter');
-    Route::post('templates/new', 'TemplateController@create')->name('templates.create');
-    Route::post('templates/edit/{template}', 'TemplateController@update')->name('templates.update');
-    Route::delete('templates/delete/{template}', 'TemplateController@delete')->name('templates.delete');
+    Route::group(['prefix' => 'settings', 'as' => 'settings.', 'namespace' => 'Settings'], function() {
+        Route::get('/', 'ApplicationController@index')->name('application');
+        Route::get('mail', 'MailController@index')->name('mail');
+        Route::get('users', 'UserController@index')->name('users');
+        Route::post('/', 'ApplicationController@update')->name('application.update');
+        Route::post('mail', 'MailController@update')->name('mail.update');
+    });
 
-    Route::get('settings', 'Settings\ApplicationController@index')->name('settings.application');
-    Route::get('settings/mail', 'Settings\MailController@index')->name('settings.mail');
-    Route::get('settings/users', 'Settings\UserController@index')->name('settings.users');
-    Route::post('settings', 'Settings\ApplicationController@update')->name('settings.application.update');
-    Route::post('settings/mail', 'Settings\MailController@update')->name('settings.mail.update');
+    Route::group(['prefix' => 'account', 'as ' => 'account.'], function(){
+
+    });
 });

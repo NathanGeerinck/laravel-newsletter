@@ -1,32 +1,24 @@
 <div class="form-group">
 
-    {{--@if(env('APP_EDITOR') == 'markdown')--}}
+    @if(env('APP_EDITOR') == 'html')
 
-        {{--{!! Form::label('editor', 'Content *') !!}--}}
-        {{--{!! Form::textarea('editor', null, ['class' => 'form-control']) !!}--}}
+        {!! Form::label('editor', 'Content *') !!}
+        {!! Form::textarea('editor', null, ['class' => 'form-control', 'id' => 'editor']) !!}
 
-        {{--@section('javascript')--}}
+        @section('javascript')
 
-            {{--<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>--}}
-            {{--<script>--}}
-                {{--var simplemde = new SimpleMDE({ element: $("#editor")[0] });--}}
-            {{--</script>--}}
+            <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
+            <script>
+                CKEDITOR.replace( 'editor' );
+            </script>
 
-        {{--@endsection--}}
+        @endsection
 
-        {{--@section('css')--}}
+    @else
 
-            {{--<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">--}}
+        {!! Form::label('editor', 'Content *') !!}
+        {!! Form::textarea('editor', null, ['class' => 'form-control']) !!}
 
-        {{--@endsection--}}
+    @endif
 
-    {{--@else--}}
-
-        {{--{!! Form::label('editor', 'Content *') !!}--}}
-        {{--{!! Form::textarea('editor', null, ['class' => 'form-control']) !!}--}}
-
-    {{--@endif--}}
-
-    {!! Form::label('editor', 'Content *') !!}
-    {!! Form::textarea('editor', null, ['class' => 'form-control']) !!}
 </div>

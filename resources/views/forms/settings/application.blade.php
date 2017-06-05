@@ -18,10 +18,10 @@
     {!! Form::select('APP_REGISTER', ['false' => 'No', 'true' => 'Yes'], env('APP_REGISTER'), ['class' => 'chosen-select']) !!}
 </div>
 
-{{--<div class="form-group">--}}
-    {{--{!! Form::label('APP_EDITOR', 'Template editor') !!}--}}
-    {{--{!! Form::select('APP_EDITOR', ['textarea' => 'Textarea', 'markdown' => 'Markdown'], env('APP_EDITOR'), ['class' => 'chosen-select']) !!}--}}
-{{--</div>--}}
+<div class="form-group">
+    {!! Form::label('APP_EDITOR', 'Template editor') !!}
+    {!! Form::select('APP_EDITOR', ['textarea' => 'Textarea', 'html' => 'HTML Editor'], env('APP_EDITOR'), ['class' => 'chosen-select']) !!}
+</div>
 
 {!! Form::submit('Save', ['class' => 'btn btn-default']) !!}
 

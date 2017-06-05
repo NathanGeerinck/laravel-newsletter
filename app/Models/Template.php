@@ -13,11 +13,17 @@ class Template extends Model
 {
     use Filterable;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'name',
         'content'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function campaigns()
     {
         return $this->belongsToMany(Campaign::class);

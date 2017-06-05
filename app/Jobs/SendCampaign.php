@@ -21,10 +21,14 @@ class SendCampaign implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $campaign;
-    protected $subscriptions;
-    protected $template;
+    protected $campaign, $subscriptions, $template;
 
+    /**
+     * SendCampaign constructor.
+     * @param $subscriptions
+     * @param Campaign $campaign
+     * @param Template $template
+     */
     public function __construct($subscriptions, Campaign $campaign, Template $template)
     {
         $this->campaign = $campaign;
@@ -45,5 +49,5 @@ class SendCampaign implements ShouldQueue
 
         $this->campaign->send = 1;
         $this->campaign->save();
-    }
+}
 }

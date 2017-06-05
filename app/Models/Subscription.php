@@ -17,6 +17,9 @@ class Subscription extends Model
 {
     use Filterable;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'email',
         'name',
@@ -26,21 +29,35 @@ class Subscription extends Model
         'user_id',
     ];
 
+    /**
+     * @param $query
+     * @param $type
+     * @return mixed
+     */
     public function scopeMailingList($query, $type)
     {
         return $query->where('mailing_list_id', $type);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function mailingList()
     {
         return $this->belongsTo(MailingList::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function user()
     {
         return $this->hasOne(User::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function getCampaigns()
     {
         return $this->mailingList->pluck('campaigns')->flatten();

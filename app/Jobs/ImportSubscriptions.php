@@ -8,12 +8,24 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Class ImportSubscriptions
+ * @package App\Jobs
+ */
 class ImportSubscriptions implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
+    /**
+     * @var MailingList
+     */
     protected $list, $results;
 
+    /**
+     * ImportSubscriptions constructor.
+     * @param MailingList $list
+     * @param $results
+     */
     public function __construct(MailingList $list, $results)
     {
         $this->list = $list;
