@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Settings: Application')
+@section('title', trans('settings.settings') . ': ' . trans('settings.application.name'))
 
 @section('content')
     <div class="container">

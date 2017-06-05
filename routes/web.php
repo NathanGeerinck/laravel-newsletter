@@ -84,6 +84,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('mail', 'MailController@update')->name('mail.update');
     });
 
-    Route::group(['prefix' => 'account', 'as ' => 'account.'], function () {
+    Route::group(['prefix' => 'account', 'as' => 'account.', 'namespace' => 'Account'], function () {
+        Route::get('/', 'GeneralController@index')->name('general');
+        Route::get('password', 'PasswordController@index')->name('password');
+        Route::post('/', 'GeneralController@update')->name('general.update');
+        Route::post('password', 'PasswordController@update')->name('password.update');
     });
 });

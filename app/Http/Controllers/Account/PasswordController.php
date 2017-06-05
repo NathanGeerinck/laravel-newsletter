@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers\Account;
+
+use App\Http\Requests\AccountPasswordUpdateRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
+class PasswordController extends Controller
+{
+    public function index()
+    {
+        $account = auth()->user();
+
+        return view('account.password', compact('account'));
+    }
+
+    public function update(AccountPasswordUpdateRequest $request)
+    {
+        $check = Hash::check($request->input('old_password'), auth()->user()->password);
+
+        if (!$check) {
+            return redirect()->back()->withErrors(['Your current password is incorrect!']);
+        }
+
+        $user = $request->user();
+        $user->password = bcrypt($request->input('new_password'));
+        $user->save();
+
+        notify()->flash('Password', 'success', [
+            'timer' => 2000,
+            'text' => 'Successfully updated!',
+        ]);
+
+        return redirect()->back();
+    }
+}
