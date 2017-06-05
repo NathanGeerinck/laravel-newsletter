@@ -27,7 +27,7 @@ class ApplicationController extends Controller
     public function update(Request $request)
     {
         $env = new DotenvEditor;
-        $env->changeEnv($request->all());
+        $env->changeEnv('"' . $request->all() . '"');
 
         notify()->flash('Woohooo!', 'success', [
             'timer' => 2000,
