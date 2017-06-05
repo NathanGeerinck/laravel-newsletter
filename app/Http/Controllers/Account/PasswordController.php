@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $account = auth()->user();
