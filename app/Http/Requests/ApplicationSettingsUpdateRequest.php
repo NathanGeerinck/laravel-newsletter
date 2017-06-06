@@ -13,7 +13,7 @@ class ApplicationSettingsUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class ApplicationSettingsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-
+            'APP_URL' => 'required|url',
+            'APP_EMAIL' => 'required|email',
+            'APP_FROM' => 'required|min:3|max:55',
+            'APP_REGISTER' => 'required',
+            'APP_EDITOR' => 'required',
         ];
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Campaigns (' . $campaigns->total() . ')')
+@section('title', trans('campaigns.index') . ' (' . $campaigns->total() . ')')
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('campaigns.new') }}" type="button" class="btn btn-default">Create campaign</a>
+                        <a href="{{ route('campaigns.new') }}" type="button" class="btn btn-default">{{ trans('campaigns.new') }}</a>
                     </div>
                 </div>
             </div>
@@ -17,9 +17,9 @@
                 <div class="col-xs-12 col-md-6 col-md-offset-3">
                     {!! Form::model(request()->all(), ['route' => 'campaigns.filter', 'method' => 'get']) !!}
                     <div class="input-group">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('forms.search')]) !!}
                         <div class="input-group-btn">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
+                            {!! Form::submit(trans('forms.search'), ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -29,8 +29,8 @@
                     <table class="table" id="exceptions">
                         <thead>
                         <tr>
-                            <th class="text-center" style="width: 15%">ID</th>
-                            <th style="width: 50%;">Name</th>
+                            <th class="text-center" style="width: 15%">{{ trans('general.id') }}</th>
+                            <th style="width: 50%;">{{ trans('general.name') }}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -55,7 +55,7 @@
                         @endforeach
                         @if($campaigns->count() == 0)
                             <tr>
-                                <td class="text-center" colspan="4"><i>You haven't created a campaign yet</i></td>
+                                <td class="text-center" colspan="4"><i>{{ trans('campaigns.empty') }}</i></td>
                             </tr>
                         @endif
                         </tbody>

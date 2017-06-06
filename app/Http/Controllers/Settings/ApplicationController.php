@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App\Http\Requests\ApplicationSettingsUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brotzka\DotenvEditor\DotenvEditor;
@@ -24,10 +25,16 @@ class ApplicationController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(ApplicationSettingsUpdateRequest $request)
     {
         $env = new DotenvEditor;
-        $env->changeEnv('"' . $request->all() . '"');
+        $env->changeEnv([
+            'APP_URL' => $request->APP_URL,
+            'APP_EMAIL' => $request->APP_EMAIL,
+            'APP_FROM' => '"' . $request->APP_FROM . '"',
+            'APP_REGISTER' => $request->APP_REGISTER,
+            'APP_EDITOR' => $request->APP_EDITOR,
+        ]);
 
         notify()->flash('Woohooo!', 'success', [
             'timer' => 2000,

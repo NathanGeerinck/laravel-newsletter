@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('send/{campaign}', 'CampaignController@preSend')->name('presend');
         Route::get('new', 'CampaignController@new')->name('new');
         Route::get('export/{campaign}', 'CampaignController@export')->name('export');
-        Route::post('campaigns', 'CampaignController@index')->name('filter');
+        Route::post('/', 'CampaignController@index')->name('filter');
         Route::post('new', 'CampaignController@create')->name('create');
         Route::post('edit/{campaign}', 'CampaignController@update')->name('update');
         Route::post('send/{campaign}', 'CampaignController@send')->name('send');
@@ -44,7 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('new', 'MailingListController@new')->name('new');
         Route::get('list/export/{list}', 'MailingListController@export')->name('export');
         Route::get('list/import/{list}', 'MailingListController@preImport')->name('preimport');
-        Route::post('lists', 'MailingListController@index')->name('filter');
+        Route::post('/', 'MailingListController@index')->name('filter');
         Route::post('new', 'MailingListController@create')->name('create');
         Route::post('edit/{list}', 'MailingListController@update')->name('update');
         Route::post('import/{list}', 'MailingListController@import')->name('import');
@@ -58,19 +58,19 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('clone/{subscription}', 'SubscriptionController@new')->name('clone');
         Route::get('new', 'SubscriptionController@new')->name('new');
         Route::get('export/{method}', 'SubscriptionController@export')->name('export');
-        Route::post('subscriptions', 'SubscriptionController@index')->name('filter');
+        Route::post('/', 'SubscriptionController@index')->name('filter');
         Route::post('new', 'SubscriptionController@create')->name('create');
         Route::post('edit/{subscription}', 'SubscriptionController@update')->name('update');
         Route::delete('delete/{subscription}', 'SubscriptionController@delete')->name('delete');
     });
     
     Route::group(['prefix' => 'templates', 'as' => 'templates.'], function () {
-        Route::get('', 'TemplateController@index')->name('index');
+        Route::get('/', 'TemplateController@index')->name('index');
         Route::get('show/{template}', 'TemplateController@show')->name('show');
         Route::get('edit/{template}', 'TemplateController@edit')->name('edit');
         Route::get('clone/{template}', 'TemplateController@new')->name('clone');
         Route::get('new', 'TemplateController@new')->name('new');
-        Route::post('templates', 'TemplateController@index')->name('filter');
+        Route::post('/', 'TemplateController@index')->name('filter');
         Route::post('new', 'TemplateController@create')->name('create');
         Route::post('edit/{template}', 'TemplateController@update')->name('update');
         Route::delete('delete/{template}', 'TemplateController@delete')->name('delete');

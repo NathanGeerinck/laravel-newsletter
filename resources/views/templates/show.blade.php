@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Template: ' . $template->name)
+@section('title', trans('templates.show') . ': ' . $template->name)
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('templates.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="{{ route('templates.index') }}" type="button" class="btn btn-default">{{ trans('general.back') }}</a>
                     </div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th style="width:20%">Name</th>
+                            <th style="width:20%">{{ trans('general.name') }}</th>
                             <td>{{ $template->name }}</td>
                         </tr>
                         <tr>
@@ -33,9 +33,9 @@
                             <td>
                                 {!! Form::open(['route' => ['templates.delete', $template], 'method' => 'DELETE']) !!}
                                 <div class="btn-group">
-                                    <a href="{{ route('templates.preview', $template) }}" target="_blank" type="button" class="btn btn-default">Preview</a>
-                                    <a href="{{ route('templates.edit', $template) }}" type="button" class="btn btn-default">Edit</a>
-                                    <a href="{{ route('templates.clone', $template) }}" type="button" class="btn btn-default">Clone</a>
+                                    <a href="{{ route('templates.preview', $template) }}" target="_blank" type="button" class="btn btn-default">{{ trans('general.preview') }}</a>
+                                    <a href="{{ route('templates.edit', $template) }}" type="button" class="btn btn-default">{{ trans('general.edit') }}</a>
+                                    <a href="{{ route('templates.clone', $template) }}" type="button" class="btn btn-default">{{ trans('general.clone') }}</a>
                                     <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
                                 </div>
                                 {!! Form::close() !!}

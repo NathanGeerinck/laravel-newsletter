@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit template: ' . $template->name)
+@section('title', trans('general.edit') . ' ' . trans('templates.show') . ': ' . $template->name)
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('templates.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="{{ route('templates.index') }}" type="button" class="btn btn-default">{{ trans('general.back') }}</a>
                     </div>
                 </div>
             </div>
