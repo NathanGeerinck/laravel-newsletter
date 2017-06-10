@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ApplicationSettingsUpdateRequest extends FormRequest
+class VerifyTwoFactorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,7 @@ class ApplicationSettingsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'APP_NAME' => 'required|min:3|max:30',
-            'APP_URL' => 'required|url',
-            'APP_EMAIL' => 'required|email',
-            'APP_FROM' => 'required|min:3|max:55',
-            'APP_REGISTER' => 'required',
-            'APP_EDITOR' => 'required',
+            'key' => 'required|min:6|max:6|alpha_num'
         ];
     }
 }

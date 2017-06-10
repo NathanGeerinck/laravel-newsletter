@@ -6,6 +6,7 @@ return [
 
     'application' => [
         'name' => 'Application',
+        'name2' => 'Name',
         'url' => 'URL',
         'from' => [
             'name' => 'From (name)',

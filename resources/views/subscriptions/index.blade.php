@@ -61,7 +61,7 @@
                     @endforeach
                     @if($subscriptions->count() == 0)
                         <tr>
-                            <td class="text-center" colspan="5"><i>You haven't added a subscription yet</i></td>
+                            <td class="text-center" colspan="5"><i>{{ trans('subscriptions.empty') }}</i></td>
                         </tr>
                     @endif
                     </tbody>

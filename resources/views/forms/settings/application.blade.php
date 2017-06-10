@@ -1,4 +1,9 @@
 <div class="form-group">
+    {!! Form::label('APP_NAME', trans('settings.application.name2') . ' *') !!}
+    {!! Form::text('APP_NAME', env('APP_NAME'), ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('APP_URL', trans('settings.application.url') . ' *') !!}
     {!! Form::text('APP_URL', env('APP_URL'), ['class' => 'form-control']) !!}
 </div>

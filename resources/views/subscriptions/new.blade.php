@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('subscriptions.new'))
+@section('title', trans('subscriptions.clone'))
 
 @section('content')
     <div class="container">

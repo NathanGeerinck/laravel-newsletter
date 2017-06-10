@@ -87,7 +87,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'account', 'as' => 'account.', 'namespace' => 'Account'], function () {
         Route::get('/', 'GeneralController@index')->name('general');
         Route::get('password', 'PasswordController@index')->name('password');
+        Route::get('2fa', 'TwoFactorController@index')->name('2fa');
+        Route::get('2fa/disable', 'TwoFactorController@disable')->name('2fa.disable');
+        Route::get('2fa/enable', 'TwoFactorController@enable')->name('2fa.enable');
         Route::post('/', 'GeneralController@update')->name('general.update');
         Route::post('password', 'PasswordController@update')->name('password.update');
+        Route::post('2fa/disable', 'TwoFactorController@disable')->name('2fa.disable');
+        Route::post('2fa/enable', 'TwoFactorController@enable')->name('2fa.enable');
+        Route::post('2fa/verify', 'TwoFactorController@verify')->name('2fa.verify');
     });
 });

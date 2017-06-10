@@ -29,6 +29,7 @@ class ApplicationController extends Controller
     {
         $env = new DotenvEditor;
         $env->changeEnv([
+            'APP_NAME' => '"' . $request->APP_NAME . '"',
             'APP_URL' => $request->APP_URL,
             'APP_EMAIL' => $request->APP_EMAIL,
             'APP_FROM' => '"' . $request->APP_FROM . '"',

@@ -114,7 +114,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fa fa-envelope-o fa-1x"></i> {{ trans('menu.newsletter') }}
+                        <i class="fa fa-envelope-o fa-1x"></i> {{ env('APP_NAME', trans('menu.newsletter')) }}
                     </a>
                 </div>
 

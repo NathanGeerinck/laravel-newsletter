@@ -169,7 +169,13 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        EloquentFilter\ServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Codecourse\Notify\NotifyServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -179,13 +185,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        EloquentFilter\ServiceProvider::class,
-        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
-        Codecourse\Notify\NotifyServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -241,6 +240,7 @@ return [
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
         'Notify' => Codecourse\Notify\Facades\Notify::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
     ],
 
 ];
