@@ -22,7 +22,7 @@ class ApplicationController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param ApplicationSettingsUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ApplicationSettingsUpdateRequest $request)
@@ -35,6 +35,7 @@ class ApplicationController extends Controller
             'APP_FROM' => '"' . $request->APP_FROM . '"',
             'APP_REGISTER' => $request->APP_REGISTER,
             'APP_EDITOR' => $request->APP_EDITOR,
+            'NOTIFICATIONS' => $request->NOTIFICATIONS,
         ]);
 
         notify()->flash('Woohooo!', 'success', [

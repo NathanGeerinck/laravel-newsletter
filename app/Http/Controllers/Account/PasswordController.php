@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Account;
 
 use App\Http\Requests\AccountPasswordUpdateRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use App\Mail\PasswordUpdated;
+use Hash;
+use Mail;
 
 class PasswordController extends Controller
 {
@@ -29,6 +31,10 @@ class PasswordController extends Controller
         $user = $request->user();
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
+
+        if(env('NOTIFICATIONS') == true) {
+            Mail::to($user)->queue(new PasswordUpdated());
+        }
 
         notify()->flash('Password', 'success', [
             'timer' => 2000,

@@ -2,11 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Mail\ListImported;
 use App\Models\MailingList;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
 
 /**
  * Class ImportSubscriptions
@@ -36,6 +38,10 @@ class ImportSubscriptions implements ShouldQueue
     {
         foreach ($this->results as $result) {
             $this->list->subscriptions()->create($result);
+        }
+
+        if(env('NOTIFICATIONS') == true) {
+            Mail::to(auth()->user())->queue(new ListImported($this->list));
         }
     }
 }

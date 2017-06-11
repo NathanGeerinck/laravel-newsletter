@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VerifyTwoFactorRequest;
+use App\Mail\DisabledTwoFactor;
+use App\Mail\EnabledTwoFactor;
 use Illuminate\Http\Request;
+use Mail;
 use PragmaRX\Google2FA\Google2FA;
 
 class TwoFactorController extends Controller
@@ -35,21 +38,44 @@ class TwoFactorController extends Controller
     public function verify(VerifyTwoFactorRequest $request)
     {
         if ($request->user()->verifyKey($request->input('key'))) {
-//            $this->backupcodes_generate();
+            $this->backupCodes_generate();
 
-//            return redirect()->action('TwoFactorController@backupcodes_view');
+            if(env('NOTIFICATIONS') == true) {
+                Mail::to($request->user())->queue(new EnabledTwoFactor($request->user()->twoFactorBackupCodes()->get()->toArray()));
+            }
+
             return redirect()->route('account.2fa');
         }
 
-        return route('account.2fa.enable')->withErrors(['key' => 'The key you entered isn\'t valid.']);
+        return back()->withErrors('The key you entered isn\'t valid.');
     }
 
     public function disable(Request $request)
     {
         $account = $request->user();
         $account->google2fa_secret = null;
+        $account->twoFactorBackupCodes()->truncate();
         $account->save();
 
+        if(env('NOTIFICATIONS') == true) {
+            Mail::to($request->user())->queue(new DisabledTwoFactor());
+        }
+
         return redirect()->route('account.2fa');
+    }
+
+    public function backupCodes_generate()
+    {
+        auth()->user()->twoFactorBackupCodes()->truncate();
+
+        $number = 0;
+        while ($number <= 4) {
+            $code = rand(0, 9).rand(0, 9).rand(0, 9).' '.rand(0, 9).rand(0, 9).rand(0, 9).' '.rand(0, 9).rand(0, 9).rand(0, 9);
+            auth()->user()->twoFactorBackupCodes()->create([
+                'display_code' => $code,
+                'code' => str_replace(' ', '', $code),
+            ]);
+            $number++;
+        }
     }
 }

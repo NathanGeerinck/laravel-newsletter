@@ -83,8 +83,8 @@ class User extends Authenticatable
         return $google2fa->verifyKey($this->google2fa_secret, $secret);
     }
 
-    public function backupcode()
+    public function twoFactorBackupCodes()
     {
-        return $this->hasMany(TwofactorBackupcode::class);
+        return $this->hasMany(TwofactorBackupCodes::class, 'user_id');
     }
 }

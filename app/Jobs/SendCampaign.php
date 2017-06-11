@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\CampaignMail;
+use App\Mail\CampaignSend;
 use App\Models\Campaign;
 use App\Models\Template;
 use Illuminate\Bus\Queueable;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
+use Mail;
 
 /**
  * @property Campaign   campaign
@@ -49,5 +50,9 @@ class SendCampaign implements ShouldQueue
 
         $this->campaign->send = 1;
         $this->campaign->save();
+
+        if(env('NOTIFICATIONS') == true) {
+            Mail::to(auth()->user())->queue(new CampaignSend($this->subscriptions, $this->campaign));
+        }
     }
 }

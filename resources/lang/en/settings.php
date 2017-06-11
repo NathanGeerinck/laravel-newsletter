@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'settings' => 'Settings',
 
     'application' => [
@@ -12,6 +11,7 @@ return [
             'name' => 'From (name)',
             'email' => 'From (email)',
         ],
+        'notifications' => 'Notification emails',
         'registration' => 'Registration',
         'templateEditor' => 'Template editor',
     ],
@@ -24,5 +24,4 @@ return [
         'username' => 'Username',
         'password' => 'Password',
     ],
-
 ];

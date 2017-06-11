@@ -24,6 +24,7 @@
                 <div class="alert alert-success" role="alert">{{ trans('account.2fa.enabled') }} {!! Form::submit(trans('account.2fa.disable'), ['class' => 'btn btn-default btn-sm pull-right']) !!}</div>
 
                 {!! Form::close() !!}
+
                 @endif
             </div>
         </div>

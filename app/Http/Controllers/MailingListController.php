@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Jobs\ImportSubscriptions;
 use App\Models\MailingList;
-use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Requests\MailingListUpdateRequest;
 use App\Http\Requests\MailingListCreateRequest;

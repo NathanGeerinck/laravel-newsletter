@@ -10,5 +10,6 @@ return [
     'export.xlsx' => 'Export all subscriptions to XLSX',
     'empty' => 'You haven\'t added any subscriptions yet',
     'subscriptions.country.none' => 'No country selected',
-    'ubsubscribe' => 'Unsubscribe',
+    'confirm.unsubscribe' => 'Are you sure that you want to unsubscribe?',
+    'unsubscribe' => 'Unsubscribe',
 ];

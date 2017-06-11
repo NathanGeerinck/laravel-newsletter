@@ -38,13 +38,13 @@ class CampaignMail extends Mailable implements ShouldQueue
         return $this->subject($this->campaign->subject)
             ->view('emails.campaign')
             ->with([
-            'content' => $this->str_replace_dynamic([
-                '%subject%' => $this->campaign->subject,
-                '%email%' => $this->subscription->email,
-                '%name%' => $this->subscription->name,
-                '%country%' => countries($this->subscription->country),
-                '%unsubscribe_link%' => route('subscriptions.preunsubscribe', [$this->subscription->email, $this->subscription->unsubscribe])
-            ], $this->template->content)
+                'content' => $this->str_replace_dynamic([
+                    '%subject%' => $this->campaign->subject,
+                    '%email%' => $this->subscription->email,
+                    '%name%' => $this->subscription->name,
+                    '%country%' => countries($this->subscription->country),
+                    '%unsubscribe_link%' => route('subscriptions.preunsubscribe', [$this->subscription->email, $this->subscription->unsubscribe])
+                ], $this->template->content)
             ]);
     }
 
