@@ -47,8 +47,8 @@ return [
     |
     */
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('APP_EMAIL', 'noreply@laranewsletter.nu'),
+        'name' => env('APP_FROM', 'LaraNewsletter.nu'),
     ],
     /*
     |--------------------------------------------------------------------------

@@ -9,4 +9,5 @@ return [
     'empty' => 'You haven\'t created a campaign yet',
 
     'send.message' => 'You\'re sending this campaign to <b>:count</b> recipients',
+    'send.success' => 'Successfully send :name to :subscribers recipients!',
 ];

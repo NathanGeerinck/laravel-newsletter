@@ -93,7 +93,7 @@ class MailingListController extends Controller
 
         notify()->flash($list->name, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('lists.show', $list);
@@ -109,7 +109,7 @@ class MailingListController extends Controller
 
         notify()->flash($list->name, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully deleted!',
+            'text' => trans('general.success.delete'),
         ]);
 
         return redirect()->route('lists.index');
@@ -145,7 +145,7 @@ class MailingListController extends Controller
 
             notify()->flash('Wohoo!', 'success', [
                 'timer' => 2000,
-                'text' => 'Import successfully!',
+                'text' => trans('general.success.import'),
             ]);
 
             return redirect()->route('lists.show', $list);

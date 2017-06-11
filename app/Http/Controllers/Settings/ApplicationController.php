@@ -29,13 +29,13 @@ class ApplicationController extends Controller
     {
         $env = new DotenvEditor;
         $env->changeEnv([
-            'APP_NAME' => '"' . $request->APP_NAME . '"',
-            'APP_URL' => $request->APP_URL,
-            'APP_EMAIL' => $request->APP_EMAIL,
-            'APP_FROM' => '"' . $request->APP_FROM . '"',
-            'APP_REGISTER' => $request->APP_REGISTER,
-            'APP_EDITOR' => $request->APP_EDITOR,
-            'NOTIFICATIONS' => $request->NOTIFICATIONS,
+            'APP_NAME' => '"' . $request->input('APP_NAME') . '"',
+            'APP_URL' => $request->input('APP_URL'),
+            'APP_EMAIL' => $request->input('APP_EMAIL'),
+            'APP_FROM' => '"' . $request->input('APP_FROM') . '"',
+            'APP_REGISTER' => $request->input('APP_REGISTER'),
+            'APP_EDITOR' => $request->input('APP_EDITOR'),
+            'NOTIFICATIONS' => $request->input('NOTIFICATIONS'),
         ]);
 
         notify()->flash('Woohooo!', 'success', [

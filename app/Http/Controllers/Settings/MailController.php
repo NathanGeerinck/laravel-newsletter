@@ -28,11 +28,11 @@ class MailController extends Controller
     {
         $env = new DotenvEditor;
         $env->changeEnv([
-            'MAIL_DRIVER' => $request->MAIL_DRIVER,
-            'MAIL_PORT' => $request->MAIL_PORT,
-            'MAIL_HOST' => $request->MAIL_HOST,
-            'MAIL_USERNAME' => $request->MAIL_USERNAME,
-            'MAIL_PASSWORD' => $request->MAIL_PASSWORD,
+            'MAIL_DRIVER' => $request->input('MAIL_DRIVER'),
+            'MAIL_PORT' => $request->input('MAIL_PORT'),
+            'MAIL_HOST' => $request->input('MAIL_HOST'),
+            'MAIL_USERNAME' => $request->input('MAIL_USERNAME'),
+            'MAIL_PASSWORD' => $request->input('MAIL_PASSWORD'),
         ]);
 
         notify()->flash('Woohooo!', 'success', [

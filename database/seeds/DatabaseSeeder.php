@@ -14,32 +14,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        \App\Models\User::create([
-//            'username' => 'Nathan',
-//            'email' => 'nathan.geerinck@gmail.com',
-//            'password' => bcrypt('test123'),
-//        ]);
+        \App\Models\User::create([
+            'username' => 'Nathan',
+            'email' => 'nathan.geerinck@gmail.com',
+            'password' => bcrypt('test123'),
+        ]);
 
         \App\Models\MailingList::create([
-            'name' => 'Test list',
-            'description' => 'This is a cool test list called <b>Test List</b>',
-            'user_id' => 3,
+            'name' => 'Awesome newsfeed',
+            'description' => 'This is a the mailinglist of the Awesome Newsfeed!',
+            'user_id' => 1,
             'public' => 1,
         ]);
 
         \App\Models\Template::create([
             'name' => 'HTML Template',
             'content' => '<html><head><title>%subject%</title></head><body>This is the subject: %subject%<br>This is your name: %name%<br>This is your country: %country%<br>This is your unsubscribe link: <a href="%unsubscribe_link">%unsubscribe_link%</a> </body></html>',
-            'user_id' => 3,
+            'user_id' => 1,
         ]);
 
-        \App\Models\Template::create([
-            'name' => 'Markdown Template',
-            'content' => 'This is the subject: %subject%
-                This is your name: %name%
-                This is your country: %country%
-                This is your unsubscribe link: [%unsubscribe_link%](%unsubscribe_link%)',
-            'user_id' => 3,
+        \App\Models\Campaign::create([
+            'name' => 'Awesome newsfeed #1',
+            'subject' => 'Awesome Newsfeed #1',
+            'template_id' => 1,
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Subscription::create([
+            'name' => 'John Doe',
+            'email' => 'john.doe@gmail.com',
+            'country' => 'be',
+            'mailing_list_id' => 1,
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Subscription::create([
+            'name' => 'Jane Doe',
+            'email' => 'jane.doe@gmail.com',
+            'country' => 'be',
+            'mailing_list_id' => 1,
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Subscription::create([
+            'name' => 'Tim Doe',
+            'email' => 'tim.doe@gmail.com',
+            'country' => 'us',
+            'mailing_list_id' => 1,
+            'user_id' => 1,
         ]);
     }
 }

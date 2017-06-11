@@ -87,7 +87,7 @@ class SubscriptionController extends Controller
 
         notify()->flash($subscription->email, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully created!',
+            'text' => trans('general.success.created'),
         ]);
 
         return redirect()->route('subscriptions.index');
@@ -104,7 +104,7 @@ class SubscriptionController extends Controller
 
         notify()->flash($subscription->email, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('subscriptions.show', $subscription);
@@ -120,7 +120,7 @@ class SubscriptionController extends Controller
 
         notify()->flash($subscription->email, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully deleted!',
+            'text' => trans('general.success.delete'),
         ]);
 
         return redirect()->route('subscriptions.index');
@@ -134,9 +134,9 @@ class SubscriptionController extends Controller
     {
         $subscription->delete();
 
-        notify()->flash('Woehoe!', 'success', [
+        notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 3500,
-            'text' => 'You\'re successfully unsubscribed!',
+            'text' => trans('subscriptions.unsubscribe.success'),
         ]);
 
         return redirect()->route('index');

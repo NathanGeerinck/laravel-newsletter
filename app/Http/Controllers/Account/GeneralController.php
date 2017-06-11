@@ -16,7 +16,7 @@ class GeneralController extends Controller
 
     public function update(AccountGeneralUpdateRequest $request)
     {
-        auth()->user()->update($request->all());
+        $request->user()->update($request->all());
 
         notify()->flash($request->username, 'success', [
             'timer' => 2000,

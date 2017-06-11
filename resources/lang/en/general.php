@@ -25,5 +25,11 @@ return [
     'preview' => 'Preview',
     'send' => 'Send',
     'import' => 'Import',
-    'export' => 'Export'
+    'export' => 'Export',
+
+    'woohoo' => 'Woohoo!',
+    'success.delete' => 'Successfully deleted!',
+    'success.update' => 'Successfully updated!',
+    'success.create' => 'Successfully created!',
+    'success.import' => 'Successfully imported!',
 ];

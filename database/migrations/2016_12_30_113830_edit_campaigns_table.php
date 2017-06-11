@@ -27,8 +27,9 @@ class EditCampaignsTable extends Migration
     public function down()
     {
         Schema::table('campaigns', function ($table) {
-            $table->dropForeign('template_id');
-            $table->dropColumn('template_id');
+            $table->dropForeign(['template_id']);
+            $table->dropIndex(['template_id']);
+            $table->dropColumn(['template_id']);
         });
     }
 }
