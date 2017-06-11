@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lists (' . $lists->total() . ')')
+@section('title', trans('lists.index') . ' (' . $lists->total() . ')')
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('lists.new') }}" type="button" class="btn btn-default">Create list</a>
+                        <a href="{{ route('lists.new') }}" type="button" class="btn btn-default">{{ trans('lists.new') }}</a>
                     </div>
                 </div>
             </div>
@@ -17,22 +17,22 @@
                 <div class="col-xs-12 col-md-6 col-md-offset-3">
                 {!! Form::model(request()->all(), ['route' => 'lists.filter', 'method' => 'get']) !!}
                     <div class="input-group">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('forms.search')]) !!}
                         <div class="input-group-btn">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
+                            {!! Form::submit(trans('forms.search'), ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}
                 </div>
                 <br><br>
                 <div class="table-responsive">
-                    <table class="table" id="exceptions">
+                    <table class="table">
                         <thead>
                         <tr>
-                            <th class="text-center" style="width: 15%">ID</th>
-                            <th style="width: 35%;">Name</th>
-                            <th class="text-center" style="width: 15%;">Subscriptions</th>
-                            <th class="text-center" style="width: 15%;">Status</th>
+                            <th class="text-center" style="width: 15%">{{ trans('general.id') }}</th>
+                            <th style="width: 35%;">{{ trans('general.name') }}</th>
+                            <th class="text-center" style="width: 15%;">{{ trans('general.subscriptions') }}</th>
+                            <th class="text-center" style="width: 15%;">{{ trans('general.status') }}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -49,7 +49,7 @@
                                         <a href="{{ route('lists.show', $list) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('lists.edit', $list) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('lists.clone', $list) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
-                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($list->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($list->name) }}"><i class="fa fa-times text-danger"></i></a>
+                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($list->name) }}')" data-toggle="tooltip" title="{{ trans('general.delete') }} {{ addslashes($list->name) }}"><i class="fa fa-times text-danger"></i></a>
                                     </div>
                                     {!! Form::close() !!}
                                 </td>
@@ -57,7 +57,7 @@
                         @endforeach
                         @if($lists->count() == 0)
                             <tr>
-                                <td class="text-center" colspan="5"><i>You haven't created a list yet</i></td>
+                                <td class="text-center" colspan="5"><i>{{ trans('lists.empty') }}</i></td>
                             </tr>
                         @endif
                         </tbody>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Campaign: ' . $campaign->name)
+@section('title', trans('campaigns.send') . ': ' . $campaign->name)
 
 @section('content')
     <div class="container">
@@ -9,14 +9,14 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-default">{{ trans('general.back') }}</a>
                     </div>
                 </div>
             </div>
             <div class="panel-body">
-                <div class="alert alert-info" role="alert">You're sending this campaign to <b>{{ $subscriptions->count() }}</b> recipients</div>
+                <div class="alert alert-info" role="alert">{!! trans('campaigns.send.message', ['count' => $subscriptions->count()]) !!}</div>
                 {{ Form::open(['route' => ['campaigns.send', $campaign]]) }}
-                    {!! Form::submit('Send campaign', ['class' => 'btn btn-default btn-lg btn-']) !!}
+                    {!! Form::submit(trans('campaigns.send'), ['class' => 'btn btn-default btn-lg btn-']) !!}
                 {!! Form::close() !!}
             </div>
         </div>

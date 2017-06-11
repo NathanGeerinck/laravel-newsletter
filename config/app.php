@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' =>  env('APP_NAME', 'Laravel Newsletter'),
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +159,7 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
@@ -168,7 +169,13 @@ return [
          * Package Service Providers...
          */
 
-        //
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        EloquentFilter\ServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
+        Codecourse\Notify\NotifyServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -178,13 +185,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        EloquentFilter\ServiceProvider::class,
-        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
-        Codecourse\Notify\NotifyServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -204,6 +204,7 @@ return [
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
@@ -239,6 +240,7 @@ return [
         'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
         'Notify' => Codecourse\Notify\Facades\Notify::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
     ],
 
 ];

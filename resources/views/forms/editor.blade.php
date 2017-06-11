@@ -2,7 +2,7 @@
 
     @if(env('APP_EDITOR') == 'html')
 
-        {!! Form::label('editor', 'Content *') !!}
+        {!! Form::label('editor', trans('forms.content') . ' *') !!}
         {!! Form::textarea('editor', null, ['class' => 'form-control', 'id' => 'editor']) !!}
 
         @section('javascript')
@@ -16,7 +16,7 @@
 
     @else
 
-        {!! Form::label('editor', 'Content *') !!}
+        {!! Form::label('editor', trans('forms.content') . ' *') !!}
         {!! Form::textarea('editor', null, ['class' => 'form-control']) !!}
 
     @endif

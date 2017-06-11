@@ -114,27 +114,27 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fa fa-envelope-o fa-1x"></i> Newsletter
+                        <i class="fa fa-envelope-o fa-1x"></i> {{ env('APP_NAME', trans('menu.newsletter')) }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="@if(request()->is('subscriptions*')) active @endif"><a href="{{ route('subscriptions.index') }}">Subscriptions</a></li>
-                        <li class="@if(request()->is('lists*')) active @endif"><a href="{{ route('lists.index') }}">Lists</a></li>
-                        <li class="@if(request()->is('campaigns*')) active @endif"><a href="{{ route('campaigns.index') }}">Campaigns</a></li>
-                        <li class="@if(request()->is('templates*')) active @endif"><a href="{{ route('templates.index') }}">Templates</a></li>
-                        <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.application') }}">Settings</a></li>
+                        <li class="@if(request()->is('subscriptions*')) active @endif"><a href="{{ route('subscriptions.index') }}">{{ trans('menu.subscriptions') }}</a></li>
+                        <li class="@if(request()->is('lists*')) active @endif"><a href="{{ route('lists.index') }}">{{ trans('menu.lists') }}</a></li>
+                        <li class="@if(request()->is('campaigns*')) active @endif"><a href="{{ route('campaigns.index') }}">{{ trans('menu.campaigns') }}</a></li>
+                        <li class="@if(request()->is('templates*')) active @endif"><a href="{{ route('templates.index') }}">{{ trans('menu.templates') }}</a></li>
+                        <li class="@if(request()->is('settings*')) active @endif"><a href="{{ route('settings.application') }}">{{ trans('menu.settings') }}</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (auth()->guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/login') }}">{{ trans('menu.login') }}</a></li>
                             @if(env('APP_REGISTER') == true)
-                                <li><a href="{{ url('/register') }}">Register</a></li>
+                                <li><a href="{{ url('/register') }}">{{ trans('menu.register') }}</a></li>
                             @endif
                         @else
                             <li class="dropdown">
@@ -144,8 +144,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ route('account.general') }}">
+                                            <i class="fa fa-gear" aria-hidden="true"></i> {{ trans('menu.account') }}
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+                                            <i class="fa fa-sign-out" aria-hidden="true"></i> {{ trans('menu.logout') }}
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

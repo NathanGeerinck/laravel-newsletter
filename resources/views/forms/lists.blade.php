@@ -1,15 +1,15 @@
 <div class="form-group">
-    {!! Form::label('name', 'Name *') !!}
+    {!! Form::label('name', trans('forms.name') . ' *') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('description', 'Description') !!}
+    {!! Form::label('description', trans('forms.description')) !!}
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('public', 'Public/Private') !!}
+    {!! Form::label('public', trans('forms.public/private')) !!}
     {!! Form::select('public', ['1' => 'Public', '0' => 'Private'], null, ['class' => 'chosen-select']) !!}
 </div>
 

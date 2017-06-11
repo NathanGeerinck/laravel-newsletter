@@ -74,7 +74,7 @@ class TemplateController extends Controller
 
         notify()->flash($template->name, 'success', [
             'timer' => 2000,
-            'text' => 'Template successfully created!',
+            'text' => trans('general.success.create'),
         ]);
 
         return redirect()->route('templates.show', $template);
@@ -94,7 +94,7 @@ class TemplateController extends Controller
 
         notify()->flash($template->name, 'success', [
             'timer' => 2000,
-            'text' => 'Template successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('templates.show', $template);
@@ -110,7 +110,7 @@ class TemplateController extends Controller
 
         notify()->flash($template->name, 'success', [
             'timer' => 2000,
-            'text' => 'Template successfully deleted!',
+            'text' => trans('general.success.delete'),
         ]);
 
         return redirect()->route('templates.index');

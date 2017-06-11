@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use PragmaRX\Google2FA\Google2FA;
 
+/**
+ * @property mixed google2fa_secret
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -60,5 +64,27 @@ class User extends Authenticatable
     public function campaigns()
     {
         return $this->hasMany(Campaign::class);
+    }
+
+    public function generate2faKey()
+    {
+        if (!$this->google2fa_secret) {
+            $google2fa = new Google2FA();
+
+            $this->google2fa_secret = $google2fa->generateSecretKey();
+            $this->save();
+        }
+    }
+
+    public function verifyKey($secret)
+    {
+        $google2fa = new Google2FA();
+
+        return $google2fa->verifyKey($this->google2fa_secret, $secret);
+    }
+
+    public function twoFactorBackupCodes()
+    {
+        return $this->hasMany(TwofactorBackupCodes::class, 'user_id');
     }
 }

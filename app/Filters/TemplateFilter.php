@@ -12,6 +12,10 @@ class TemplateFilter extends ModelFilter
      */
     public $relations = [];
 
+    /**
+     * @param $name
+     * @return $this
+     */
     public function name($name)
     {
         return $this->where('name', 'LIKE', '%' . $name . '%');

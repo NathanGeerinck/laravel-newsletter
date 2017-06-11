@@ -49,7 +49,7 @@ class CampaignController extends Controller
      */
     public function new(Campaign $campaign)
     {
-        if(request()->is('campaigns/clone*')){
+        if (request()->is('campaigns/clone*')) {
             $campaign->load('mailingLists');
 
             $mailingLists = $campaign->getMailingList()->pluck('id')->toArray();
@@ -102,13 +102,13 @@ class CampaignController extends Controller
     {
         $campaign = auth()->user()->campaigns()->create($request->all());
 
-        if($request->get('mailing_lists')){
+        if ($request->get('mailing_lists')) {
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
         notify()->flash($campaign->name, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully created!',
+            'text' => trans('general.success.create'),
         ]);
 
         return redirect()->route('campaigns.show', $campaign);
@@ -123,13 +123,13 @@ class CampaignController extends Controller
     {
         $campaign->update($request->except('mailing_lists'));
 
-        if($request->get('mailing_lists')){
+        if ($request->get('mailing_lists')) {
             $campaign->mailingLists()->sync($request->input('mailing_lists'));
         }
 
         notify()->flash($campaign->name, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('campaigns.show', $campaign);
@@ -148,7 +148,7 @@ class CampaignController extends Controller
 
         notify()->flash('Woohooo!', 'success', [
             'timer' => 3500,
-            'text' => 'Successfully send ' . $campaign->name . ' to ' . $subscriptions->count() . ' recipients!',
+            'text' => trans('campaigns.send.success', ['name' => $campaign->name, 'subscribers' => $subscriptions->count()]),
         ]);
 
         return redirect()->route('campaigns.index');
@@ -164,7 +164,7 @@ class CampaignController extends Controller
 
         notify()->flash($campaign->name, 'success', [
             'timer' => 2000,
-            'text' => 'Successfully deleted!',
+            'text' => trans('general.success.delete'),
         ]);
 
         return redirect()->route('campaigns.index');

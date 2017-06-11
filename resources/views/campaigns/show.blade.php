@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Campaign: ' . $campaign->name)
+@section('title', trans('campaigns.show') . ': ' . $campaign->name)
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-default">Back to overview</a>
+                        <a href="{{ route('campaigns.index') }}" type="button" class="btn btn-default">{{ trans('general.back') }}</a>
                     </div>
                 </div>
             </div>
@@ -17,15 +17,15 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th>Name</th>
+                        <th>{{ trans('general.name') }}</th>
                         <td>{{ $campaign->name }}</td>
                     </tr>
                     <tr>
-                        <th>Subject</th>
+                        <th>{{ trans('general.subject') }}</th>
                         <td>{!! $campaign->subject !!}</td>
                     </tr>
                     <tr>
-                        <th>List(s)</th>
+                        <th>{{ trans('general.lists') }}</th>
                         <td>
                             @foreach($campaign->mailingLists as $list)
                                 <span class="label label-info">{{ $list->name }}</span>
@@ -33,21 +33,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>Recipients</th>
+                        <th>{{ trans('general.recipients') }}</th>
                         <td>
                             {{ $subscriptions->count() }}
                         </td>
                     </tr>
                     <tr>
-                        <th>Template</th>
+                        <th>{{ trans('general.template') }}</th>
                         <td>{{ $campaign->template->name }}</td>
                     </tr>
                     <tr>
-                        <th>Created at</th>
+                        <th>{{ trans('general.created_at') }}</th>
                         <td><code>{{ $campaign->created_at }}</code></td>
                     </tr>
                     <tr>
-                        <th>Updated at</th>
+                        <th>{{ trans('general.updated_at') }}</th>
                         <td><code>{{ $campaign->updated_at }}</code></td>
                     </tr>
                     <tr>
@@ -55,12 +55,12 @@
                         <td>
                             {!! Form::open(['route' => ['campaigns.delete', $campaign], 'method' => 'DELETE']) !!}
                             <div class="btn-group">
-                                <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.send', $campaign) }}" type="button" class="btn btn-default">Send</a>
-                                <a @if($campaign->send == 1) disabled @endif href="{{ route('templates.preview', $campaign) }}" type="button" class="btn btn-default">Preview</a>
-                                <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.edit', $campaign) }}" type="button" class="btn btn-default">Edit</a>
-                                <a href="{{ route('campaigns.clone', $campaign) }}" type="button" class="btn btn-default">Clone</a>
-                                <a href="{{ route('campaigns.export', $campaign) }}" type="button" class="btn btn-default">Export</a>
-                                <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($campaign->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($campaign->name) }}"><i class="fa fa-times text-danger"></i></a>
+                                <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.send', $campaign) }}" type="button" class="btn btn-default">{{ trans('general.send') }}</a>
+                                <a @if($campaign->send == 1) disabled @endif href="{{ route('templates.preview', $campaign) }}" type="button" class="btn btn-default">{{ trans('general.preview') }}</a>
+                                <a @if($campaign->send == 1) disabled @endif href="{{ route('campaigns.edit', $campaign) }}" type="button" class="btn btn-default">{{ trans('general.edit') }}</a>
+                                <a href="{{ route('campaigns.clone', $campaign) }}" type="button" class="btn btn-default">{{ trans('general.clone') }}</a>
+                                <a href="{{ route('campaigns.export', $campaign) }}" type="button" class="btn btn-default">{{ trans('general.export') }}</a>
+                                <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($campaign->name) }}')" data-toggle="tooltip" title="{{ trans('general.delete') }} {{ addslashes($campaign->name) }}"><i class="fa fa-times text-danger"></i></a>
                             </div>
                             {!! Form::close() !!}
                         </td>

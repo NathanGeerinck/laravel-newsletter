@@ -13,6 +13,10 @@ class SubscriptionFilter extends ModelFilter
      */
     public $relations = [];
 
+    /**
+     * @param $filter
+     * @return $this
+     */
     public function filter($filter)
     {
         return $this->where(function ($q) use ($filter) {
@@ -21,10 +25,12 @@ class SubscriptionFilter extends ModelFilter
         });
     }
 
+    /**
+     * @param $id
+     * @return $this
+     */
     public function mailing_list($id)
     {
         return $this->where('mailing_list_id', $id);
-
     }
-
 }

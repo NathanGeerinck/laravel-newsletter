@@ -27,7 +27,13 @@ class MailController extends Controller
     public function update(MailSettingsUpdateRequest $request)
     {
         $env = new DotenvEditor;
-        $env->changeEnv($request->all());
+        $env->changeEnv([
+            'MAIL_DRIVER' => $request->input('MAIL_DRIVER'),
+            'MAIL_PORT' => $request->input('MAIL_PORT'),
+            'MAIL_HOST' => $request->input('MAIL_HOST'),
+            'MAIL_USERNAME' => $request->input('MAIL_USERNAME'),
+            'MAIL_PASSWORD' => $request->input('MAIL_PASSWORD'),
+        ]);
 
         notify()->flash('Woohooo!', 'success', [
             'timer' => 2000,

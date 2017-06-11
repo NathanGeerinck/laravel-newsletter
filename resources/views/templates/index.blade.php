@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Templates (' . $templates->total() . ')')
+@section('title', trans('templates.index') . ' (' . $templates->total() . ')')
 
 @section('content')
     <div class="container">
@@ -9,7 +9,7 @@
                 @yield('title')
                 <div class="pull-right">
                     <div class="btn-group btn-group-xs">
-                        <a href="{{ route('templates.new') }}" type="button" class="btn btn-default">Create template</a>
+                        <a href="{{ route('templates.new') }}" type="button" class="btn btn-default">{{ trans('templates.new') }}</a>
                     </div>
                 </div>
             </div>
@@ -17,20 +17,20 @@
                 <div class="col-xs-12 col-md-6 col-md-offset-3">
                 {!! Form::model(request()->all(), ['route' => 'templates.filter', 'method' => 'get']) !!}
                     <div class="input-group">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('forms.search')]) !!}
                         <div class="input-group-btn">
-                            {!! Form::submit('Search', ['class' => 'btn btn-default']) !!}
+                            {!! Form::submit(trans('forms.search'), ['class' => 'btn btn-default']) !!}
                         </div>
                     </div>
                 {!! Form::close() !!}
                 </div>
                 <br><br>
                 <div class="table-responsive">
-                    <table class="table" id="exceptions">
+                    <table class="table">
                         <thead>
                         <tr>
-                            <th class="text-center" style="width: 15%">ID</th>
-                            <th style="width: 50%;">Name</th>
+                            <th class="text-center" style="width: 15%">{{ trans('general.id') }}</th>
+                            <th style="width: 50%;">{{ trans('general.name') }}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -46,7 +46,7 @@
                                         <a href="{{ route('templates.show', $template) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('templates.edit', $template) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('templates.clone', $template) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
-                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="Delete {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
+                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="{{ trans('templates.delete') }} {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
                                     </div>
                                     {!! Form::close() !!}
                                 </td>
@@ -54,7 +54,7 @@
                         @endforeach
                         @if($templates->count() == 0)
                             <tr>
-                                <td class="text-center" colspan="3"><i>You haven't created a template yet</i></td>
+                                <td class="text-center" colspan="3"><i>{{ trans('templates.empty') }}</i></td>
                             </tr>
                         @endif
                         </tbody>
