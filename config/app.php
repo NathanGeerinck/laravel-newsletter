@@ -176,6 +176,7 @@ return [
         Codecourse\Notify\NotifyServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
+        jdavidbakr\MailTracker\MailTrackerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,5 +243,4 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Google2FA' => PragmaRX\Google2FA\Vendor\Laravel\Facade::class,
     ],
-
 ];

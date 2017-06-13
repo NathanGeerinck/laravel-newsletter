@@ -69,7 +69,7 @@ class TemplateController extends Controller
     {
         $template = auth()->user()->template()->create([
             'name' => $request->input('name'),
-            'content' => $request->input('editor'),
+            'content' => $request->input('content'),
         ]);
 
         notify()->flash($template->name, 'success', [
@@ -89,7 +89,7 @@ class TemplateController extends Controller
     {
         $template->update([
             'name' => $request->input('name'),
-            'content' => $request->input('editor'),
+            'content' => $request->input('content'),
         ]);
 
         notify()->flash($template->name, 'success', [

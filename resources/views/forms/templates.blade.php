@@ -3,7 +3,7 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
-@include('forms.editor')
+@include('forms.editor', ['name' => 'content'])
 
 <p><strong>{{ trans('templates.available_variables') }}</strong> %subject%, %email%, %name%, %country%, %unsubscribe_link%</p>
 

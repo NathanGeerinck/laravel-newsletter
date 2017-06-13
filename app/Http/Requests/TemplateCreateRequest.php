@@ -25,7 +25,7 @@ class TemplateCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'editor' => 'required'
+            'content' => 'required'
         ];
     }
 }

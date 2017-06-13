@@ -9,6 +9,7 @@ use App\Models\MailingList;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
+use jdavidbakr\MailTracker\Model\SentEmailUrlClicked;
 use Maatwebsite\Excel\Facades\Excel;
 
 /**
@@ -146,7 +147,7 @@ class CampaignController extends Controller
 
         $this->dispatch(new SendCampaign($subscriptions, $campaign, $campaign->template));
 
-        notify()->flash('Woohooo!', 'success', [
+        notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 3500,
             'text' => trans('campaigns.send.success', ['name' => $campaign->name, 'subscribers' => $subscriptions->count()]),
         ]);

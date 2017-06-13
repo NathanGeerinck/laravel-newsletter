@@ -2,22 +2,22 @@
 
     @if(env('APP_EDITOR') == 'html')
 
-        {!! Form::label('editor', trans('forms.content') . ' *') !!}
-        {!! Form::textarea('editor', null, ['class' => 'form-control', 'id' => 'editor']) !!}
+        {!! Form::label($name, trans('forms.content') . ' *') !!}
+        {!! Form::textarea($name, null, ['class' => 'form-control', 'id' => $name]) !!}
 
         @section('javascript')
 
             <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
             <script>
-                CKEDITOR.replace( 'editor' );
+                CKEDITOR.replace( 'content' );
             </script>
 
         @endsection
 
     @else
 
-        {!! Form::label('editor', trans('forms.content') . ' *') !!}
-        {!! Form::textarea('editor', null, ['class' => 'form-control']) !!}
+        {!! Form::label($name, trans('forms.content') . ' *') !!}
+        {!! Form::textarea($name, null, ['class' => 'form-control']) !!}
 
     @endif
 

@@ -17,9 +17,10 @@
     {!! Form::label('APP_FROM', trans('settings.application.from.name') . ' *') !!}
     {!! Form::text('APP_FROM', env('APP_FROM'), ['class' => 'form-control']) !!}
 </div>
+
 <div class="form-group">
     {!! Form::label('NOTIFICATIONS', trans('settings.application.notifications') . ' *') !!}
-    {!! Form::select('NOTIFICATIONS', ['false' => 'No', 'true' => 'Yes'], (env('APP_REGISTER') == 1) ? 'true' : 'false', ['class' => 'chosen-select']) !!}
+    {!! Form::select('NOTIFICATIONS', ['false' => 'No', 'true' => 'Yes'], (env('NOTIFICATIONS') == 1) ? 'true' : 'false', ['class' => 'chosen-select']) !!}
 </div>
 
 <div class="form-group">
