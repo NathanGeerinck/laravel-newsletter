@@ -18,9 +18,9 @@ class GeneralController extends Controller
     {
         $request->user()->update($request->all());
 
-        notify()->flash($request->username, 'success', [
+        notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 2000,
-            'text' => 'Successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->back();

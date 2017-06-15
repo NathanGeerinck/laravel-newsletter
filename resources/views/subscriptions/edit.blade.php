@@ -23,11 +23,3 @@
         </div>
     </div>
 @endsection
-
-@section('javascript')
-    <script>
-        $(".chosen-select").chosen({
-            allow_single_deselect: true
-        });
-    </script>
-@endsection

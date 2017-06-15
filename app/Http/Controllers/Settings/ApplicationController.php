@@ -38,9 +38,11 @@ class ApplicationController extends Controller
             'NOTIFICATIONS' => $request->input('NOTIFICATIONS'),
         ]);
 
-        notify()->flash('Woohooo!', 'success', [
+        app()->setLocale($request->input('APP_LANGUAGE'));
+
+        notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 2000,
-            'text' => 'Settings successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('settings.application');

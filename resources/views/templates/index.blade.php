@@ -46,7 +46,7 @@
                                         <a href="{{ route('templates.show', $template) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('templates.edit', $template) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
                                         <a href="{{ route('templates.clone', $template) }}" class="btn btn-default"><i class="fa fa-clone"></i></a>
-                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="{{ trans('templates.delete') }} {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
+                                        <a class="btn btn-default" type="button" onclick="deleteEntity(this, '{{ addslashes($template->name) }}')" data-toggle="tooltip" title="{{ trans('general.delete') }} {{ addslashes($template->name) }}"><i class="fa fa-times text-danger"></i></a>
                                     </div>
                                     {!! Form::close() !!}
                                 </td>

@@ -71,14 +71,3 @@
         </div>
     </div>
 @endsection
-
-@section('javascript')
-    <script>
-        $(".chosen-select").chosen({
-            allow_single_deselect: true
-        });
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-@endsection

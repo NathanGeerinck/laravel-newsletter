@@ -35,9 +35,9 @@ class MailController extends Controller
             'MAIL_PASSWORD' => $request->input('MAIL_PASSWORD'),
         ]);
 
-        notify()->flash('Woohooo!', 'success', [
+        notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 2000,
-            'text' => 'Settings successfully updated!',
+            'text' => trans('general.success.update'),
         ]);
 
         return redirect()->route('settings.mail');

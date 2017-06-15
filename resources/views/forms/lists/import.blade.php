@@ -1,6 +1,6 @@
 <div class="form-group">
-    {!! Form::label('file', 'Choose a file (xls, xlsx and csv)', ['class' => 'control-label']) !!}
+    {!! Form::label('file', trans('lists.file'), ['class' => 'control-label']) !!}
     {!! Form::file('file', ['required']) !!}
 </div>
 
-{!! Form::submit('Import', ['class' => 'btn btn-default']) !!}
+{!! Form::submit(trans('lists.import'), ['class' => 'btn btn-default']) !!}

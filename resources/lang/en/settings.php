@@ -14,6 +14,7 @@ return [
         'notifications' => 'Notification emails',
         'registration' => 'Registration',
         'templateEditor' => 'Template editor',
+        'language' => 'Language',
     ],
 
     'mail' => [

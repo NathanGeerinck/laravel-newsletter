@@ -13,6 +13,9 @@
     <!-- Styles -->
     <link href="{{ mix('css/all.css') }}" rel="stylesheet">
 
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+
     @yield('css')
     @stack('css')
 
@@ -76,7 +79,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a href="{{ url('/logout') }}" id="logout-btn">
                                             <i class="fa fa-sign-out" aria-hidden="true"></i> {{ trans('menu.logout') }}
                                         </a>
 
@@ -92,7 +95,7 @@
             </div>
         </nav>
         <div class="container">
-            {{--<example message="Hello, I'm Nathan Geerinck and I'm testing Vue.js! I'ts awesome!"></example>--}}
+            {{--<notify message="Hello, I'm Nathan Geerinck and I'm testing Vue.js! I'ts awesome!"></notify>--}}
             @include('errors.validation_errors')
             @include('parts.success')
         </div>
@@ -100,11 +103,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ mix('js/manifest.js') }}"></script>
+    <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 
     @yield('javascript')
     @stack('javascript')
-
 </body>
 </html>

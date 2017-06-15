@@ -10,12 +10,16 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            jquery: 'jquery/src/jquery'
+        }
+    }
+});
 
-mix.js([
-    'resources/assets/js/app.js',
-    'resources/assets/js/chosen.jquery.js',
-    'resources/assets/js/sweetalert.min.js'
-], 'public/js');
+mix.js('resources/assets/js/app.js', 'public/js')
+    .extract(['vue', 'jquery', 'bootstrap-sass']);
 
 mix.styles([
     'resources/assets/css/custom.css',
@@ -23,3 +27,7 @@ mix.styles([
     'resources/assets/css/chosen.css',
     'resources/assets/css/sweetalert.css'
 ], 'public/css/all.css');
+
+if (mix.config.inProduction) {
+    mix.version();
+}

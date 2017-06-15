@@ -19,9 +19,3 @@
 </div>
 
 {!! Form::submit(trans('forms.save'), ['class' => 'btn btn-default']) !!}
-
-@section('javascript')
-    <script>
-        $(".chosen-select").chosen();
-    </script>
-@endsection

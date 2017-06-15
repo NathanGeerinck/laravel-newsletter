@@ -9,7 +9,7 @@
 
             <script src="//cdn.ckeditor.com/4.7.0/full/ckeditor.js"></script>
             <script>
-                CKEDITOR.replace( 'content' );
+                CKEDITOR.replace( '{{ $name }}' );
             </script>
 
         @endsection

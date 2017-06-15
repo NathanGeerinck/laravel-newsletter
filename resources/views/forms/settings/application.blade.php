@@ -33,12 +33,10 @@
     {!! Form::select('APP_EDITOR', ['textarea' => 'Textarea', 'html' => 'HTML Editor'], env('APP_EDITOR'), ['class' => 'chosen-select']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('APP_LANGUAGE', trans('settings.application.language') . ' *') !!}
+    {!! Form::select('APP_LANGUAGE', ['en' => trans('language.en'), 'nl' => trans('language.nl')], app()->getLocale(), ['class' => 'chosen-select']) !!}
+</div>
+
 {!! Form::submit(trans('forms.save'), ['class' => 'btn btn-default']) !!}
 
-@section('javascript')
-    <script>
-        $(".chosen-select").chosen({
-            allow_single_deselect: true
-        });
-    </script>
-@endsection
