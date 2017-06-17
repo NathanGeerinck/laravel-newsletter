@@ -69,5 +69,14 @@
                 </table>
             </div>
         </div>
+        @if($campaign->send == 1)
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ trans('campaigns.stats') }}</div>
+                <div class="panel-body">
+                    <chartjs-bar :labels="['happy','myhappy','hello']" :data="[100,40,60]"></chartjs-bar>
+
+                </div>
+            </div>
+        @endif
     </div>
 @endsection

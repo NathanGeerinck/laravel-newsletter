@@ -18,8 +18,7 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .extract(['vue', 'jquery', 'bootstrap-sass']);
+mix.js('resources/assets/js/app.js', 'public/js');
 
 mix.styles([
     'resources/assets/css/custom.css',

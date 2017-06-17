@@ -10,4 +10,6 @@ return [
 
     'send.message' => 'You\'re sending this campaign to <b>:count</b> recipients',
     'send.success' => 'Successfully send :name to :subscribers recipients!',
+
+    'stats' => 'Statistics',
 ];

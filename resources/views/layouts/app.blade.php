@@ -13,9 +13,6 @@
     <!-- Styles -->
     <link href="{{ mix('css/all.css') }}" rel="stylesheet">
 
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-
     @yield('css')
     @stack('css')
 

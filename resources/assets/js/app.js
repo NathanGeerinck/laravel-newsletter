@@ -6,10 +6,14 @@
 
 require('./bootstrap');
 require('./chosen.jquery');
+require('chart.js');
+require('hchs-vue-charts');
 
 window.swal = require('./sweetalert.min');
 
 var Vue = require('vue');
+
+Vue.use(VueCharts);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
