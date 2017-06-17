@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App;
 use App\Http\Requests\ApplicationSettingsUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,9 +37,8 @@ class ApplicationController extends Controller
             'APP_REGISTER' => $request->input('APP_REGISTER'),
             'APP_EDITOR' => $request->input('APP_EDITOR'),
             'NOTIFICATIONS' => $request->input('NOTIFICATIONS'),
+            'APP_LOCALE' => $request->input('APP_LANGUAGE'),
         ]);
-
-        app()->setLocale($request->input('APP_LANGUAGE'));
 
         notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 2000,

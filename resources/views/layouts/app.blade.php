@@ -92,7 +92,6 @@
             </div>
         </nav>
         <div class="container">
-            {{--<notify message="Hello, I'm Nathan Geerinck and I'm testing Vue.js! I'ts awesome!"></notify>--}}
             @include('errors.validation_errors')
             @include('parts.success')
         </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('lists.show') . ' ' . $list->name)
+@section('title', trans('lists.show') . ': ' . $list->name)
 
 @section('content')
     <div class="container">
