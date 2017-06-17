@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed subscriptions
  * @property mixed subject
  * @property mixed template
+ * @property mixed id
  */
 class Campaign extends Model
 {
@@ -36,6 +37,11 @@ class Campaign extends Model
     public function template()
     {
         return $this->belongsTo(Template::class);
+    }
+
+    public function emails()
+    {
+        return $this->hasMany(Email::class);
     }
 
     public function scopeNotSent($query)

@@ -20,7 +20,7 @@
         "graham-campbell/markdown": "^7.1",
         "laravel/tinker": "~1.0",
         "pragmarx/google2fa": "^1.0",
-        "jdavidbakr/mail-tracker": "2.1"
+        "jdavidbakr/mail-tracker": "~2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

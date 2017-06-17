@@ -13,7 +13,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-
+        'jdavidbakr\MailTracker\Events\EmailSentEvent' => [
+            'App\Listeners\EmailSent',
+        ],
+        'jdavidbakr\MailTracker\Events\ViewEmailEvent' => [
+            'App\Listeners\EmailViewed',
+        ],
+        'jdavidbakr\MailTracker\Events\LinkClickedEvent' => [
+          'App\Listeners\EmailClicked',
+        ],
     ];
 
     /**

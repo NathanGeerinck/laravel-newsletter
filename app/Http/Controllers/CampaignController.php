@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Email;
 use App\Models\Template;
 use App\Jobs\SendCampaign;
 use App\Models\MailingList;
@@ -41,7 +42,12 @@ class CampaignController extends Controller
 
         $subscriptions = $campaign->getSubscriptions();
 
-        return view('campaigns.show', compact('campaign', 'mailingLists', 'subscriptions'));
+        $opens = Email::where('campaign_id', $campaign->id)->opened()->count();
+        $total = Email::where('campaign_id', $campaign->id)->count();
+
+        $opensData = [$opens, ($total - $opens)];
+
+        return view('campaigns.show', compact('campaign', 'mailingLists', 'subscriptions', 'opensData'));
     }
 
     /**

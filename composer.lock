@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "adfb56846ed43e72f589b620cbb4bf9d",
+    "content-hash": "33d5d3ef876061e5dcd7c37f14068a8b",
     "packages": [
         {
             "name": "aws/aws-php-sns-message-validator",
@@ -59,16 +59,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.29.3",
+            "version": "3.29.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "f375f08b77da1a1dbf68e4a0384d65e7d9018639"
+                "reference": "76540001ff938c072db5367a7c945296984b999b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/f375f08b77da1a1dbf68e4a0384d65e7d9018639",
-                "reference": "f375f08b77da1a1dbf68e4a0384d65e7d9018639",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/76540001ff938c072db5367a7c945296984b999b",
+                "reference": "76540001ff938c072db5367a7c945296984b999b",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-06-12T23:32:58+00:00"
+            "time": "2017-06-16T17:29:33+00:00"
         },
         {
             "name": "aws/aws-sdk-php-laravel",
@@ -861,16 +861,16 @@
         },
         {
             "name": "jdavidbakr/mail-tracker",
-            "version": "2.1.0",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jdavidbakr/mail-tracker.git",
-                "reference": "cc85e91561f7059a305bc7561f8e25fab54efc08"
+                "reference": "2e46aab85cb7c52da41a0b03a1067f9452b39760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jdavidbakr/mail-tracker/zipball/cc85e91561f7059a305bc7561f8e25fab54efc08",
-                "reference": "cc85e91561f7059a305bc7561f8e25fab54efc08",
+                "url": "https://api.github.com/repos/jdavidbakr/mail-tracker/zipball/2e46aab85cb7c52da41a0b03a1067f9452b39760",
+                "reference": "2e46aab85cb7c52da41a0b03a1067f9452b39760",
                 "shasum": ""
             },
             "require": {
@@ -882,6 +882,7 @@
                 "php": "~5.5|~7.0"
             },
             "require-dev": {
+                "orchestra/testbench-browser-kit": "~3.0",
                 "phpunit/phpunit": "4.*",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "~2.3"
@@ -918,7 +919,7 @@
                 "MailTracker",
                 "jdavidbakr"
             ],
-            "time": "2016-11-15T23:01:21+00:00"
+            "time": "2017-05-01T15:21:30+00:00"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -980,16 +981,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.4.25",
+            "version": "v5.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "6bcc9b1f542b3deed16d51f6aa1fe318ab407c2a"
+                "reference": "66f5e1b37cbd66e730ea18850ded6dc0ad570404"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/6bcc9b1f542b3deed16d51f6aa1fe318ab407c2a",
-                "reference": "6bcc9b1f542b3deed16d51f6aa1fe318ab407c2a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/66f5e1b37cbd66e730ea18850ded6dc0ad570404",
+                "reference": "66f5e1b37cbd66e730ea18850ded6dc0ad570404",
                 "shasum": ""
             },
             "require": {
@@ -1105,7 +1106,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-06-07T13:35:12+00:00"
+            "time": "2017-06-15T19:08:25+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -3464,6 +3465,54 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "jeylabs/mail-tracker",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeylabs/mail-tracker.git",
+                "reference": "8080df98cc542652ca1ebb56ffdac2011ef39c88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeylabs/mail-tracker/zipball/8080df98cc542652ca1ebb56ffdac2011ef39c88",
+                "reference": "8080df98cc542652ca1ebb56ffdac2011ef39c88",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-php-sns-message-validator": "^1.1",
+                "aws/aws-sdk-php-laravel": "~3.0",
+                "guzzlehttp/guzzle": "^5.3.1|^6.2.1",
+                "illuminate/support": "~5.1",
+                "laravel/framework": ">=5.3.23",
+                "php": "~5.5|~7.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Jeylabs\\MailTracker\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jeylabs",
+                    "email": "ratheep.ceymplon@jeylabs.com",
+                    "homepage": "https://jeylabs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MailTracker will hook into all outgoing emails from Laravel and inject a tracking code into it. It will also store the rendered email in the database. There is also an interface to view sent emails.",
+            "keywords": [
+                "jeylabs",
+                "laravel",
+                "mail-tracker"
+            ],
+            "time": "2017-06-12T17:25:00+00:00"
         },
         {
             "name": "laracasts/generators",

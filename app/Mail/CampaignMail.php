@@ -45,7 +45,10 @@ class CampaignMail extends Mailable implements ShouldQueue
                     '%country%' => countries($this->subscription->country),
                     '%unsubscribe_link%' => route('subscriptions.preunsubscribe', [$this->subscription->email, $this->subscription->unsubscribe])
                 ], $this->template->content)
-            ]);
+            ])->withSwiftMessage(function ($message) {
+                $headers = $message->getHeaders();
+                $headers->addTextHeader('X-Campaign-ID', $this->campaign->id);
+            });
     }
 
     public function str_replace_dynamic(array $replace, $string)
