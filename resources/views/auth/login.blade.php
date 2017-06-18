@@ -66,7 +66,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    {{ trans('auth.forgot?') }}
+                                    {{ trans('auth.forgot') }}
                                 </a>
                             </div>
                         </div>
