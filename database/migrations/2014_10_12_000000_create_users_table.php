@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('google2fa_secret')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
