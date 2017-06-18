@@ -4,7 +4,8 @@ Laravel Newsletter is an application that can be used for sending newsletters to
 
 ## Installation
 1. Unzip the documents
-2. Run 'composer install'
+2. Run `composer install`
+3. Run `npm install`
 3. Create the database and fill out the credentials in the .ENV file
 4. Configure your [Queue](https://laravel.com/docs/5.3/queues) and [Command Schedule](https://laravel.com/docs/5.3/scheduling#introduction)
 5. Run the migrations (php artisan migrate)
