@@ -36850,12 +36850,12 @@ exports.mixins = _index2.default;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(316);
 __webpack_require__(317);
 
 window.swal = __webpack_require__(318);
 
 var Vue = __webpack_require__(10);
+__webpack_require__(316);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -36871,16 +36871,16 @@ var app = new Vue({
     el: '#app'
 });
 
-// Tooltips
-$("[data-toggle='tooltip']").tooltip({ container: "body" });
-
-// Popovers
-$("[data-toggle='popover']").popover();
-
-// Chosen select
-$(".chosen-select").chosen({ allow_single_deselect: true });
-
 $(document).ready(function () {
+    // Tooltips
+    $("[data-toggle='tooltip']").tooltip({ container: "body" });
+
+    // Popovers
+    $("[data-toggle='popover']").popover();
+
+    // Chosen select
+    $(".chosen-select").chosen({ allow_single_deselect: true });
+
     // Logout button > navigation
     var logout = $('#logout-btn');
     logout.on('click', function (e) {

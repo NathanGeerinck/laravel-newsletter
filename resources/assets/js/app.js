@@ -4,12 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
 require('./chosen.jquery');
 
 window.swal = require('./sweetalert.min');
 
 var Vue = require('vue');
+require('./bootstrap');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -25,16 +25,16 @@ const app = new Vue({
     el: '#app'
 });
 
-// Tooltips
-$("[data-toggle='tooltip']").tooltip({container:"body"});
-
-// Popovers
-$("[data-toggle='popover']").popover();
-
-// Chosen select
-$(".chosen-select").chosen({ allow_single_deselect: true });
-
 $(document).ready( function() {
+    // Tooltips
+    $("[data-toggle='tooltip']").tooltip({container:"body"});
+
+    // Popovers
+    $("[data-toggle='popover']").popover();
+
+    // Chosen select
+    $(".chosen-select").chosen({ allow_single_deselect: true });
+
     // Logout button > navigation
     let logout = $('#logout-btn');
     logout.on('click', function(e) {

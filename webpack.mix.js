@@ -18,7 +18,8 @@ mix.webpackConfig({
     }
 });
 
-mix.js('resources/assets/js/app.js', 'public/js');
+mix.js('resources/assets/js/app.js', 'public/js')
+    .extract(['vue', 'jquery', 'bootstrap-sass', 'axios', 'chart.js', 'vue-chartjs']);
 
 mix.styles([
     'resources/assets/css/custom.css',
