@@ -6,14 +6,10 @@
 
 require('./bootstrap');
 require('./chosen.jquery');
-require('chart.js');
-require('hchs-vue-charts');
 
 window.swal = require('./sweetalert.min');
 
 var Vue = require('vue');
-
-Vue.use(VueCharts);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,7 +17,9 @@ Vue.use(VueCharts);
  * the application, or feel free to tweak this setup for your needs.
 */
 
-Vue.component('notify', require('./components/Notify.vue'));
+Vue.component('line-chart', require('./components/LineChart.vue'));
+Vue.component('bar-chart', require('./components/BarChart.vue'));
+Vue.component('pie-chart', require('./components/PieChart.vue'));
 
 const app = new Vue({
     el: '#app'

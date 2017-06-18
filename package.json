@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "hchs-vue-charts": "^1.2.8"
+    "chart.js": "^2.6.0",
+    "vue-chartjs": "^2.6.5"
   }
 }

@@ -24,23 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $opens = SentEmail::selectRaw('MONTH(created_at) as month, sum(opens) as opens')
-            ->groupBy('month')
-            ->pluck('opens', 'month');
-
-//        dd($opens);
-
-        Email::create([
-            'campaign_id' => 1,
-            'message_id' => '20'
-        ]);
-
-//        $mails = SentEmail::where('id', 38)->get();
-
-//        $mails->getHeader('campaign_id');
-
-        dd($this->getHeader('campaign_id', SentEmail::where('id', 38)->pluck('headers')));
-
-        return view('home', compact('opens'));
+        return view('home');
     }
 }

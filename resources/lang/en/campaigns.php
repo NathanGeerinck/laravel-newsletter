@@ -12,4 +12,10 @@ return [
     'send.success' => 'Successfully send :name to :subscribers recipients!',
 
     'stats' => 'Statistics',
+    'stats.opens' => 'Opens',
+    'stats.opened' => 'Opened',
+    'stats.unopened' => 'Unopened',
+    'stats.clicks' => 'Clicks',
+    'stats.clicked' => 'Clicked',
+    'stats.notClicked' => 'Not clicked',
 ];

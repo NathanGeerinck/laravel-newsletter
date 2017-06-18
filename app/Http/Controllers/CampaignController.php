@@ -42,12 +42,7 @@ class CampaignController extends Controller
 
         $subscriptions = $campaign->getSubscriptions();
 
-        $opens = Email::where('campaign_id', $campaign->id)->opened()->count();
-        $total = Email::where('campaign_id', $campaign->id)->count();
-
-        $opensData = [$opens, ($total - $opens)];
-
-        return view('campaigns.show', compact('campaign', 'mailingLists', 'subscriptions', 'opensData'));
+        return view('campaigns.show', compact('campaign', 'mailingLists', 'subscriptions'));
     }
 
     /**
