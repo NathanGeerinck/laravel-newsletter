@@ -144,9 +144,9 @@ class CampaignController extends Controller
     public function send(Campaign $campaign)
     {
         $campaign->load('template', 'mailingLists.subscriptions');
-        $subscriptions = $campaign->getSubscriptions();
+//        $subscriptions = $campaign->getSubscriptions();
 
-        $this->dispatch(new SendCampaign($subscriptions, $campaign, $campaign->template));
+        $this->dispatch(new SendCampaign($campaign, $campaign->template));
 
         notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 3500,
