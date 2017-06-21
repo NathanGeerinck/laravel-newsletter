@@ -6,6 +6,7 @@ use App\Mail\CampaignMail;
 use App\Mail\CampaignSendMail;
 use App\Models\Campaign;
 use App\Models\Template;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Queue\SerializesModels;
@@ -17,22 +18,24 @@ use Mail;
  * @property Campaign   campaign
  * @property Template   template
  * @property Collection subscriptions
+ * @property User user
  */
 class SendCampaign implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $campaign, $subscriptions, $template;
+    protected $campaign, $user, $template;
 
     /**
      * SendCampaign constructor.
      *
-     * @param          $subscriptions
+     * @param User $user
      * @param Campaign $campaign
      * @param Template $template
      */
-    public function __construct(Campaign $campaign, Template $template)
+    public function __construct(User $user, Campaign $campaign, Template $template)
     {
+        $this->user = $user;
         $this->campaign = $campaign;
         $this->template = $template;
     }
@@ -54,7 +57,7 @@ class SendCampaign implements ShouldQueue
         $lists->each(function ($list) use ($chunk) {
             $list->subscriptions()->chunk($chunk, function ($subscriptions) {
                 $subscriptions->each(function($subscription){
-                    Mail::to($subscription)->send(new CampaignMail($subscription, $this->campaign, $this->template));
+                    Mail::to($subscription)->queue(new CampaignMail($subscription, $this->campaign, $this->template));
                 });
             });
         });
@@ -63,8 +66,7 @@ class SendCampaign implements ShouldQueue
         $this->campaign->save();
 
         if (env('NOTIFICATIONS') == true) {
-//            auth()->user()->notify(new CampaignSendNotification($this->subscriptions, $this->campaign));
-            Mail::to(auth()->user())->queue(new CampaignSendMail($this->subscriptions, $this->campaign));
+            Mail::to($this->user)->queue(new CampaignSendMail($this->campaign->getSubscriptions(), $this->campaign));
         }
     }
 }

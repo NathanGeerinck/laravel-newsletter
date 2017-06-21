@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Mail\ListImported;
 use App\Models\MailingList;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,6 +13,8 @@ use Mail;
 
 /**
  * Class ImportSubscriptions
+ * @property User user
+ * @property MailingList list
  * @package App\Jobs
  */
 class ImportSubscriptions implements ShouldQueue
@@ -21,15 +24,17 @@ class ImportSubscriptions implements ShouldQueue
     /**
      * @var MailingList
      */
-    protected $list, $results;
+    protected $user, $list, $results;
 
     /**
      * ImportSubscriptions constructor.
+     * @param User $user
      * @param MailingList $list
      * @param $results
      */
-    public function __construct(MailingList $list, $results)
+    public function __construct(User $user, MailingList $list, $results)
     {
+        $this->user = $user;
         $this->list = $list;
         $this->results = $results;
     }
@@ -41,7 +46,7 @@ class ImportSubscriptions implements ShouldQueue
         }
 
         if(env('NOTIFICATIONS') == true) {
-            Mail::to(auth()->user())->queue(new ListImported($this->list));
+            Mail::to($this->user)->queue(new ListImported($this->list));
         }
     }
 }

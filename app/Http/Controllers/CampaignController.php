@@ -144,13 +144,12 @@ class CampaignController extends Controller
     public function send(Campaign $campaign)
     {
         $campaign->load('template', 'mailingLists.subscriptions');
-//        $subscriptions = $campaign->getSubscriptions();
 
-        $this->dispatch(new SendCampaign($campaign, $campaign->template));
+        $this->dispatch(new SendCampaign(auth()->user(), $campaign, $campaign->template));
 
         notify()->flash(trans('general.woohoo'), 'success', [
             'timer' => 3500,
-            'text' => trans('campaigns.send.success', ['name' => $campaign->name, 'subscribers' => $subscriptions->count()]),
+            'text' => trans('campaigns.send.success', ['name' => $campaign->name, 'subscribers' => $campaign->getSubscriptions()->count()]),
         ]);
 
         return redirect()->route('campaigns.index');

@@ -141,7 +141,7 @@ class MailingListController extends Controller
 
             $results = Excel::load($file)->toArray();
 
-            $this->dispatch(new ImportSubscriptions($list, $results));
+            $this->dispatch(new ImportSubscriptions(auth()->user(), $list, $results));
 
             notify()->flash('Wohoo!', 'success', [
                 'timer' => 2000,
