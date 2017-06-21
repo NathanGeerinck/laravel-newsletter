@@ -12,7 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  * @param $subscriptions
  * @property Campaign campaign
  */
-class CampaignSend extends Mailable
+class CampaignSendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,7 +31,7 @@ class CampaignSend extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.campaigns.send')
+        return $this->markdown('emails.campaigns.send', ['campaign' => $this->campaign->name, 'subscribers' => count($this->subscriptions)])
             ->subject(trans('emails.campaigns.send.subject'));
     }
 }

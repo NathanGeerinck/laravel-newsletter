@@ -12,7 +12,7 @@ return [
             'email' => 'Van (e-mail)',
         ],
         'notifications' => 'Notificatie e-mails',
-        'registration' => 'Registratie',
+        'registration' => 'Registratie toestaan',
         'templateEditor' => 'Template editor',
         'language' => 'Taal',
     ],

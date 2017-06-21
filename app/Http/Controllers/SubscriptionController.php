@@ -64,20 +64,6 @@ class SubscriptionController extends Controller
     }
 
     /**
-     * @param $email
-     * @param $unsubscribe
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function preUnsubscribe($email, $unsubscribe)
-    {
-        $subscription = Subscription::whereEmail($email)->whereUnsubscribe($unsubscribe)->first();
-
-        abort_unless($subscription, 404);
-
-        return view('subscriptions.unsubscribe', compact('subscription'));
-    }
-
-    /**
      * @param SubscriptionsCreateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -124,22 +110,6 @@ class SubscriptionController extends Controller
         ]);
 
         return redirect()->route('subscriptions.index');
-    }
-
-    /**
-     * @param Subscription $subscription
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function unsubscribe(Subscription $subscription)
-    {
-        $subscription->delete();
-
-        notify()->flash(trans('general.woohoo'), 'success', [
-            'timer' => 3500,
-            'text' => trans('subscriptions.unsubscribe.success'),
-        ]);
-
-        return redirect()->route('index');
     }
 
     /**

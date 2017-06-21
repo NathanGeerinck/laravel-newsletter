@@ -12,7 +12,7 @@ return [
             'email' => 'From (email)',
         ],
         'notifications' => 'Notification emails',
-        'registration' => 'Registration',
+        'registration' => 'Allow registration',
         'templateEditor' => 'Template editor',
         'language' => 'Language',
     ],
