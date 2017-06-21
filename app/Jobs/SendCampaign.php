@@ -26,14 +26,14 @@ class SendCampaign implements ShouldQueue
 
     /**
      * SendCampaign constructor.
-     * @param $subscriptions
+     *
+     * @param          $subscriptions
      * @param Campaign $campaign
      * @param Template $template
      */
-    public function __construct($subscriptions, Campaign $campaign, Template $template)
+    public function __construct(Campaign $campaign, Template $template)
     {
         $this->campaign = $campaign;
-        $this->subscriptions = $subscriptions;
         $this->template = $template;
     }
 
@@ -44,14 +44,25 @@ class SendCampaign implements ShouldQueue
      */
     public function handle()
     {
-        foreach ($this->subscriptions as $subscription) {
-            Mail::to($subscription)->send(new CampaignMail($subscription, $this->campaign, $this->template));
-        }
+        $lists = $this->campaign
+            ->mailingLists()
+            ->with('subscriptions')
+            ->get();
+
+        $chunk = ceil($lists->count() / 4);
+
+        $lists->each(function ($list) use ($chunk) {
+            $list->subscriptions()->chunk($chunk, function ($subscriptions) {
+                $subscriptions->each(function($subscription){
+                    Mail::to($subscription)->send(new CampaignMail($subscription, $this->campaign, $this->template));
+                });
+            });
+        });
 
         $this->campaign->send = 1;
         $this->campaign->save();
 
-        if(env('NOTIFICATIONS') == true) {
+        if (env('NOTIFICATIONS') == true) {
 //            auth()->user()->notify(new CampaignSendNotification($this->subscriptions, $this->campaign));
             Mail::to(auth()->user())->queue(new CampaignSendMail($this->subscriptions, $this->campaign));
         }
