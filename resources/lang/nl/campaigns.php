@@ -16,7 +16,7 @@ return [
     'stats.opened' => 'Geopend',
     'stats.unopened' => 'Niet geopend',
     'stats.clicks' => 'Kliks',
-    'stats.clicked' => 'geklikt',
+    'stats.clicked' => 'Geklikt',
     'stats.notClicked' => 'Niet geklikt',
 
 ];

@@ -30,8 +30,6 @@ class ApplicationSettingsUpdateRequest extends FormRequest
             'APP_FROM' => 'required|min:3|max:55',
             'APP_REGISTER' => 'required',
             'APP_EDITOR' => 'required',
-            'NOTIFICATIONS' => 'required',
-            'APP_LANGUAGE' => 'required',
         ];
     }
 }

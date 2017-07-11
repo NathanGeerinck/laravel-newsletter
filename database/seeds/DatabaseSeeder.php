@@ -18,11 +18,20 @@ class DatabaseSeeder extends Seeder
             'username' => 'John',
             'email' => 'john.doe@gmail.com',
             'password' => bcrypt('test123'),
+            'language' => 'nl',
+            'notifications' => true,
         ]);
 
         \App\Models\MailingList::create([
             'name' => 'Awesome newsfeed',
             'description' => 'This is a the mailinglist of the Awesome Newsfeed!',
+            'user_id' => 1,
+            'public' => 1,
+        ]);
+
+        \App\Models\MailingList::create([
+            'name' => 'Überawesome newsfeed',
+            'description' => 'This is a the mailinglist of the Überawesome Newsfeed!',
             'user_id' => 1,
             'public' => 1,
         ]);
@@ -61,6 +70,22 @@ class DatabaseSeeder extends Seeder
             'email' => 'tim.doe@gmail.com',
             'country' => 'us',
             'mailing_list_id' => 1,
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Subscription::create([
+            'name' => 'Geoffrey Doe',
+            'email' => 'geoffrey.doe@gmail.com',
+            'country' => 'be',
+            'mailing_list_id' => 2,
+            'user_id' => 1,
+        ]);
+
+        \App\Models\Subscription::create([
+            'name' => 'Dennis Doe',
+            'email' => 'dennis.doe@gmail.com',
+            'country' => 'nl',
+            'mailing_list_id' => 2,
             'user_id' => 1,
         ]);
     }

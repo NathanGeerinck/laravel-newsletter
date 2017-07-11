@@ -11,10 +11,8 @@ return [
             'name' => 'From (name)',
             'email' => 'From (email)',
         ],
-        'notifications' => 'Notification emails',
         'registration' => 'Allow registration',
         'templateEditor' => 'Template editor',
-        'language' => 'Language',
     ],
 
     'mail' => [

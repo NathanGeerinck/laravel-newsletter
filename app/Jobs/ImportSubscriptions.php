@@ -45,7 +45,7 @@ class ImportSubscriptions implements ShouldQueue
             $this->list->subscriptions()->create($result);
         }
 
-        if(env('NOTIFICATIONS') == true) {
+        if($this->user->notifications == true) {
             Mail::to($this->user)->queue(new ListImported($this->list));
         }
     }

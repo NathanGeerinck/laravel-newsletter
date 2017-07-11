@@ -11,10 +11,8 @@ return [
             'name' => 'Van (naam)',
             'email' => 'Van (e-mail)',
         ],
-        'notifications' => 'Notificatie e-mails',
         'registration' => 'Registratie toestaan',
         'templateEditor' => 'Template editor',
-        'language' => 'Taal',
     ],
 
     'mail' => [
