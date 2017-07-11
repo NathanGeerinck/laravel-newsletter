@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('language')->default('en');
-            $table->tinyInteger('notifications')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

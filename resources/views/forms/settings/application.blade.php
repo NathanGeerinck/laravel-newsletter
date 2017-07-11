@@ -19,6 +19,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('NOTIFICATIONS', trans('settings.application.notifications') . ' *') !!}
+    {!! Form::select('NOTIFICATIONS', ['false' => 'No', 'true' => 'Yes'], (env('NOTIFICATIONS') == 1) ? 'true' : 'false', ['class' => 'chosen-select']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('APP_REGISTER', trans('settings.application.registration') . ' *') !!}
     {!! Form::select('APP_REGISTER', ['false' => 'No', 'true' => 'Yes'], (env('APP_REGISTER') == 1) ? 'true' : 'false', ['class' => 'chosen-select']) !!}
 </div>
@@ -26,6 +31,11 @@
 <div class="form-group">
     {!! Form::label('APP_EDITOR', trans('settings.application.templateEditor') . ' *') !!}
     {!! Form::select('APP_EDITOR', ['textarea' => 'Textarea', 'html' => 'HTML Editor'], env('APP_EDITOR'), ['class' => 'chosen-select']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('APP_LANGUAGE', trans('settings.application.language') . ' *') !!}
+    {!! Form::select('APP_LANGUAGE', ['en' => trans('language.en'), 'nl' => trans('language.nl')], app()->getLocale(), ['class' => 'chosen-select']) !!}
 </div>
 
 {!! Form::submit(trans('forms.save'), ['class' => 'btn btn-default']) !!}

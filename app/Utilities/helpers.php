@@ -276,8 +276,3 @@ function countries($key = null)
 
     return $arr;
 }
-
-function carbon($time = null, $tz = null)
-{
-    return app(\Carbon\Carbon::class, [$time, $tz]);
-}

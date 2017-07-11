@@ -7,8 +7,6 @@ return [
         'name' => 'General',
         'full_name' => 'Name',
         'email' => 'Email',
-        'language' => 'Language',
-        'notifications' => 'Notification emails',
     ],
 
     'password' => [

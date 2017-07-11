@@ -73,7 +73,7 @@ class SubscriptionController extends Controller
 
         notify()->flash($subscription->email, 'success', [
             'timer' => 2000,
-            'text' => trans('general.success.create'),
+            'text' => trans('general.success.created'),
         ]);
 
         return redirect()->route('subscriptions.index');

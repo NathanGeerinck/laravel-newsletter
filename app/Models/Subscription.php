@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed mailingList
  * @property mixed country
  * @property mixed unsubscribe
- * @property mixed mailing_list_id
  */
 class Subscription extends Model
 {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('subscriptions.index') . ' (' . $subscriptions->count() . ')')
+@section('title', trans('subscriptions.index') . ' (' . $subscriptions->total() . ')')
 
 @section('content')
     <div class="container">
