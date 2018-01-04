@@ -1,6 +1,6 @@
 # Laravel Newsletter
 
-Laravel Newsletter is an application that can be used for sending newsletters to multiple subscribers, mailing lists, ... at once. This project can be used together with free mailing applications such as MailGun.
+Laravel Newsletter is an open source project that can be used for sending newsletters to multiple subscribers, mailing lists, ... at once. This project can be used together with free mailing applications such as MailGun.
 
 ## Installation
 
@@ -48,3 +48,6 @@ If you want to use a [Queue](https://laravel.com/docs/5.3/queues), it's possible
 
 ### Finish
 Now you're ready to rock and roll! Visit the `/register` page of you're application and create an account! ;)
+
+## Contributors
+[Cannonb4ll](https://github.com/Cannonb4ll)
