@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Models\Email;
 use App\Models\Template;
 use App\Jobs\SendCampaign;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
-use jdavidbakr\MailTracker\Model\SentEmailUrlClicked;
 use Maatwebsite\Excel\Facades\Excel;
 
 /**
@@ -25,7 +23,8 @@ class CampaignController extends Controller
      */
     public function index(Request $request)
     {
-        $campaigns = Campaign::filter($request->all())
+        $campaigns = auth()->user()->campaigns()
+            ->filter($request->all())
             ->with('mailingLists')
             ->paginateFilter(15, ['id', 'name', 'send']);
 
@@ -38,6 +37,8 @@ class CampaignController extends Controller
      */
     public function show(Campaign $campaign)
     {
+        abort_unless(auth()->user() == $campaign->user, 405);
+
         $campaign->load('template', 'mailingLists.subscriptions');
 
         $subscriptions = $campaign->getSubscriptions();
@@ -71,7 +72,7 @@ class CampaignController extends Controller
     {
         abort_if($campaign->send, 404);
 
-        $campaign->load('mailingLists');
+        //$campaign->load('mailingLists');
 
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
         $templates = Template::get(['name', 'id'])->pluck('name', 'id');

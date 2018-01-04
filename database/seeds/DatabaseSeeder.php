@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'john.doe@gmail.com',
             'password' => bcrypt('test123'),
             'language' => 'nl',
-            'notifications' => true,
+            'notifications_on' => true,
         ]);
 
         \App\Models\MailingList::create([

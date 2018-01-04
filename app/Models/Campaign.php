@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed subject
  * @property mixed template
  * @property mixed id
+ * @property  user
  */
 class Campaign extends Model
 {
@@ -32,6 +33,11 @@ class Campaign extends Model
     public function mailingLists()
     {
         return $this->belongsToMany(MailingList::class)->withPivot('campaign_id', 'mailing_list_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function template()

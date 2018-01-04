@@ -28,7 +28,9 @@ class AccountGeneralUpdateRequest extends FormRequest
     {
         return [
             'username' => 'required|min:3',
-            'email' => 'required'
+            'email' => 'required',
+            'notifications_on' => 'required',
+            'language' => 'required',
         ];
     }
 }

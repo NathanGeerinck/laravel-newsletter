@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
-use PragmaRX\Google2FA\Google2FA;
 
 /**
  * @property mixed notifications
@@ -24,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
         'language',
-        'notifications',
+        'notifications_on',
     ];
 
     /**

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('language')->default('en');
-            $table->tinyInteger('notifications')->default(true);
+            $table->tinyInteger('notifications_on')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
