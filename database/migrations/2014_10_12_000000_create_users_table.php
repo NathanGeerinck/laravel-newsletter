@@ -20,8 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+<<<<<<< HEAD
             $table->string('language')->default('en');
             $table->tinyInteger('notifications_on')->default(true);
+=======
+>>>>>>> b0e1377f1ad00213e56fe3570925e8f049a4895a
             $table->rememberToken();
             $table->timestamps();
         });

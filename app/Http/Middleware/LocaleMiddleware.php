@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
 
 class LocaleMiddleware
@@ -18,17 +17,8 @@ class LocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-//        $user = Auth::user();
-//
-//        dd($user);
-//
-//        if ($user) {
-//            app()->setLocale($user->language);
-//        }
-//
-//        app()->setLocale('');
-//        Carbon::setLocale('');
-//
+        app()->setLocale(env('APP_LOCALE'));
+
         return $next($request);
     }
 }

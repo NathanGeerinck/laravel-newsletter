@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+<<<<<<< HEAD
 use Laravel\Passport\HasApiTokens;
+=======
+use PragmaRX\Google2FA\Google2FA;
+>>>>>>> b0e1377f1ad00213e56fe3570925e8f049a4895a
 
 /**
- * @property mixed notifications
+ * @property mixed google2fa_secret
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,8 +26,11 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+<<<<<<< HEAD
         'language',
         'notifications_on',
+=======
+>>>>>>> b0e1377f1ad00213e56fe3570925e8f049a4895a
     ];
 
     /**
@@ -66,5 +73,27 @@ class User extends Authenticatable
     public function campaigns()
     {
         return $this->hasMany(Campaign::class);
+    }
+
+    public function generate2faKey()
+    {
+        if (!$this->google2fa_secret) {
+            $google2fa = new Google2FA();
+
+            $this->google2fa_secret = $google2fa->generateSecretKey();
+            $this->save();
+        }
+    }
+
+    public function verifyKey($secret)
+    {
+        $google2fa = new Google2FA();
+
+        return $google2fa->verifyKey($this->google2fa_secret, $secret);
+    }
+
+    public function twoFactorBackupCodes()
+    {
+        return $this->hasMany(TwofactorBackupCodes::class, 'user_id');
     }
 }

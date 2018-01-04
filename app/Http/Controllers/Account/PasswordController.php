@@ -32,7 +32,7 @@ class PasswordController extends Controller
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
 
-        if($user->notifications == true) {
+        if(env('NOTIFICATIONS') == true) {
             Mail::to($user)->queue(new PasswordUpdated());
         }
 

@@ -75,7 +75,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ trans('campaigns.stats') }}: {{ trans('campaigns.stats.opens') }} ({{ ($campaign->emails()->opened()->count()/$campaign->emails()->count())*100 }}%)</div>
                         <div class="panel-body">
-                            <pie-chart height="250px" :values="[{{ $campaign->emails()->opened()->count() }}, {{ $campaign->emails()->unOpened()->count() }}]" :keys="['{{ trans('campaigns.stats.opened') }}', '{{ trans('campaigns.stats.unopened') }}']"></pie-chart>
+                            <pie-chart :values="[{{ $campaign->emails()->opened()->count() }}, {{ $campaign->emails()->unOpened()->count() }}]" :keys="['{{ trans('campaigns.stats.opened') }}', '{{ trans('campaigns.stats.unopened') }}']"></pie-chart>
                         </div>
                     </div>
                 </div>
@@ -83,9 +83,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">{{ trans('campaigns.stats') }}: {{ trans('campaigns.stats.clicks') }}</div>
                         <div class="panel-body">
-                            <pie-chart height="250px"  :values="[{{ $campaign->emails()->clicked()->count() }}, {{ $campaign->emails()->notClicked()->count() }}]" :keys="['{{ trans('campaigns.stats.clicked') }}', '{{ trans('campaigns.stats.notClicked') }}']"></pie-chart>
+                            <pie-chart :values="[{{ $campaign->emails()->clicked()->count() }}, {{ $campaign->emails()->notClicked()->count() }}]" :keys="['{{ trans('campaigns.stats.clicked') }}', '{{ trans('campaigns.stats.notClicked') }}']"></pie-chart>
                         </div>
                     </div>
+
                 </div>
             </div>
         @endif

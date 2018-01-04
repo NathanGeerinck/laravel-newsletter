@@ -36,6 +36,8 @@ class ApplicationController extends Controller
             'APP_FROM' => '"' . $request->input('APP_FROM') . '"',
             'APP_REGISTER' => $request->input('APP_REGISTER'),
             'APP_EDITOR' => $request->input('APP_EDITOR'),
+            'NOTIFICATIONS' => $request->input('NOTIFICATIONS'),
+            'APP_LOCALE' => $request->input('APP_LANGUAGE'),
         ]);
 
         notify()->flash(trans('general.woohoo'), 'success', [
