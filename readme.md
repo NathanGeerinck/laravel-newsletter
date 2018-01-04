@@ -49,5 +49,10 @@ If you want to use a [Queue](https://laravel.com/docs/5.3/queues), it's possible
 ### Finish
 Now you're ready to rock and roll! Visit the `/register` page of you're application and create an account! ;)
 
+## Roadmap
+* Translate the application to more languages (now available: English, Dutch)
+* Email bounce tracking
+* Creating an API
+
 ## Contributors
-[Cannonb4ll](https://github.com/Cannonb4ll)
+* [Cannonb4ll](https://github.com/Cannonb4ll)
