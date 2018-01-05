@@ -25,13 +25,12 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-### Step 3 
 Once you've created the database you can migrate all the tables into your database by running:
 ```bash
 php artisan migrate
 ```
 
-### Step 4
+### Step 3
 For sending emails you need to fillout your mail credentials.. You can use a service like [MailGun](https://www.mailgun.com/). You can adjust these settings also in the `.env` file.
 ```
 MAIL_DRIVER=smtp
@@ -42,7 +41,7 @@ MAIL_PASSWORD=
 MAIL_ENCRYPTION=null
 ```
 
-### Step 5
+### Step 4
 If you want to use a [Queue](https://laravel.com/docs/5.3/queues), it's possible!
 
 
@@ -53,6 +52,9 @@ Now you're ready to rock and roll! Visit the `/register` page of you're applicat
 * Translate the application to more languages (now available: English, Dutch)
 * Email bounce tracking
 * Creating an API
+
+## License
+The larabug package is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT)
 
 ## Contributors
 * [Cannonb4ll](https://github.com/Cannonb4ll)
