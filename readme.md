@@ -54,7 +54,7 @@ Now you're ready to rock and roll! Visit the `/register` page of you're applicat
 * Creating an API
 
 ## License
-The larabug package is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT)
+The laravel-newsletter application is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT)
 
 ## Contributors
 * [Cannonb4ll](https://github.com/Cannonb4ll)
