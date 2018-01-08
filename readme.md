@@ -9,9 +9,7 @@ First of all you need to clone the repository and install it using composer.
 ```bash
 git clone git@github.com:NathanGeerinck/laravel-newsletter.git
 cd laravel-newsletter && composer install
-mv .env.example .env
-php artisan key:generate
-npm install
+php artisan laravel:newsletter-install
 ```
 
 ### Step 2
@@ -28,6 +26,11 @@ DB_PASSWORD=root
 Once you've created the database you can migrate all the tables into your database by running:
 ```bash
 php artisan migrate
+```
+
+If you want to import the demo data then you can tun:
+```bash
+php artisan laravel-newsletter:demo
 ```
 
 ### Step 3
