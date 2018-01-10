@@ -39,7 +39,7 @@ class DemoCommand extends Command
     {
         $this->line("\nImporting demo data..");
 
-        //$this->callSilent('db:seed');
+        $this->callSilent('db:seed --class=DemoSeeder');
 
         $this->line("Demo data imported.\n");
     }

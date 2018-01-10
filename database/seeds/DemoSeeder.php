@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 use Faker\Factory as Faker;
 
-class DatabaseSeeder extends Seeder
+class DemoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'John',
             'email' => 'john.doe@gmail.com',
             'password' => bcrypt('test123'),
-            'language' => 'nl',
+            'language' => 'en',
             'notifications_on' => true,
         ]);
 
