@@ -51,6 +51,8 @@ If you want to use a [Queue](https://laravel.com/docs/5.3/queues), it's possible
 ### Finish
 Now you're ready to rock and roll! Visit the `/register` page of you're application and create an account! ;)
 
+> If you ran the `php artisan laravel-newsletter:demo` command, you can login with 'john.doe@gmail.com' and 'test123'.
+
 ## Roadmap
 * Translate the application to more languages (now available: English, Dutch)
 * Email bounce tracking
