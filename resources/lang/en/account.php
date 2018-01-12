@@ -7,6 +7,7 @@ return [
         'name' => 'General',
         'full_name' => 'Name',
         'email' => 'Email',
+        'language' => 'Language',
     ],
 
     'password' => [

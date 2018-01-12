@@ -8,10 +8,10 @@
     {!! Form::email('email', null, ['class' => 'form-control']) !!}
 </div>
 
-{{--<div class="form-group">--}}
-    {{--{!! Form::label('language', trans('account.general.language') . ' *') !!}--}}
-    {{--{!! Form::select('language', ['en' => trans('language.en'), 'nl' => trans('language.nl')], null, ['class' => 'chosen-select']) !!}--}}
-{{--</div>--}}
+<div class="form-group">
+    {!! Form::label('language', trans('account.general.language') . ' *') !!}
+    {!! Form::select('language', ['en' => trans('language.en'), 'nl' => trans('language.nl')], null, ['class' => 'chosen-select']) !!}
+</div>
 
 {{--<div class="form-group">--}}
     {{--{!! Form::label('notifications_on', trans('account.general.notifications') . ' *') !!}--}}

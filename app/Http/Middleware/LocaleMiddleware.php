@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class LocaleMiddleware
 {
@@ -17,7 +18,13 @@ class LocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        app()->setLocale(env('APP_LOCALE'));
+        if (Auth::check()) {
+            $lang = Auth::user()->language;
+
+            app()->setLocale($lang);
+        } else {
+            app()->setLocale(env('APP_LOCALE'));
+        }
 
         return $next($request);
     }
