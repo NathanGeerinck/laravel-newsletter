@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed subject
  * @property mixed template
  * @property mixed id
- * @property  user
+ * @property mixed user_id
  */
 class Campaign extends Model
 {
@@ -23,7 +23,8 @@ class Campaign extends Model
         'name',
         'subject',
         'send',
-        'template_id'
+        'template_id',
+        'user_id'
     ];
 
     protected $casts = [

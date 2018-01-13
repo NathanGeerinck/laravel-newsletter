@@ -33,9 +33,12 @@ class SubscriptionController extends Controller
     /**
      * @param Subscription $subscription
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Subscription $subscription)
     {
+        $this->authorize('view', $subscription);
+
         $subscription->load('mailingList');
 
         return view('subscriptions.show', compact('subscription'));
@@ -55,9 +58,12 @@ class SubscriptionController extends Controller
     /**
      * @param Subscription $subscription
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Subscription $subscription)
     {
+        $this->authorize('update', $subscription);
+
         $lists = MailingList::get(['name', 'id'])->pluck('name', 'id');
 
         return view('subscriptions.edit', compact('subscription', 'lists'));
@@ -83,9 +89,12 @@ class SubscriptionController extends Controller
      * @param SubscriptionsUpdateRequest $request
      * @param Subscription $subscription
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(SubscriptionsUpdateRequest $request, Subscription $subscription)
     {
+        $this->authorize('update', $subscription);
+
         $subscription->update($request->all());
 
         notify()->flash($subscription->email, 'success', [
@@ -99,9 +108,12 @@ class SubscriptionController extends Controller
     /**
      * @param Subscription $subscription
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function delete(Subscription $subscription)
     {
+        $this->authorize('delete', $subscription);
+
         $subscription->delete();
 
         notify()->flash($subscription->email, 'success', [
@@ -114,10 +126,13 @@ class SubscriptionController extends Controller
 
     /**
      * @param $method
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function export($method)
     {
         $subscriptions = Subscription::all();
+
+        $this->authorize('view', $subscriptions->first());
 
         Excel::create('Newsletter Subscriptions', function ($excel) use ($subscriptions) {
             $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {

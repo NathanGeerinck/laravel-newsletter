@@ -31,9 +31,12 @@ class MailingListController extends Controller
     /**
      * @param MailingList $list
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(MailingList $list)
     {
+        $this->authorize('view', $list);
+
         $list->load('subscriptions', 'campaigns');
 
         return view('lists.show', compact('list'));
@@ -42,18 +45,24 @@ class MailingListController extends Controller
     /**
      * @param MailingList $list
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(MailingList $list)
     {
+        $this->authorize('update', $list);
+
         return view('lists.edit', compact('list'));
     }
 
     /**
      * @param MailingList $list
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function new(MailingList $list)
     {
+        $this->authorize('create', $list);
+
         return view('lists.new', compact('list'));
     }
 
@@ -86,9 +95,12 @@ class MailingListController extends Controller
      * @param MailingListUpdateRequest $request
      * @param MailingList $list
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(MailingListUpdateRequest $request, MailingList $list)
     {
+        $this->authorize('update', $list);
+
         $list->update($request->all());
 
         notify()->flash($list->name, 'success', [
@@ -102,9 +114,13 @@ class MailingListController extends Controller
     /**
      * @param MailingList $list
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function delete(MailingList $list)
     {
+        $this->authorize('delete', $list);
+
         $list->delete();
 
         notify()->flash($list->name, 'success', [
@@ -117,9 +133,12 @@ class MailingListController extends Controller
 
     /**
      * @param MailingList $list
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function export(MailingList $list)
     {
+        $this->authorize('export', $list);
+
         $subscriptions = $list->subscriptions;
 
         Excel::create('Subscriptions-' . $list->name, function ($excel) use ($subscriptions) {
@@ -133,15 +152,18 @@ class MailingListController extends Controller
      * @param Request $request
      * @param MailingList $list
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function import(Request $request, MailingList $list)
     {
+        $this->authorize('import', $list);
+
         if ($request->file('file')->isValid()) {
             $file = $request->file('file')->getRealPath();
 
             $results = Excel::load($file)->toArray();
 
-            $this->dispatch(new ImportSubscriptions(auth()->user(), $list, $results));
+            $this->dispatch(new ImportSubscriptions($request->user(), $list, $results));
 
             notify()->flash('Wohoo!', 'success', [
                 'timer' => 2000,

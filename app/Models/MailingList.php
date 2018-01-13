@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed campaigns
  * @property mixed public
  * @property mixed name
+ * @property mixed user_id
  */
 class MailingList extends Model
 {

@@ -34,10 +34,11 @@ class CampaignController extends Controller
     /**
      * @param Campaign $campaign
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Campaign $campaign)
     {
-        abort_unless(auth()->user() == $campaign->user, 405);
+        $this->authorize('view', $campaign);
 
         $campaign->load('template', 'mailingLists.subscriptions');
 
@@ -67,9 +68,12 @@ class CampaignController extends Controller
     /**
      * @param Campaign $campaign
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Campaign $campaign)
     {
+        $this->authorize('edit', $campaign);
+
         abort_if($campaign->send, 404);
 
         //$campaign->load('mailingLists');
@@ -85,9 +89,12 @@ class CampaignController extends Controller
     /**
      * @param Campaign $campaign
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function preSend(Campaign $campaign)
     {
+        $this->authorize('send', $campaign);
+
         abort_if($campaign->send, 404);
 
         $campaign->load('template', 'mailingLists.subscriptions');
@@ -121,9 +128,12 @@ class CampaignController extends Controller
      * @param CampaignUpdateRequest $request
      * @param Campaign $campaign
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(CampaignUpdateRequest $request, Campaign $campaign)
     {
+        $this->authorize('update', $campaign);
+
         $campaign->update($request->except('mailing_lists'));
 
         if ($request->get('mailing_lists')) {
@@ -141,9 +151,12 @@ class CampaignController extends Controller
     /**
      * @param Campaign $campaign
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function send(Campaign $campaign)
     {
+        $this->authorize('send', $campaign);
+
         $campaign->load('template', 'mailingLists.subscriptions');
 
         $this->dispatch(new SendCampaign(auth()->user(), $campaign, $campaign->template));
@@ -159,9 +172,13 @@ class CampaignController extends Controller
     /**
      * @param Campaign $campaign
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function delete(Campaign $campaign)
     {
+        $this->authorize('delete', $campaign);
+
         $campaign->delete();
 
         notify()->flash($campaign->name, 'success', [
@@ -174,9 +191,12 @@ class CampaignController extends Controller
 
     /**
      * @param Campaign $campaign
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function export(Campaign $campaign)
     {
+        $this->authorize('export', $campaign);
+
         $subscriptions = $campaign->getSubscriptions();
 
         Excel::create('Subscriptions-' . $campaign->name, function ($excel) use ($subscriptions) {

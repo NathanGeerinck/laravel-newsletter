@@ -9,6 +9,7 @@ use PragmaRX\Google2FA\Google2FA;
 
 /**
  * @property mixed google2fa_secret
+ * @property mixed id
  */
 class User extends Authenticatable
 {

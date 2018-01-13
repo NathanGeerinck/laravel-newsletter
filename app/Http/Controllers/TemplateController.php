@@ -28,9 +28,12 @@ class TemplateController extends Controller
     /**
      * @param Template $template
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(Template $template)
     {
+        $this->authorize('view', $template);
+
         return view('templates.show', compact('template'));
     }
 
@@ -46,9 +49,12 @@ class TemplateController extends Controller
     /**
      * @param Template $template
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Template $template)
     {
+        $this->authorize('update', $template);
+
         return view('templates.edit', compact('template'));
     }
 
@@ -84,9 +90,12 @@ class TemplateController extends Controller
      * @param TemplateUpdateRequest $request
      * @param Template $template
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(TemplateUpdateRequest $request, Template $template)
     {
+        $this->authorize('update', $template);
+
         $template->update([
             'name' => $request->input('name'),
             'content' => $request->input('content'),
@@ -103,9 +112,13 @@ class TemplateController extends Controller
     /**
      * @param Template $template
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Exception
      */
     public function delete(Template $template)
     {
+        $this->authorize('delete', $template);
+
         $template->delete();
 
         notify()->flash($template->name, 'success', [
