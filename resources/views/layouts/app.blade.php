@@ -13,7 +13,6 @@
     <!-- Styles -->
     <link href="{{ mix('css/all.css') }}" rel="stylesheet">
 
-    @yield('css')
     @stack('css')
 
     <script src="https://use.fontawesome.com/16eefa3c87.js"></script>
@@ -103,7 +102,6 @@
     <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 
-    @yield('javascript')
     @stack('javascript')
 </body>
 </html>
