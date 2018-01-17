@@ -2,17 +2,17 @@
 
 namespace App\Jobs;
 
-use App\Mail\CampaignMail;
-use App\Mail\CampaignSendMail;
+use Mail;
+use App\Models\User;
 use App\Models\Campaign;
 use App\Models\Template;
-use App\Models\User;
+use App\Mail\CampaignMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Database\Eloquent\Collection;
+use App\Mail\CampaignSendMail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Mail;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * @property Campaign   campaign
@@ -24,7 +24,9 @@ class SendCampaign implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $campaign, $user, $template;
+    protected $campaign;
+    protected $user;
+    protected $template;
 
     /**
      * SendCampaign constructor.
@@ -56,7 +58,7 @@ class SendCampaign implements ShouldQueue
 
         $lists->each(function ($list) use ($chunk) {
             $list->subscriptions()->chunk($chunk, function ($subscriptions) {
-                $subscriptions->each(function($subscription){
+                $subscriptions->each(function ($subscription) {
                     Mail::to($subscription)->queue(new CampaignMail($subscription, $this->campaign, $this->template));
                 });
             });

@@ -6,7 +6,6 @@ use App\Models\Campaign;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * @param $subscriptions
@@ -16,7 +15,8 @@ class CampaignSendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subscriptions, $campaign;
+    public $subscriptions;
+    public $campaign;
 
     public function __construct($subscriptions, Campaign $campaign)
     {

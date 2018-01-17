@@ -7,13 +7,12 @@ use App\Models\Template;
 use App\Jobs\SendCampaign;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
-use Maatwebsite\Excel\Facades\Excel;
 
 /**
- * Class CampaignController
- * @package App\Http\Controllers
+ * Class CampaignController.
  */
 class CampaignController extends Controller
 {
@@ -199,7 +198,7 @@ class CampaignController extends Controller
 
         $subscriptions = $campaign->getSubscriptions();
 
-        Excel::create('Subscriptions-' . $campaign->name, function ($excel) use ($subscriptions) {
+        Excel::create('Subscriptions-'.$campaign->name, function ($excel) use ($subscriptions) {
             $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
                 $sheet->fromArray($subscriptions);
             });

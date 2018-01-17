@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Http\Requests\AccountPasswordUpdateRequest;
-use App\Http\Controllers\Controller;
-use App\Mail\PasswordUpdated;
 use Hash;
 use Mail;
+use App\Mail\PasswordUpdated;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AccountPasswordUpdateRequest;
 
 class PasswordController extends Controller
 {
@@ -24,7 +24,7 @@ class PasswordController extends Controller
     {
         $check = Hash::check($request->input('old_password'), auth()->user()->password);
 
-        if (!$check) {
+        if (! $check) {
             return redirect()->back()->withErrors(['Your current password is incorrect!']);
         }
 
@@ -32,7 +32,7 @@ class PasswordController extends Controller
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
 
-        if(env('NOTIFICATIONS') == true) {
+        if (env('NOTIFICATIONS') == true) {
             Mail::to($user)->queue(new PasswordUpdated());
         }
 

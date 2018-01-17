@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LocaleMiddleware
 {
-    protected $languages = ['en','nl'];
+    protected $languages = ['en', 'nl'];
 
     /**
      * Handle an incoming request.

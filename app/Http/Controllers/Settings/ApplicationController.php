@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App;
-use App\Http\Requests\ApplicationSettingsUpdateRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Brotzka\DotenvEditor\DotenvEditor;
+use App\Http\Requests\ApplicationSettingsUpdateRequest;
 
 /**
- * Class ApplicationController
- * @package App\Http\Controllers\Settings
+ * Class ApplicationController.
  */
 class ApplicationController extends Controller
 {
@@ -30,10 +27,10 @@ class ApplicationController extends Controller
     {
         $env = new DotenvEditor;
         $env->changeEnv([
-            'APP_NAME' => '"' . $request->input('APP_NAME') . '"',
+            'APP_NAME' => '"'.$request->input('APP_NAME').'"',
             'APP_URL' => $request->input('APP_URL'),
             'APP_EMAIL' => $request->input('APP_EMAIL'),
-            'APP_FROM' => '"' . $request->input('APP_FROM') . '"',
+            'APP_FROM' => '"'.$request->input('APP_FROM').'"',
             'APP_REGISTER' => $request->input('APP_REGISTER'),
             'APP_EDITOR' => $request->input('APP_EDITOR'),
             'NOTIFICATIONS' => $request->input('NOTIFICATIONS'),

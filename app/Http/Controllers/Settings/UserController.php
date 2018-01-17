@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 
 /**
- * Class UserController
- * @package App\Http\Controllers\Settings
+ * Class UserController.
  */
 class UserController extends Controller
 {

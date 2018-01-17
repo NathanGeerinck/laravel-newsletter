@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ImportSubscriptions;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
-use App\Http\Requests\MailingListUpdateRequest;
-use App\Http\Requests\MailingListCreateRequest;
+use App\Jobs\ImportSubscriptions;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\MailingListCreateRequest;
+use App\Http\Requests\MailingListUpdateRequest;
 
 /**
- * Class MailingListController
- * @package App\Http\Controllers
+ * Class MailingListController.
  */
 class MailingListController extends Controller
 {
@@ -141,7 +140,7 @@ class MailingListController extends Controller
 
         $subscriptions = $list->subscriptions;
 
-        Excel::create('Subscriptions-' . $list->name, function ($excel) use ($subscriptions) {
+        Excel::create('Subscriptions-'.$list->name, function ($excel) use ($subscriptions) {
             $excel->sheet('Subscriptions', function ($sheet) use ($subscriptions) {
                 $sheet->fromArray($subscriptions);
             });
