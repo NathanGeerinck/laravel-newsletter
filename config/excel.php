@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     'cache'      => [
 
@@ -701,4 +701,4 @@ return array(
 
     ]
 
-);
+];

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\MailingList;
 use App\Models\User;
+use App\Models\MailingList;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MailingListPolicy

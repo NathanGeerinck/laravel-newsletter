@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Http\Requests\AccountGeneralUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AccountGeneralUpdateRequest;
 
 class GeneralController extends Controller
 {

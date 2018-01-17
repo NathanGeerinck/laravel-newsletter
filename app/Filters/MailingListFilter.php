@@ -1,4 +1,6 @@
-<?php namespace App\Filters;
+<?php
+
+namespace App\Filters;
 
 use EloquentFilter\ModelFilter;
 
@@ -18,6 +20,6 @@ class MailingListFilter extends ModelFilter
      */
     public function name($name)
     {
-        return $this->where('name', 'LIKE', '%' . $name . '%');
+        return $this->where('name', 'LIKE', '%'.$name.'%');
     }
 }

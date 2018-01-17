@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SubscribeRequest;
 use App\Models\MailingList;
 use App\Models\Subscription;
+use App\Http\Requests\SubscribeRequest;
 
 class SubscribeController extends Controller
 {
@@ -27,8 +27,6 @@ class SubscribeController extends Controller
     public function subscribe(SubscribeRequest $request, MailingList $list)
     {
         $subscription = $list->subscriptions()->create($request->all());
-
-
 
         notify()->flash($list->name, 'success', [
             'timer' => 2000,

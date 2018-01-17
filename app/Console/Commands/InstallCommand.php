@@ -39,7 +39,7 @@ class InstallCommand extends Command
     {
         $this->info("\nWelcome to the installation process of Laravel Newsletter!\n");
 
-        if(!$this->confirm('Do you like to continue with the installation of Laravel Newsletter?')) {
+        if (! $this->confirm('Do you like to continue with the installation of Laravel Newsletter?')) {
             $this->info("\nYou stopped the installation of Laravel Newsletter\n");
 
             return;
@@ -47,7 +47,7 @@ class InstallCommand extends Command
 
         $this->install();
 
-        if($this->option('demo') || $this->confirm('Do you like to import the demo data?')) {
+        if ($this->option('demo') || $this->confirm('Do you like to import the demo data?')) {
             $this->call('laravel-newsletter:demo');
         }
 
@@ -58,7 +58,7 @@ class InstallCommand extends Command
     {
         $this->line("\nInstalling..");
 
-        if (!file_exists('.env')) {
+        if (! file_exists('.env')) {
             exec('mv .env.example .env');
             $this->line("\n.env file successfully created\n");
         }
@@ -77,7 +77,7 @@ class InstallCommand extends Command
     }
 
     /**
-     * Update .env file from an array of $key => $value pairs
+     * Update .env file from an array of $key => $value pairs.
      *
      * @param array $updatedValues
      * @return void

@@ -19,7 +19,9 @@ class CampaignMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $subscription, $campaign, $template;
+    public $subscription;
+    public $campaign;
+    public $template;
 
     public function __construct(Subscription $subscription, Campaign $campaign, Template $template)
     {
