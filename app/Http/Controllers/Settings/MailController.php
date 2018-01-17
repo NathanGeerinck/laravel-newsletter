@@ -7,8 +7,7 @@ use Brotzka\DotenvEditor\DotenvEditor;
 use App\Http\Requests\MailSettingsUpdateRequest;
 
 /**
- * Class MailController
- * @package App\Http\Controllers\Settings
+ * Class MailController.
  */
 class MailController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use Validator;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -70,7 +70,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Just a custom override to prevent register when option is disabled
+     * Just a custom override to prevent register when option is disabled.
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */

@@ -28,7 +28,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
         if (config('queue.type') == 'schedule') {
             $schedule->command('queue:work')
                 ->everyMinute();

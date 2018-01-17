@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\MailingList;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
-use App\Http\Requests\SubscriptionsUpdateRequest;
-use App\Http\Requests\SubscriptionsCreateRequest;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\SubscriptionsCreateRequest;
+use App\Http\Requests\SubscriptionsUpdateRequest;
 
 /**
- * Class SubscriptionController
- * @package App\Http\Controllers
+ * Class SubscriptionController.
  */
 class SubscriptionController extends Controller
 {

@@ -8,8 +8,7 @@ use App\Http\Requests\TemplateCreateRequest;
 use App\Http\Requests\TemplateUpdateRequest;
 
 /**
- * Class TemplateController
- * @package App\Http\Controllers
+ * Class TemplateController.
  */
 class TemplateController extends Controller
 {
