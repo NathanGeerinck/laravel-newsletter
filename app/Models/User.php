@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
+use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
-use PragmaRX\Google2FA\Google2FA;
 
 /**
  * @property mixed google2fa_secret
@@ -72,7 +71,7 @@ class User extends Authenticatable
 
     public function generate2faKey()
     {
-        if (!$this->google2fa_secret) {
+        if (! $this->google2fa_secret) {
             $google2fa = new Google2FA();
 
             $this->google2fa_secret = $google2fa->generateSecretKey();

@@ -4,9 +4,6 @@ namespace App\Listeners;
 
 use App\Models\Email;
 use jdavidbakr\MailTracker\Events\EmailSentEvent;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use jdavidbakr\MailTracker\Model\SentEmail;
 
 class EmailSent
 {
@@ -25,7 +22,7 @@ class EmailSent
     {
         $campaign_id = $event->sent_email->getHeader('X-Campaign-ID');
 
-        if($campaign_id){
+        if ($campaign_id) {
             Email::create([
                 'campaign_id' => $campaign_id,
                 'message_id' => $event->sent_email->message_id

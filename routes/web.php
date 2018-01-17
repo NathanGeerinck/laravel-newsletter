@@ -19,8 +19,8 @@ Route::get('unsubscribe/{email}/{unSubscribe}', 'SubscribeController@preUnSubscr
 Route::delete('unsubscribe/{subscription}', 'SubscribeController@unSubscribe')->name('subscriptions.unsubscribe');
 
 Route::group(['prefix' => 'subscribe', 'as' => 'subscribe.'], function () {
-   Route::get('{list}', 'SubscribeController@mailing_list')->name('list');
-   Route::post('{list}', 'SubscribeController@subscribe')->name('subscribe');
+    Route::get('{list}', 'SubscribeController@mailing_list')->name('list');
+    Route::post('{list}', 'SubscribeController@subscribe')->name('subscribe');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('edit/{subscription}', 'SubscriptionController@update')->name('update');
         Route::delete('delete/{subscription}', 'SubscriptionController@delete')->name('delete');
     });
-    
+
     Route::group(['prefix' => 'templates', 'as' => 'templates.'], function () {
         Route::get('/', 'TemplateController@index')->name('index');
         Route::get('show/{template}', 'TemplateController@show')->name('show');

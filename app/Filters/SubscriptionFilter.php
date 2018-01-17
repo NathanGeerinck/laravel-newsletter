@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Filters;
 
 use EloquentFilter\ModelFilter;
@@ -20,8 +21,8 @@ class SubscriptionFilter extends ModelFilter
     public function filter($filter)
     {
         return $this->where(function ($q) use ($filter) {
-            return $q->where('email', 'LIKE', '%' . $filter . '%')
-                ->orWhere('name', 'LIKE', '%' . $filter . '%');
+            return $q->where('email', 'LIKE', '%'.$filter.'%')
+                ->orWhere('name', 'LIKE', '%'.$filter.'%');
         });
     }
 
