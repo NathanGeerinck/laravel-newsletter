@@ -14,13 +14,13 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'jdavidbakr\MailTracker\Events\EmailSentEvent' => [
-            'App\Listeners\EmailSent',
+            \App\Listeners\EmailSent::class,
         ],
         'jdavidbakr\MailTracker\Events\ViewEmailEvent' => [
-            'App\Listeners\EmailViewed',
+            \App\Listeners\EmailViewed::class,
         ],
         'jdavidbakr\MailTracker\Events\LinkClickedEvent' => [
-          'App\Listeners\EmailClicked',
+          \App\Listeners\EmailClicked::class,
         ],
     ];
 
