@@ -16,7 +16,7 @@
         "brotzka/laravel-dotenv-editor": "^2.0",
         "codecourse/notify": "^1.1",
         "maatwebsite/excel": "^2.1",
-        "graham-campbell/markdown": "^7.1",
+        "graham-campbell/markdown": "^8.0",
         "laravel/tinker": "~1.0",
         "pragmarx/google2fa": "^1.0",
         "jdavidbakr/mail-tracker": "~2.1",
