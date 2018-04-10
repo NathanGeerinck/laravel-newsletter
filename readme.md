@@ -1,6 +1,6 @@
 # Laravel Newsletter
 
-[![StyleCI](https://styleci.io/repos/76723997/shield?branch=master)](https://styleci.io/repos/76723997)
+[![StyleCI](https://styleci.io/repos/76723997/shield?branch=master)](https://styleci.io/repos/76723997) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/?branch=master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) [![Code Intelligence Status](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 Laravel Newsletter is an open source project that can be used for sending newsletters to multiple subscribers, mailing lists, ... at once. This project can be used together with free mailing applications such as MailGun.
 
