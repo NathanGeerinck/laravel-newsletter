@@ -68,6 +68,7 @@ class InstallCommand extends Command
             $this->line("\nSecret key properly generated\n");
         }
 
+        $dbEnv['DB_HOST'] = $this->ask('Database host');
         $dbEnv['DB_DATABASE'] = $this->ask('Database name');
         $dbEnv['DB_USERNAME'] = $this->ask('Database user');
         $dbEnv['DB_PASSWORD'] = $this->secret('Database password ("null" for no password)');

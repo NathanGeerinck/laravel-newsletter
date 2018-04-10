@@ -9,7 +9,7 @@ First of all you need to clone the repository and install it using composer.
 ```bash
 git clone git@github.com:NathanGeerinck/laravel-newsletter.git
 cd laravel-newsletter && composer install
-php artisan laravel:newsletter-install
+php artisan laravel-newsletter:install
 ```
 
 ### Step 2
