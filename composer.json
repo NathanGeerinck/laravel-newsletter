@@ -12,7 +12,6 @@
         "laravel/framework": "5.6.*",
         "laravelcollective/html": "5.5.*",
         "tucker-eric/eloquentfilter": "^1.0",
-        "barryvdh/laravel-debugbar": "^3.1.4",
         "brotzka/laravel-dotenv-editor": "^2.0",
         "codecourse/notify": "^1.1",
         "maatwebsite/excel": "^2.1",
@@ -27,7 +26,9 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~7.0",
-        "filp/whoops": "~2.0"
+        "filp/whoops": "~2.0",
+        "barryvdh/laravel-debugbar": "^3.1.4",
+        "barryvdh/laravel-ide-helper": "^2.4"
     },
     "autoload": {
         "classmap": [

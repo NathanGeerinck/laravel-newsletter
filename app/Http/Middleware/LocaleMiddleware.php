@@ -19,10 +19,12 @@ class LocaleMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            $lang = Auth::user()->language;
+            $lang = Auth::user()->preferences['language'];
 
             app()->setLocale($lang);
-        } else {
+        }
+
+        else {
             app()->setLocale(env('APP_LOCALE'));
         }
 

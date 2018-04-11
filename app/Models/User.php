@@ -23,8 +23,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'language',
-        'notifications_on',
+        'preferences',
     ];
 
     /**
@@ -35,6 +34,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    protected $casts = [
+        'preferences' => 'array',
     ];
 
     /**

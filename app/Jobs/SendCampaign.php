@@ -64,10 +64,11 @@ class SendCampaign implements ShouldQueue
             });
         });
 
-        $this->campaign->send = 1;
-        $this->campaign->save();
+        $this->campaign->update([
+            'send' => 1
+        ]);
 
-        if (env('NOTIFICATIONS') == true) {
+        if ($this->user->preferences['notifications']) {
             Mail::to($this->user)->queue(new CampaignSendMail($this->campaign->getSubscriptions(), $this->campaign));
         }
     }

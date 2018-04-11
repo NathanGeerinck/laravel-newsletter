@@ -9,13 +9,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('language', trans('account.general.language') . ' *') !!}
-    {!! Form::select('language', ['en' => trans('language.en'), 'nl' => trans('language.nl')], null, ['class' => 'chosen-select']) !!}
+    {!! Form::label('preferences[language]', trans('account.general.language') . ' *') !!}
+    {!! Form::select('preferences[language]', ['en' => trans('language.en'), 'nl' => trans('language.nl')], null, ['class' => 'chosen-select']) !!}
 </div>
 
-{{--<div class="form-group">--}}
-    {{--{!! Form::label('notifications_on', trans('account.general.notifications') . ' *') !!}--}}
-    {{--{!! Form::select('notifications_on', [0 => 'No', 1 => 'Yes'], null, ['class' => 'chosen-select']) !!}--}}
-{{--</div>--}}
+<div class="form-group">
+    {!! Form::label('preferences[notifications]', trans('account.general.notifications') . ' *') !!}
+    {!! Form::select('preferences[notifications]', [0 => 'No', 1 => 'Yes'], null, ['class' => 'chosen-select']) !!}
+</div>
 
 {!! Form::submit(trans('forms.save'), ['class' => 'btn btn-default']) !!}
