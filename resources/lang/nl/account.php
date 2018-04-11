@@ -8,6 +8,7 @@ return [
         'full_name' => 'Naam',
         'email' => 'E-mail',
         'language' => 'Taal',
+        'notifications' => 'Notificaties',
     ],
 
     'password' => [
