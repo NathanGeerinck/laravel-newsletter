@@ -22,9 +22,7 @@ class LocaleMiddleware
             $lang = Auth::user()->preferences['language'];
 
             app()->setLocale($lang);
-        }
-
-        else {
+        } else {
             app()->setLocale(env('APP_LOCALE'));
         }
 
