@@ -1,3 +1,5 @@
+![Laravel Newsletter logo](./logo.png =250x250)
+
 # Laravel Newsletter
 
 [![StyleCI](https://styleci.io/repos/76723997/shield?branch=master)](https://styleci.io/repos/76723997) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/?branch=master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) [![Code Intelligence Status](https://scrutinizer-ci.com/g/NathanGeerinck/laravel-newsletter/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
@@ -30,7 +32,7 @@ Once you've created the database you can migrate all the tables into your databa
 php artisan migrate
 ```
 
-If you want to import the demo data then you can tun:
+If you want to import the demo data then you can run:
 ```bash
 php artisan laravel-newsletter:demo
 ```
@@ -61,7 +63,7 @@ Now you're ready to rock and roll! Visit the `/register` page of you're applicat
 * Creating an API
 
 ## License
-The laravel-newsletter application is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT)
+The laravel-newsletter application is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT).
 
 ## Contributors
 * [Cannonb4ll](https://github.com/Cannonb4ll)
