@@ -1,4 +1,4 @@
-![Laravel Newsletter logo](./logo.png =250x250)
+<img src="./logo.png" width="150px">
 
 # Laravel Newsletter
 
