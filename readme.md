@@ -1,4 +1,4 @@
-![Laravel Newsletter logo](./logo.png =250x250)
+<img src="./logo.png" width="150px">
 
 # Laravel Newsletter
 
@@ -14,6 +14,7 @@ First of all you need to clone the repository and install it using composer.
 git clone git@github.com:NathanGeerinck/laravel-newsletter.git
 cd laravel-newsletter && composer install
 php artisan laravel-newsletter:install
+npm run production
 ```
 
 ### Step 2
