@@ -22,6 +22,7 @@ class ApplicationController extends Controller
     /**
      * @param ApplicationSettingsUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Brotzka\DotenvEditor\Exceptions\DotEnvException
      */
     public function update(ApplicationSettingsUpdateRequest $request)
     {

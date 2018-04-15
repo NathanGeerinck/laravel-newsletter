@@ -19,7 +19,10 @@
     "vue": "^2.5.16"
   },
   "dependencies": {
+    "bootstrap-chosen": "^1.4.2",
     "chart.js": "^2.7.2",
-    "vue-chartjs": "^3.3.1"
+    "sweetalert2": "^7.18.0",
+    "vue-chartjs": "^3.3.1",
+    "vue-codemirror": "^4.0.4"
   }
 }

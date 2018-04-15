@@ -4,10 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-/**
- * @property mixed username
- */
-class AccountGeneralUpdateRequest extends FormRequest
+class CampaignRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,12 +24,10 @@ class AccountGeneralUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|min:3',
-            'email' => 'required',
-            'preferences' => [
-                'language' => 'required',
-                'notifications' => 'required'
-            ],
+            'name' => 'required',
+            'subject' => 'required',
+            'template_id' => 'required',
+            'mailing_lists' => 'required'
         ];
     }
 }

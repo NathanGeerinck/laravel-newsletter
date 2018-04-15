@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AccountGeneralUpdateRequest;
+use App\Http\Requests\GeneralUpdateRequest;
 
 class GeneralController extends Controller
 {
@@ -18,10 +18,10 @@ class GeneralController extends Controller
     }
 
     /**
-     * @param AccountGeneralUpdateRequest $request
+     * @param GeneralUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(AccountGeneralUpdateRequest $request)
+    public function update(GeneralUpdateRequest $request)
     {
         $request->user()->update($request->all());
 

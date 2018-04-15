@@ -6,8 +6,7 @@ use App\Models\MailingList;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\SubscriptionsCreateRequest;
-use App\Http\Requests\SubscriptionsUpdateRequest;
+use App\Http\Requests\SubscriptionRequest;
 
 /**
  * Class SubscriptionController.
@@ -69,10 +68,10 @@ class SubscriptionController extends Controller
     }
 
     /**
-     * @param SubscriptionsCreateRequest $request
+     * @param SubscriptionRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(SubscriptionsCreateRequest $request)
+    public function create(SubscriptionRequest $request)
     {
         $subscription = $request->user()->subscription()->create($request->all());
 
@@ -85,12 +84,12 @@ class SubscriptionController extends Controller
     }
 
     /**
-     * @param SubscriptionsUpdateRequest $request
+     * @param SubscriptionRequest $request
      * @param Subscription $subscription
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(SubscriptionsUpdateRequest $request, Subscription $subscription)
+    public function update(SubscriptionRequest $request, Subscription $subscription)
     {
         $this->authorize('update', $subscription);
 

@@ -1,25 +1,14 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * include Vue and Vue Resource. This gives a great starting point for
- * building robust, powerful web applications using Vue and Laravel.
- */
+require('./bootstrap');
+
+window.swal = require('sweetalert2');
+
+import 'sweetalert2/dist/sweetalert2.css';
 
 require('./chosen.jquery');
 
-window.swal = require('./sweetalert.min');
-
-var Vue = require('vue');
-require('./bootstrap');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the body of the page. From here, you may begin adding components to
- * the application, or feel free to tweak this setup for your needs.
-*/
-
-Vue.component('line-chart', require('./components/LineChart.vue'));
-Vue.component('bar-chart', require('./components/BarChart.vue'));
-Vue.component('pie-chart', require('./components/PieChart.vue'));
+// Vue.component('line-chart', require('./components/LineChart.vue'));
+// Vue.component('bar-chart', require('./components/BarChart.vue'));
+// Vue.component('pie-chart', require('./components/PieChart.vue'));
 
 const app = new Vue({
     el: '#app'
@@ -74,4 +63,3 @@ window.deleteSubscription = function (element, subject) {
         $(element).closest('form').submit();
     });
 };
-

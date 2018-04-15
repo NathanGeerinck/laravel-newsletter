@@ -22,6 +22,7 @@ class MailController extends Controller
     /**
      * @param MailSettingsUpdateRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Brotzka\DotenvEditor\Exceptions\DotEnvException
      */
     public function update(MailSettingsUpdateRequest $request)
     {

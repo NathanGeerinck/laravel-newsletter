@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Template;
 use Illuminate\Http\Request;
-use App\Http\Requests\TemplateCreateRequest;
-use App\Http\Requests\TemplateUpdateRequest;
+use App\Http\Requests\TemplateRequest;
 
 /**
  * Class TemplateController.
@@ -67,10 +66,10 @@ class TemplateController extends Controller
     }
 
     /**
-     * @param TemplateCreateRequest $request
+     * @param TemplateRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(TemplateCreateRequest $request)
+    public function create(TemplateRequest $request)
     {
         $template = auth()->user()->template()->create([
             'name' => $request->input('name'),
@@ -86,12 +85,12 @@ class TemplateController extends Controller
     }
 
     /**
-     * @param TemplateUpdateRequest $request
+     * @param TemplateRequest $request
      * @param Template $template
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(TemplateUpdateRequest $request, Template $template)
+    public function update(TemplateRequest $request, Template $template)
     {
         $this->authorize('update', $template);
 

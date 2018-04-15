@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CampaignCreateRequest extends FormRequest
+class MailingListRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class CampaignCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'subject' => 'required',
-            'mailing_lists' => 'required',
-            'template_id' => 'required'
+            'name' => 'required|min:3',
+            'description' => 'max:150'
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TemplateCreateRequest extends FormRequest
+class PasswordUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class TemplateCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'content' => 'required'
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed|min:6',
         ];
     }
 }

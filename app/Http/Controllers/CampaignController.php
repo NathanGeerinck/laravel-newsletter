@@ -8,8 +8,7 @@ use App\Jobs\SendCampaign;
 use App\Models\MailingList;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\CampaignCreateRequest;
-use App\Http\Requests\CampaignUpdateRequest;
+use App\Http\Requests\CampaignRequest;
 
 /**
  * Class CampaignController.
@@ -104,10 +103,10 @@ class CampaignController extends Controller
     }
 
     /**
-     * @param CampaignCreateRequest $request
+     * @param CampaignRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(CampaignCreateRequest $request)
+    public function create(CampaignRequest $request)
     {
         $campaign = auth()->user()->campaigns()->create($request->all());
 
@@ -124,12 +123,12 @@ class CampaignController extends Controller
     }
 
     /**
-     * @param CampaignUpdateRequest $request
+     * @param CampaignRequest $request
      * @param Campaign $campaign
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(CampaignUpdateRequest $request, Campaign $campaign)
+    public function update(CampaignRequest $request, Campaign $campaign)
     {
         $this->authorize('update', $campaign);
 

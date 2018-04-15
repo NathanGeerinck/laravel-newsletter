@@ -6,7 +6,7 @@ use Hash;
 use Mail;
 use App\Mail\PasswordUpdated;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AccountPasswordUpdateRequest;
+use App\Http\Requests\PasswordUpdateRequest;
 
 class PasswordController extends Controller
 {
@@ -20,7 +20,7 @@ class PasswordController extends Controller
         return view('account.password', compact('account'));
     }
 
-    public function update(AccountPasswordUpdateRequest $request)
+    public function update(PasswordUpdateRequest $request)
     {
         $check = Hash::check($request->input('old_password'), auth()->user()->password);
 

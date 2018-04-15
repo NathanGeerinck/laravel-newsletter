@@ -6,8 +6,7 @@ use App\Models\MailingList;
 use Illuminate\Http\Request;
 use App\Jobs\ImportSubscriptions;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Http\Requests\MailingListCreateRequest;
-use App\Http\Requests\MailingListUpdateRequest;
+use App\Http\Requests\MailingListRequest;
 
 /**
  * Class MailingListController.
@@ -75,10 +74,10 @@ class MailingListController extends Controller
     }
 
     /**
-     * @param MailingListCreateRequest $request
+     * @param MailingListRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(MailingListCreateRequest $request)
+    public function create(MailingListRequest $request)
     {
         $list = auth()->user()->mailingList()->create($request->all());
 
@@ -91,12 +90,12 @@ class MailingListController extends Controller
     }
 
     /**
-     * @param MailingListUpdateRequest $request
+     * @param MailingListRequest $request
      * @param MailingList $list
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(MailingListUpdateRequest $request, MailingList $list)
+    public function update(MailingListRequest $request, MailingList $list)
     {
         $this->authorize('update', $list);
 
