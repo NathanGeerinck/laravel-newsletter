@@ -6,7 +6,7 @@ use Hash;
 use Mail;
 use App\Mail\PasswordUpdated;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PasswordUpdateRequest;
+use App\Http\Requests\Account\PasswordUpdateRequest;
 
 class PasswordController extends Controller
 {

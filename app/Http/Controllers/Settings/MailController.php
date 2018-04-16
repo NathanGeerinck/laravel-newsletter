@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use Brotzka\DotenvEditor\DotenvEditor;
-use App\Http\Requests\MailSettingsUpdateRequest;
+use App\Http\Requests\Settings\MailSettingsUpdateRequest;
 
 /**
  * Class MailController.

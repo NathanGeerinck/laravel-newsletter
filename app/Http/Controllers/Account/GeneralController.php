@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\GeneralUpdateRequest;
+use App\Http\Requests\Account\GeneralUpdateRequest;
 
 class GeneralController extends Controller
 {
