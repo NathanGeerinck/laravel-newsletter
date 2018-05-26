@@ -12,17 +12,17 @@
   "devDependencies": {
     "axios": "^0.17",
     "bootstrap-sass": "^3.3.7",
-    "cross-env": "^5.1.4",
+    "cross-env": "^5.1.6",
     "jquery": "^3.3.1",
     "laravel-mix": "^2.1.11",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.10",
     "vue": "^2.5.16"
   },
   "dependencies": {
     "bootstrap-chosen": "^1.4.2",
     "chart.js": "^2.7.2",
-    "sweetalert2": "^7.18.0",
+    "sweetalert2": "^7.20.10",
     "vue-chartjs": "^3.3.1",
-    "vue-codemirror": "^4.0.4"
+    "vue-codemirror": "^4.0.5"
   }
 }
