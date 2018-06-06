@@ -62,6 +62,7 @@ Now you're ready to rock and roll! Visit the `/register` page of you're applicat
 * Translate the application to more languages (now available: English, Dutch)
 * Email bounce tracking
 * Creating an API
+* Importing subscriptions with use of an URL (JSON)
 
 ## License
 The laravel-newsletter application is open source software licensed under the [license MIT](https://opensource.org/licenses/MIT).
