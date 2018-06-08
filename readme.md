@@ -39,7 +39,7 @@ php artisan laravel-newsletter:demo
 ```
 
 ### Step 3
-For sending emails you need to fillout your mail credentials.. You can use a service like [MailGun](https://www.mailgun.com/). You can adjust these settings also in the `.env` file.
+For sending emails you need to fillout your mail credentials.. You can use a service like [Mailgun](https://www.mailgun.com/). You can adjust these settings also in the `.env` file.
 ```
 MAIL_DRIVER=smtp
 MAIL_HOST=mailgun.org
