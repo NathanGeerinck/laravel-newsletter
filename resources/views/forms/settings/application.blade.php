@@ -19,8 +19,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('NOTIFICATIONS', trans('settings.application.notifications') . ' *') !!}
-    {!! Form::select('NOTIFICATIONS', ['false' => 'No', 'true' => 'Yes'], (env('NOTIFICATIONS') == 1) ? 'true' : 'false', ['class' => 'chosen-select']) !!}
+    {!! Form::label('APP_LOCALE', trans('settings.application.language') . ' *') !!}
+    {!! Form::select('APP_LOCALE', ['en' => trans('language.en'), 'nl' => trans('language.nl')], env('APP_LOCALE'), ['class' => 'chosen-select']) !!}
 </div>
 
 <div class="form-group">
