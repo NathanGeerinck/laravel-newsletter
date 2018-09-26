@@ -9,8 +9,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "laravel/framework": "5.6.*",
-        "laravelcollective/html": "5.5.*",
+        "laravel/framework": "5.7.*",
+        "laravelcollective/html": "^5.7.1",
         "tucker-eric/eloquentfilter": "^1.0",
         "brotzka/laravel-dotenv-editor": "^2.0",
         "codecourse/notify": "^1.1",
@@ -19,7 +19,7 @@
         "laravel/tinker": "~1.0",
         "pragmarx/google2fa": "^1.0",
         "jdavidbakr/mail-tracker": "~2.1",
-        "laravel/passport": "^2.0",
+        "laravel/passport": "^7.0",
         "fideloper/proxy": "~4.0"
     },
     "require-dev": {
